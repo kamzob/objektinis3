@@ -16,9 +16,9 @@ struct Vartotojas
     string pavarde;
     int nd[x];
     int egz;
-    double vid = 0.0;
-    double gal = 0.0;
-    double med = 0.0;
+    double vid = 0.0;       // namu darbu pazymiu vidurkis
+    double gal = 0.0;       // galutinis ivertinimas
+    double med = 0.0;       // namu darbu mediana
     
 };
 double Vidurkis(double suma, int nariai);
@@ -39,13 +39,28 @@ int main() {
         cin >> vart[i].pavarde;
         cout << "Kiek yra tarpiniu pazymiu?" << endl;
         cin >> kiek;
+        while(kiek<1 || kiek>x)
+        {
+            cout << "Iveskite tarpiniu pazymiu kieki:" << endl;
+            cin >> kiek;
+        }
         for (int j = 0; j < kiek; j++){
             cout << "Iveskite " << j+1 << " pazymi" << endl;
             cin >> vart[i].nd[j];
+            while(vart[i].nd[j]<1 || vart[i].nd[j]>10)
+            {
+                cout << "Klaida! Pazymys turi buti nuo 1 iki 10: \n";
+                cin >> vart[i].nd[j];
+            }
             sum += vart[i].nd[j];
         }
         cout << "Iveskite egzamino rezultata:" << endl;
         cin >> vart[i].egz;
+        while(vart[i].egz<1 || vart[i].egz>10)
+        {
+            cout << "Klaida! Egzamino rezultatas turi buti nuo 1 iki 10: \n";
+            cin >> vart[i].egz;
+        }
         vart[i].vid = Vidurkis(sum, kiek);
         vart[i].med = Mediana(vart[i].nd, kiek);
         
@@ -54,6 +69,11 @@ int main() {
     int rnkts;      // pasirinkimas, kaip norima skaiciuoti galutini ivertinima - pagal vidurki ar mediana
     cout << "Pasirinkite kaip norite, kad skaiciuotu jusu galutini ivertinima: 0 - pagal vidurki, 1 - pagal mediana: " << endl;
     cin >> rnkts;
+    while (rnkts != 0 && rnkts !=1)
+    {
+        cout << "Klaida! Turite pasirinkti 0 (galutinis ivert. skaiciuojamas pagal vidurki) arba 1 (pagal mediana): \n";
+        cin >> rnkts;
+    }
     if (rnkts == 0)
     {
         cout << left << setw(15) << "Pavarde" << setw(15) << "Vardas" << setw(15)<< "Galutinis (vid.)" << endl;
@@ -93,3 +113,4 @@ double Mediana(int paz[], int nariai)
     return double(paz[(nariai-1) / 2] + paz[nariai/2] / 2.0);
     
 }
+
