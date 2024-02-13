@@ -32,8 +32,11 @@ double Mediana(int paz[], int nariai);
 void Ivesti(Vartotojas vart[], int &n);
 void spausdinti(int rnkts, Vartotojas vart[], int n);
 double generavimasPaz();
+string generavimasVard(int pas);
+string generavimasPav(int pas);
 
 int main() {
+    
 
     int n;
     cout << "Iveskite vartotoju skaiciu:" << endl;
@@ -131,48 +134,50 @@ int main() {
                 }
                 
             }
+            case 3: {
+                for(int i = 0; i < n; i++)
+                {
+                    bool gender;        // lytis
+                    gender = rand()%2;
+                    vart[i].vardas = generavimasVard(gender);
+                    vart[i].pavarde = generavimasPav(gender);
+                    cout << i+1 << " studentas: " << vart[i].vardas << " " << vart[i].pavarde << endl;
+                    double sum = 0.0;
+                    int pazymys;
+                    int kiek = 0;
+                    int renku = 0;
+                    while(true)
+                    {
+                        cout << "Jei norite kad sugeneruotu pazymi spauskite 1, jei norite kad baigtu generuoti spauskite 0: " << endl;
+                        cin >> renku;
+                        while(!cin>>renku || renku < 0 || renku > 1)
+                        {
+                            cin.clear();
+                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                            
+                            cout << "Jei norite kad sugeneruotu pazymi spauskite 1, jei norite kad baigtu generuoti spauskite 0: " << endl;
+                            cin >> renku;
+                        }
+                        if(renku==0)
+                            break;
+                        pazymys = generavimasPaz();
+                        cout << pazymys << endl;
+                        sum += pazymys;
+                        vart[i].nd[kiek] = pazymys;
+                        kiek++;
+                        
+                    }
+                    vart[i].egz = generavimasPaz();
+                    cout << "Egzamino rezultatas :" << vart[i].egz << endl;
+                    vart[i].vid = Vidurkis(sum, kiek);
+                    vart[i].med = Mediana(vart[i].nd, kiek);
+                }
+            }
+                
                 
         }
         
     } while(pasirinkimas != 4);
-//
-//    for (int i = 0; i < n; i++)
-//    {
-//        double sum = 0.0;        // tarpiniu pazymiu suma
-//        cout << "Iveskite " << i+1 << "-ojo studento varda:" << endl;
-//        cin >> vart[i].vardas;
-//        cout << "Iveskite " << i+1 << "-ojo pavarde:" << endl;
-//        cin >> vart[i].pavarde;
-//        cout << "Kiek yra tarpiniu pazymiu?" << endl;
-//        cin >> kiek;
-//        while(kiek<1 || kiek>x)
-//        {
-//            cout << "Iveskite tarpiniu pazymiu kieki:" << endl;
-//            cin >> kiek;
-//        }
-//        for (int j = 0; j < kiek; j++){
-//            cout << "Iveskite " << j+1 << " pazymi" << endl;
-//            cin >> vart[i].nd[j];
-//            while(vart[i].nd[j]<1 || vart[i].nd[j]>10)
-//            {
-//                cout << "Klaida! Pazymys turi buti nuo 1 iki 10: \n";
-//                cin >> vart[i].nd[j];
-//            }
-//            sum += vart[i].nd[j];
-//        }
-//        cout << "Iveskite egzamino rezultata:" << endl;
-//        cin >> vart[i].egz;
-//        while(vart[i].egz<1 || vart[i].egz>10)
-//        {
-//            cout << "Klaida! Egzamino rezultatas turi buti nuo 1 iki 10: \n";
-//            cin >> vart[i].egz;
-//        }
-//        vart[i].vid = Vidurkis(sum, kiek);
-//        vart[i].med = Mediana(vart[i].nd, kiek);
-//        
-//        
-//    }
-    
     int rnkts;      // pasirinkimas, kaip norima skaiciuoti galutini ivertinima - pagal vidurki ar mediana
     cout << "Pasirinkite kaip norite, kad skaiciuotu jusu galutini ivertinima: 0 - pagal vidurki, 1 - pagal mediana: " << endl;
     cin >> rnkts;
@@ -245,4 +250,20 @@ void spausdinti (int rnkts, Vartotojas vart[], int n)
 double generavimasPaz()
 {
     return rand()%10+1;
+}
+string generavimasVard(int pas)
+{
+    string vyr_vard[] = {"Petras", "Arnas", "Jonas", "Juozas", "Aleksandras", "Kajus", "Kipras", "Mantas", "Matas", "Algis"};
+    string mot_vard[] = {"Agne", "Jurgita", "Emilija", "Kamile", "Rugile", "Selina", "Paulina", "Marija", "Ugne", "Monika"};
+    if(pas==0)
+        return vyr_vard[rand()%10];
+    return mot_vard[rand()%10];
+}
+string generavimasPav(int pas)
+{
+    string vyr_pav[]={"Petraitis", "Jonaitis", "Sabonis", "Macaitis", "Pocius", "Malinauskas", "Pociunas", "Grabauskas", "Girulis", "Zobela"};
+    string mot_pav[]={"Petraityte", "Macaite", "Girulyte", "Grabauskaite", "Genyte", "Rimkute", "Mockute", "Povilaityte", "Zobelaite", "Brazauskiene"};
+    if(pas==0)
+        return vyr_pav[rand()%10];
+    return mot_pav[rand()%10];
 }
