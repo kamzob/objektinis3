@@ -29,15 +29,13 @@ struct Vartotojas
 };
 double Vidurkis(double suma, int nariai);
 double Mediana(int paz[], int nariai);
-void Ivesti(Vartotojas vart[], int &n);
 void spausdinti(int rnkts, Vartotojas vart[], int n);
 double generavimasPaz();
 string generavimasVard(int pas);
 string generavimasPav(int pas);
 
 int main() {
-    
-
+    srand( static_cast<unsigned int>(time(nullptr)));       // xcode neveikia srand(time(0))
     int n;
     cout << "Iveskite vartotoju skaiciu:" << endl;
     cin >> n;
@@ -51,6 +49,14 @@ int main() {
         cout << "Jeigu norite, kad pazymiai, studentu vardai ir pavardes butu generuojami automatiskai, spauskite 3" << endl;
         cout << "Jeigu norite, kad programa baigtu darba, spauskite 4" << endl;
         cin >> pasirinkimas;
+        while(!cin>>pasirinkimas || pasirinkimas < 1 || pasirinkimas > 4)
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Klaida! Turite pasirinkti nuo 1 iki 4: \n";
+            cin >> pasirinkimas;
+            
+        }
         switch(pasirinkimas) {
             case 1: {
                 for (int i = 0; i < n; i++)
@@ -189,7 +195,6 @@ int main() {
             }
                 
                 
-                
         }
         
     } while(pasirinkimas != 4);
@@ -214,19 +219,6 @@ double Mediana(int paz[], int nariai)
     return double(paz[(nariai-1) / 2] + paz[nariai/2] / 2.0);
     
 }
-//void Ivesti(Vartotojas vart[], int &n)
-//{
-//    
-//    for(int i = 0; i < n; i++)
-//    {
-//        int kiek = 0;       // pazymiu uz nd kiekis
-//        cout << "Iveskite " << i+1 << "-ojo studento varda:" << endl;
-//        cin >> vart[i].vardas;
-//        cout << "Iveskite " << i+1 << "-ojo pavarde:" << endl;
-//        cin >> vart[i].pavarde;
-//        while
-//    }
-//}
 
 void spausdinti (int rnkts, Vartotojas vart[], int n)
 {
