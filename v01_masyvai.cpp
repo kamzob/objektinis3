@@ -92,7 +92,48 @@ int main() {
                 }
                 
             }
+            case 2: {
+                for (int i = 0; i < n; i++)
+                {
+                    double sum = 0.0;
+                    cout << "Iveskite " << i+1 << "-ojo studento varda:" << endl;
+                    cin >> vart[i].vardas;
+                    cout << "Iveskite " << i+1 << "-ojo pavarde:" << endl;
+                    cin >> vart[i].pavarde;
+                    int pazymys;
+                    int kiek = 0;
+                    int renku = 0;
+                    while(true)
+                    {
+                        cout << "Jei norite kad sugeneruotu pazymi spauskite 1, jei norite kad baigtu generuoti spauskite 0: " << endl;
+                        cin >> renku;
+                        while(!cin>>renku || renku < 0 || renku > 1)
+                        {
+                            cin.clear();
+                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                            
+                            cout << "Jei norite kad sugeneruotu pazymi spauskite 1, jei norite kad baigtu generuoti spauskite 0: " << endl;
+                            cin >> renku;
+                        }
+                        if(renku==0)
+                            break;
+                        pazymys = generavimasPaz();
+                        cout << pazymys << endl;
+                        sum += pazymys;
+                        vart[i].nd[kiek] = pazymys;
+                        kiek++;
+                        
+                    }
+                    vart[i].egz = generavimasPaz();
+                    cout << "Egzamino rezultatas :" << vart[i].egz << endl;
+                    vart[i].vid = Vidurkis(sum, kiek);
+                    vart[i].med = Mediana(vart[i].nd, kiek);
+                }
+                
+            }
+                
         }
+        
     } while(pasirinkimas != 4);
 //
 //    for (int i = 0; i < n; i++)
@@ -203,6 +244,5 @@ void spausdinti (int rnkts, Vartotojas vart[], int n)
 }
 double generavimasPaz()
 {
-    srand(0);
     return rand()%10+1;
 }
