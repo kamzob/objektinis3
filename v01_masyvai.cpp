@@ -25,7 +25,6 @@ struct Vartotojas
     double vid = 0.0;       // namu darbu pazymiu vidurkis
     double gal = 0.0;       // galutinis ivertinimas
     double med = 0.0;       // namu darbu mediana
-    int pzmkiek = 0;
     
 };
 double Vidurkis(double suma, int nariai);
@@ -91,10 +90,14 @@ int main() {
                         cout << "Klaida! Egzamino rezultatas turi buti nuo 1 iki 10: \n";
                         cin >> vart[i].egz;
                     }
-                    vart[i].pzmkiek = kiek;
                     vart[i].vid = Vidurkis(sum, kiek);
                     vart[i].med = Mediana(vart[i].nd, kiek);
                 }
+                int rnkts;      // pasirinkimas, kaip norima skaiciuoti galutini ivertinima - pagal vidurki ar mediana
+                cout << "Pasirinkite kaip norite, kad skaiciuotu jusu galutini ivertinima: 0 - pagal vidurki, 1 - pagal mediana: " << endl;
+                cin >> rnkts;
+                spausdinti (rnkts, vart, n);
+                break;
                 
             }
             case 2: {
@@ -131,11 +134,14 @@ int main() {
                     }
                     vart[i].egz = generavimasPaz();
                     cout << "Egzamino rezultatas :" << vart[i].egz << endl;
-                    vart[i].pzmkiek = kiek;
                     vart[i].vid = Vidurkis(sum, kiek);
                     vart[i].med = Mediana(vart[i].nd, kiek);
                 }
-                
+                int rnkts;      // pasirinkimas, kaip norima skaiciuoti galutini ivertinima - pagal vidurki ar mediana
+                cout << "Pasirinkite kaip norite, kad skaiciuotu jusu galutini ivertinima: 0 - pagal vidurki, 1 - pagal mediana: " << endl;
+                cin >> rnkts;
+                spausdinti (rnkts, vart, n);
+                break;
             }
             case 3: {
                 for(int i = 0; i < n; i++)
@@ -172,26 +178,30 @@ int main() {
                     }
                     vart[i].egz = generavimasPaz();
                     cout << "Egzamino rezultatas :" << vart[i].egz << endl;
-                    vart[i].pzmkiek = kiek;
                     vart[i].vid = Vidurkis(sum, kiek);
                     vart[i].med = Mediana(vart[i].nd, kiek);
                 }
+                int rnkts;      // pasirinkimas, kaip norima skaiciuoti galutini ivertinima - pagal vidurki ar mediana
+                cout << "Pasirinkite kaip norite, kad skaiciuotu jusu galutini ivertinima: 0 - pagal vidurki, 1 - pagal mediana: " << endl;
+                cin >> rnkts;
+                spausdinti (rnkts, vart, n);
+                break;
             }
+                
                 
                 
         }
         
     } while(pasirinkimas != 4);
-    int rnkts;      // pasirinkimas, kaip norima skaiciuoti galutini ivertinima - pagal vidurki ar mediana
-    cout << "Pasirinkite kaip norite, kad skaiciuotu jusu galutini ivertinima: 0 - pagal vidurki, 1 - pagal mediana: " << endl;
-    cin >> rnkts;
-    spausdinti (rnkts, vart, n);
+    
     
     
     return 0;
 }
 double Vidurkis(double suma, int nariai)
 {
+    if (nariai==0)
+        return nariai;
     return suma/nariai;
     
 }
