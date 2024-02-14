@@ -82,7 +82,7 @@ int main() {
                         }
                         if(pazymys==0)
                             break;
-                        vart[i].nd[kiek] = pazymys;
+                        vart[i].nd.push_back(pazymys);
                         sum+=pazymys;
                         kiek++;
                        
@@ -134,7 +134,7 @@ int main() {
                         pazymys = generavimasPaz();
                         cout << pazymys << endl;
                         sum += pazymys;
-                        vart[i].nd[kiek] = pazymys;
+                        vart[i].nd.push_back(pazymys);
                         kiek++;
                         
                     }
@@ -178,7 +178,7 @@ int main() {
                         pazymys = generavimasPaz();
                         cout << pazymys << endl;
                         sum += pazymys;
-                        vart[i].nd[kiek] = pazymys;
+                        vart[i].nd.push_back(pazymys);
                         kiek++;
                         
                     }
