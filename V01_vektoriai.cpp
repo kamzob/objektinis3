@@ -38,6 +38,14 @@ int main() {
     int n;
     cout << "Iveskite vartotoju skaiciu:" << endl;
     cin >> n;
+    while(!cin>>n || n < 1)
+    {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Klaida! Turite ivesti vartotoju skaiciu!" << endl;
+        cin >> n;
+    }
+    
     vector<Vartotojas> vart(n);
     int pasirinkimas;
     cout << "Pasirinkite: " << endl;
