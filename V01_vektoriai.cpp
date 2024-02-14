@@ -12,7 +12,6 @@
 #include <ctime>
 #include <vector>
 
-#define x 50        // nd masyvo dydis x
 
 using namespace std;
 
@@ -28,8 +27,8 @@ struct Vartotojas
     
 };
 double Vidurkis(double suma, int nariai);
-double Mediana(int paz[], int nariai);
-void spausdinti(int rnkts, Vartotojas vart[], int n);
+double Mediana(vector<int> paz, int nariai);
+void spausdinti(int rnkts, vector<Vartotojas>& vart, int n);
 double generavimasPaz();
 string generavimasVard(int pas);
 string generavimasPav(int pas);
@@ -211,16 +210,16 @@ double Vidurkis(double suma, int nariai)
     
 }
 
-double Mediana(int paz[], int nariai)
+double Mediana(vector<int> paz, int nariai)
 {
-    sort(paz, paz+nariai);
+    sort(paz.begin(), paz.end());
     if(nariai % 2 != 0)
         return double(paz[nariai/2]);
     return double(paz[(nariai-1) / 2] + paz[nariai/2] / 2.0);
     
 }
 
-void spausdinti (int rnkts, Vartotojas vart[], int n)
+void spausdinti(int rnkts, vector<Vartotojas>& vart, int n)
 {
     while (!cin>>rnkts || (rnkts != 0 && rnkts !=1))
     {
