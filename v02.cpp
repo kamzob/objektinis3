@@ -35,6 +35,7 @@ double generavimasPaz();
 string generavimasVard(int pas);
 string generavimasPav(int pas);
 void skaityti(vector<Vartotojas>& vart);
+void spausdinti_skaitomus_duomenis(vector<Vartotojas>& vart);
 
 int main() {
     srand( static_cast<unsigned int>(time(nullptr)));       // xcode neveikia srand(time(0))
@@ -235,6 +236,7 @@ int main() {
             }
             case 2:{
                 skaityti (vart);
+                spausdinti_skaitomus_duomenis (vart);
                 break;
             }
                 
@@ -420,5 +422,40 @@ void skaityti(vector<Vartotojas>& vart)
 }
 void spausdinti_skaitomus_duomenis(vector<Vartotojas>& vart)
 {
-    
+    int rnkts;      // pasirinkimas, kaip norima skaiciuoti galutini ivertinima - pagal vidurki ar mediana
+    cout << "Pasirinkite kaip norite, kad skaiciuotu jusu galutini ivertinima: 0 - pagal vidurki, 1 - pagal mediana: " << endl;
+    cin >> rnkts;
+    while (!cin>>rnkts || (rnkts != 0 && rnkts !=1))
+    {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Klaida! Turite pasirinkti 0 (galutinis ivert. skaiciuojamas pagal vidurki) arba 1 (pagal mediana): \n";
+        cin >> rnkts;
+    }
+    if (rnkts == 0)
+    {
+        ofstream fr("rezultatai.txt");
+        fr << left << setw(15) << "Pavarde" << setw(15) << "Vardas" << setw(15)<< "Galutinis (vid.)" << endl;
+        fr << "---------------------------------------------------" << endl;
+        for ( int i = 0; i < vart.size(); i++)
+        {
+            vart[i].gal = 0.4*vart[i].vid+0.6*vart[i].egz;
+            fr << left << setw(15) << vart[i].pavarde << setw(15) << vart[i].vardas << setw(15) << fixed << setprecision(2) << vart[i].gal << endl;
+        }
+        
+        fr.close();
+    }
+    else if (rnkts == 1)
+    {
+        ofstream fr("rezultatai.txt");
+        fr << left << setw(15) << "Pavarde" << setw(15) << "Vardas" << setw(15)<< "Galutinis (med.)" << endl;
+        fr << "---------------------------------------------------" << endl;
+        for ( int i = 0; i < vart.size(); i++)
+        {
+            vart[i].gal = 0.4*vart[i].med+0.6*vart[i].egz;
+            fr << left << setw(15) << vart[i].pavarde << setw(15) << vart[i].vardas << setw(15) << fixed << setprecision(2) << vart[i].gal << endl;
+        }
+        fr.close();
+        
+    }
 }
