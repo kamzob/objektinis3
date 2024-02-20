@@ -11,6 +11,8 @@
 #include <cstdlib>
 #include <ctime>
 #include <vector>
+#include <fstream>
+#include <sstream>
 
 
 using namespace std;
@@ -321,47 +323,74 @@ string generavimasPav(int pas)
 }
 void skaityti(vector<Vartotojas>& vart)
 {
-    int rinktis;
-    cout << "Jums reikia pasirinkti, is kur norite, kad skaitytu duomenis:" << endl;
-   
-    do {
-        cout << "1 - is sugeneruoto kursiokai failo" << endl;
-        cout << "2 - is testavimo failo su 10000 studentu" << endl;
-        cout << "3 - is testavimo failo su 100000 studentu" << endl;
-        cout << "4 - is testavimo failo su 1000000 studentu" << endl;
-        cout << "5 - baigti darba" << endl;
-    cin >> rinktis;
-    while (!cin>>rinktis || rinktis > 5 || rinktis < 1) {
-        cout << "Klaida! Turite ivesti nuo 1 iki 4" << endl;
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cin >> rinktis;
-    }
-        switch (rinktis) {
-            case 1:{
-                cout <<"a" << endl;
-                break;
-            }
-            case 2:{
-                cout <<"b" << endl;
-                break;
-            }
-            case 3:{
-                cout <<"c" << endl;
-                break;
-            }
-            case 4:{
-                cout << "d" << endl;
-                break;
-            }
-                
-                
-            default:
-                cout << "Iveskite nuo 1 iki 4" << endl;
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                break;
+    ifstream failas("studentai10000.txt");
+    string eilute;
+    vector<int> pazymiai;
+    vector<string> eilvekt;
+    getline(failas,eilute);
+    while(failas){
+        if(!failas.eof()){
+            getline(failas,eilute);
+            eilvekt.push_back(eilute);
         }
-    } while (rinktis!=5);
+        else break;
+    }
+    failas.close();
+    
+    for ( int i = 0; i < eilvekt.size(); i++){
+        istringstream iss(eilvekt[i]);
+        Vartotojas naujas;
+    }
+    
+//    int rinktis;
+//    cout << "Jums reikia pasirinkti, is kur norite, kad skaitytu duomenis:" << endl;
+//   
+//    do {
+//        cout << "1 - is sugeneruoto kursiokai failo" << endl;
+//        cout << "2 - is testavimo failo su 10000 studentu" << endl;
+//        cout << "3 - is testavimo failo su 100000 studentu" << endl;
+//        cout << "4 - is testavimo failo su 1000000 studentu" << endl;
+//        cout << "5 - baigti darba" << endl;
+//    cin >> rinktis;
+//    while (!cin>>rinktis || rinktis > 5 || rinktis < 1) {
+//        cout << "Klaida! Turite ivesti nuo 1 iki 4" << endl;
+//        cin.clear();
+//        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+//        cin >> rinktis;
+//    }
+//        switch (rinktis) {
+//            case 1:{
+//                
+//                
+//                break;
+//            }
+//            case 2:{
+//                ifstream fd("studentai10000.txt");
+//                string m;
+//                for (int i = 0; i < 2; i++)
+//                {
+//                    fd >> m;
+//                    cout << m << endl;
+//                }
+//                fd.close();
+//                break;
+//            }
+//            case 3:{
+//                cout <<"c" << endl;
+//                break;
+//            }
+//            case 4:{
+//                cout << "d" << endl;
+//                break;
+//            }
+//                
+//                
+//            default:
+//                cout << "Iveskite nuo 1 iki 4" << endl;
+//                cin.clear();
+//                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+//                break;
+//        }
+//    } while (rinktis!=5);
        
 }
