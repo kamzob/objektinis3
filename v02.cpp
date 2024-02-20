@@ -251,8 +251,17 @@ int main() {
                 break;
             }
             case 2:{
+                auto start1 = chrono::high_resolution_clock::now();
                 skaityti (vart);
+                auto end1 = chrono::high_resolution_clock::now();
+                chrono::duration<double> laikas1 = end1 - start1;
+                cout << laikas1.count() << endl;
                 rezrikiavimas(vart);
+                auto start2 = chrono::high_resolution_clock::now();
+                spausdinti_skaitomus_duomenis(vart);
+                auto end2 = chrono::high_resolution_clock::now();
+                chrono::duration<double> laikas2 = end2 - start2;
+                cout << "Laikas: " << laikas1.count()+laikas2.count() << " sek." << endl;
                 break;
             }
                 
@@ -380,58 +389,7 @@ void skaityti(vector<Vartotojas>& vart)
         
     }
 
-    
-//    int rinktis;
-//    cout << "Jums reikia pasirinkti, is kur norite, kad skaitytu duomenis:" << endl;
-//   
-//    do {
-//        cout << "1 - is sugeneruoto kursiokai failo" << endl;
-//        cout << "2 - is testavimo failo su 10000 studentu" << endl;
-//        cout << "3 - is testavimo failo su 100000 studentu" << endl;
-//        cout << "4 - is testavimo failo su 1000000 studentu" << endl;
-//        cout << "5 - baigti darba" << endl;
-//    cin >> rinktis;
-//    while (!cin>>rinktis || rinktis > 5 || rinktis < 1) {
-//        cout << "Klaida! Turite ivesti nuo 1 iki 4" << endl;
-//        cin.clear();
-//        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-//        cin >> rinktis;
-//    }
-//        switch (rinktis) {
-//            case 1:{
-//                
-//                
-//                break;
-//            }
-//            case 2:{
-//                ifstream fd("studentai10000.txt");
-//                string m;
-//                for (int i = 0; i < 2; i++)
-//                {
-//                    fd >> m;
-//                    cout << m << endl;
-//                }
-//                fd.close();
-//                break;
-//            }
-//            case 3:{
-//                cout <<"c" << endl;
-//                break;
-//            }
-//            case 4:{
-//                cout << "d" << endl;
-//                break;
-//            }
-//                
-//                
-//            default:
-//                cout << "Iveskite nuo 1 iki 4" << endl;
-//                cin.clear();
-//                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-//                break;
-//        }
-//    } while (rinktis!=5);
-       
+
 }
 void rezrikiavimas(vector<Vartotojas>& vart){
     int rinktis;
@@ -444,22 +402,18 @@ void rezrikiavimas(vector<Vartotojas>& vart){
     switch(rinktis){
         case 1:{
             sort(vart.begin(), vart.end(), rikiuotiVarda);
-            spausdinti_skaitomus_duomenis(vart);
             break;
         }
         case 2:{
             sort(vart.begin(), vart.end(), rikiuotiPavarde);
-            spausdinti_skaitomus_duomenis(vart);
             break;
         }
         case 3:{
             sort(vart.begin(), vart.end(), rikiuotiVid);
-            spausdinti_skaitomus_duomenis(vart);
             break;
         }
         case 4:{
             sort(vart.begin(), vart.end(), rikiuotiMed);
-            spausdinti_skaitomus_duomenis(vart);
             break;
         }
     }
