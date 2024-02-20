@@ -26,6 +26,8 @@ struct Vartotojas
     double vid = 0.0;       // namu darbu pazymiu vidurkis
     double gal = 0.0;       // galutinis ivertinimas
     double med = 0.0;       // namu darbu mediana
+    double galmed = 0.0;
+    double galvid = 0.0;
     
 };
 double Vidurkis(double suma, int nariai);
@@ -36,19 +38,24 @@ string generavimasVard(int pas);
 string generavimasPav(int pas);
 void skaityti(vector<Vartotojas>& vart);
 void spausdinti_skaitomus_duomenis(vector<Vartotojas>& vart);
+bool rikiuotiVarda(const Vartotojas &a, const Vartotojas &b) {
+    return a.vardas < b.vardas;
+}
+bool rikiuotiPavarde(const Vartotojas &a, const Vartotojas &b) {
+    return a.pavarde < b.pavarde;
+}
+bool rikiuotiVid(const Vartotojas &a, const Vartotojas &b) {
+    return a.galvid < b.galvid;
+}
+bool rikiuotiMed(const Vartotojas &a, const Vartotojas &b) {
+    return a.galmed < b.galmed;
+}
+void rezrikiavimas(vector<Vartotojas>& vart);
 
 int main() {
     srand( static_cast<unsigned int>(time(nullptr)));       // xcode neveikia srand(time(0))
     int n;
-    cout << "Iveskite vartotoju skaiciu:" << endl;
-    cin >> n;
-    while(!cin>>n || n < 0 )
-    {
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Klaida! Turite ivesti vartotoju skaiciu!" << endl;
-        cin >> n;
-    }
+    
     
     vector<Vartotojas> vart;
     int pasirinkimas;   // meniu
@@ -64,12 +71,21 @@ int main() {
         {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Klaida! Turite pasirinkti nuo 1 iki 4: \n";
+            cout << "Klaida! Turite pasirinkti nuo 1 iki 3: \n";
             cin >> gener;
             
         }
         switch (gener) {
             case 1:{
+                cout << "Iveskite vartotoju skaiciu:" << endl;
+                cin >> n;
+                while(!cin>>n || n < 0 )
+                {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cout << "Klaida! Turite ivesti vartotoju skaiciu!" << endl;
+                    cin >> n;
+                }
                 do{
                     // meniu skiltis pasirinkimai
                     cout << "Jeigu norite ivesti duomenis ranka, spauskite 1" << endl;
@@ -236,7 +252,7 @@ int main() {
             }
             case 2:{
                 skaityti (vart);
-                spausdinti_skaitomus_duomenis (vart);
+                rezrikiavimas(vart);
                 break;
             }
                 
@@ -325,7 +341,7 @@ string generavimasPav(int pas)
 }
 void skaityti(vector<Vartotojas>& vart)
 {
-    ifstream failas("studentai10000.txt");
+    ifstream failas("kursiokai.txt");
     int kiek;
     string eilute;
     vector<int> pazymiai;
@@ -358,15 +374,12 @@ void skaityti(vector<Vartotojas>& vart)
         kiek = (int)naujas.nd.size();
         naujas.vid = Vidurkis(sum, kiek);
         naujas.med = Mediana(naujas.nd, kiek);
+        naujas.galvid = 0.4*naujas.vid+0.6*naujas.egz;
+        naujas.galmed = 0.4*naujas.med+0.6*naujas.egz;
         vart.push_back(naujas);
         
     }
-    for ( int i = 0; i < 10; i++)
-    {
-        vart[i].gal = 0.4*vart[i].vid+0.6*vart[i].egz;
-        cout << left << setw(15) << vart[i].pavarde << setw(15) << vart[i].vardas << setw(15) << fixed << setprecision(2) << vart[i].gal << endl;
-    }
-   
+
     
 //    int rinktis;
 //    cout << "Jums reikia pasirinkti, is kur norite, kad skaitytu duomenis:" << endl;
@@ -420,42 +433,49 @@ void skaityti(vector<Vartotojas>& vart)
 //    } while (rinktis!=5);
        
 }
+void rezrikiavimas(vector<Vartotojas>& vart){
+    int rinktis;
+    cout << "Pasirinkita pagal kokia tvarka norite, kad surikiuotu ir spausdintu rezultatus:" << endl;
+    cout << "1 - pagal studento varda\n";
+    cout << "2 - pagal studento pavarde\n";
+    cout << "3 - pagal studento galutini ivertinima (vidurki) \n";
+    cout << "4 - pagal studento galutini ivertinima (mediana) \n";
+    cin >> rinktis;
+    switch(rinktis){
+        case 1:{
+            sort(vart.begin(), vart.end(), rikiuotiVarda);
+            spausdinti_skaitomus_duomenis(vart);
+            break;
+        }
+        case 2:{
+            sort(vart.begin(), vart.end(), rikiuotiPavarde);
+            spausdinti_skaitomus_duomenis(vart);
+            break;
+        }
+        case 3:{
+            sort(vart.begin(), vart.end(), rikiuotiVid);
+            spausdinti_skaitomus_duomenis(vart);
+            break;
+        }
+        case 4:{
+            sort(vart.begin(), vart.end(), rikiuotiMed);
+            spausdinti_skaitomus_duomenis(vart);
+            break;
+        }
+    }
+}
 void spausdinti_skaitomus_duomenis(vector<Vartotojas>& vart)
 {
-    int rnkts;      // pasirinkimas, kaip norima skaiciuoti galutini ivertinima - pagal vidurki ar mediana
-    cout << "Pasirinkite kaip norite, kad skaiciuotu jusu galutini ivertinima: 0 - pagal vidurki, 1 - pagal mediana: " << endl;
-    cin >> rnkts;
-    while (!cin>>rnkts || (rnkts != 0 && rnkts !=1))
-    {
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Klaida! Turite pasirinkti 0 (galutinis ivert. skaiciuojamas pagal vidurki) arba 1 (pagal mediana): \n";
-        cin >> rnkts;
-    }
-    if (rnkts == 0)
-    {
+    
         ofstream fr("rezultatai.txt");
-        fr << left << setw(15) << "Pavarde" << setw(15) << "Vardas" << setw(15)<< "Galutinis (vid.)" << endl;
-        fr << "---------------------------------------------------" << endl;
+        fr << left << setw(20) << "Pavarde" << setw(20) << "Vardas" << setw(20)<< "Galutinis (vid.)" << setw(20)<< "Galutinis (med.)" << endl;
+        fr << "--------------------------------------------------------------------------" << endl;
         for ( int i = 0; i < vart.size(); i++)
         {
-            vart[i].gal = 0.4*vart[i].vid+0.6*vart[i].egz;
-            fr << left << setw(15) << vart[i].pavarde << setw(15) << vart[i].vardas << setw(15) << fixed << setprecision(2) << vart[i].gal << endl;
+            
+            fr << left << setw(20) << vart[i].pavarde << setw(20) << vart[i].vardas << setw(20) << fixed << setprecision(2) << vart[i].galvid << setw(20) << setprecision(2) << vart[i].galmed << endl;
         }
         
         fr.close();
-    }
-    else if (rnkts == 1)
-    {
-        ofstream fr("rezultatai.txt");
-        fr << left << setw(15) << "Pavarde" << setw(15) << "Vardas" << setw(15)<< "Galutinis (med.)" << endl;
-        fr << "---------------------------------------------------" << endl;
-        for ( int i = 0; i < vart.size(); i++)
-        {
-            vart[i].gal = 0.4*vart[i].med+0.6*vart[i].egz;
-            fr << left << setw(15) << vart[i].pavarde << setw(15) << vart[i].vardas << setw(15) << fixed << setprecision(2) << vart[i].gal << endl;
-        }
-        fr.close();
-        
-    }
+ 
 }
