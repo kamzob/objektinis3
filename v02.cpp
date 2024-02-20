@@ -324,6 +324,7 @@ string generavimasPav(int pas)
 void skaityti(vector<Vartotojas>& vart)
 {
     ifstream failas("studentai10000.txt");
+    int kiek;
     string eilute;
     vector<int> pazymiai;
     vector<string> eilvekt;
@@ -340,7 +341,30 @@ void skaityti(vector<Vartotojas>& vart)
     for ( int i = 0; i < eilvekt.size(); i++){
         istringstream iss(eilvekt[i]);
         Vartotojas naujas;
+        double sum = 0;
+        int paz;
+        iss >> naujas.vardas >> naujas.pavarde;
+        while (iss>>paz) {
+            naujas.nd.push_back(paz);
+            sum+=paz;
+        }
+        if(!naujas.nd.empty()){
+            naujas.egz = naujas.nd.back();
+            sum -= naujas.nd.back();
+            naujas.nd.pop_back();
+        }
+        kiek = (int)naujas.nd.size();
+        naujas.vid = Vidurkis(sum, kiek);
+        naujas.med = Mediana(naujas.nd, kiek);
+        vart.push_back(naujas);
+        
     }
+    for ( int i = 0; i < 10; i++)
+    {
+        vart[i].gal = 0.4*vart[i].vid+0.6*vart[i].egz;
+        cout << left << setw(15) << vart[i].pavarde << setw(15) << vart[i].vardas << setw(15) << fixed << setprecision(2) << vart[i].gal << endl;
+    }
+   
     
 //    int rinktis;
 //    cout << "Jums reikia pasirinkti, is kur norite, kad skaitytu duomenis:" << endl;
@@ -393,4 +417,8 @@ void skaityti(vector<Vartotojas>& vart)
 //        }
 //    } while (rinktis!=5);
        
+}
+void spausdinti_skaitomus_duomenis(vector<Vartotojas>& vart)
+{
+    
 }
