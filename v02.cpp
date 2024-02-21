@@ -254,16 +254,9 @@ int main() {
                 break;
             }
             case 2:{
-                auto start1 = chrono::high_resolution_clock::now();
                 skaityti (vart);
-                auto end1 = chrono::high_resolution_clock::now();
-                chrono::duration<double> laikas1 = end1 - start1;
                 rezrikiavimas(vart);
-                auto start2 = chrono::high_resolution_clock::now();
                 spausdinti_skaitomus_duomenis(vart);
-                auto end2 = chrono::high_resolution_clock::now();
-                chrono::duration<double> laikas2 = end2 - start2;
-                cout << "Laikas: " << laikas1.count()+laikas2.count() << " sek." << endl;
                 break;
             }
                 
@@ -273,9 +266,6 @@ int main() {
         }
         
     } while (gener!=3);
-    
-   
-    
     
     
     return 0;
@@ -297,7 +287,7 @@ double Mediana(vector<int> paz, int nariai)
     
 }
 
-void spausdinti(int rnkts, vector<Vartotojas>& vart, int n)
+void spausdinti(int rnkts, vector<Vartotojas>& vart, int n)// spausdina i ekrana ranka sugeneruotus duomenis
 {
     while (!cin>>rnkts || (rnkts != 0 && rnkts !=1))
     {
@@ -353,6 +343,7 @@ string generavimasPav(int pas)
 }
 void skaityti(vector<Vartotojas>& vart)
 {
+    auto start = chrono::high_resolution_clock::now();
     ifstream failas("kursiokai.txt");
     int kiek;
     string eilute;
@@ -367,6 +358,10 @@ void skaityti(vector<Vartotojas>& vart)
         else break;
     }
     failas.close();
+    auto end = chrono::high_resolution_clock::now();
+    chrono::duration<double> laikas = end - start;
+    
+    cout << "Skaitymas is failo uztruko: " << laikas.count() << " sek." << endl;
     
     for ( int i = 0; i < eilvekt.size(); i++){
         istringstream iss(eilvekt[i]);
@@ -421,9 +416,11 @@ void rezrikiavimas(vector<Vartotojas>& vart){
         }
     }
 }
-void spausdinti_skaitomus_duomenis(vector<Vartotojas>& vart)
+void spausdinti_skaitomus_duomenis(vector<Vartotojas>& vart)// spausdina nuskaitytu duomenu rezultatus i faila
 {
     
+    
+        auto start = chrono::high_resolution_clock::now();
         ofstream fr("rezultatai.txt");
         fr << left << setw(20) << "Pavarde" << setw(20) << "Vardas" << setw(20)<< "Galutinis (vid.)" << setw(20)<< "Galutinis (med.)" << endl;
         fr << "--------------------------------------------------------------------------" << endl;
@@ -434,5 +431,8 @@ void spausdinti_skaitomus_duomenis(vector<Vartotojas>& vart)
         }
         
         fr.close();
+        auto end = chrono::high_resolution_clock::now();
+        chrono::duration<double> laikas = end - start;
+        cout << "Rezultatu irasymas i faila uztruko: " << laikas.count() << " sek." << endl;
  
 }
