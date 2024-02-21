@@ -13,6 +13,7 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
+#include <chrono>
 
 
 using namespace std;
@@ -235,6 +236,8 @@ int main() {
                                 cout << "Egzamino rezultatas :" << naujas.egz << endl;
                                 naujas.vid = Vidurkis(sum, kiek);
                                 naujas.med = Mediana(naujas.nd, kiek);
+                                naujas.galvid = 0.4*naujas.vid+0.6*naujas.egz;
+                                naujas.galmed = 0.4*naujas.med+0.6*naujas.egz;
                                 vart.push_back(naujas);
                             }
                             int rnkts;      // pasirinkimas, kaip norima skaiciuoti galutini ivertinima - pagal vidurki ar mediana
@@ -255,7 +258,6 @@ int main() {
                 skaityti (vart);
                 auto end1 = chrono::high_resolution_clock::now();
                 chrono::duration<double> laikas1 = end1 - start1;
-                cout << laikas1.count() << endl;
                 rezrikiavimas(vart);
                 auto start2 = chrono::high_resolution_clock::now();
                 spausdinti_skaitomus_duomenis(vart);
@@ -310,6 +312,7 @@ void spausdinti(int rnkts, vector<Vartotojas>& vart, int n)
         cout << "---------------------------------------------------" << endl;
         for ( int i = 0; i < n; i++)
         {
+           
             vart[i].gal = 0.4*vart[i].vid+0.6*vart[i].egz;
             cout << left << setw(15) << vart[i].pavarde << setw(15) << vart[i].vardas << setw(15) << fixed << setprecision(2) << vart[i].gal << endl;
         }
