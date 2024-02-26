@@ -31,5 +31,12 @@ using std::fixed;
 using std::setprecision;
 using std::string;
 using std::sort;
-
+using std::istringstream;
+using std::ifstream;
+using std::ofstream;
+using std::exception;
+using std::numeric_limits;
+using std::streamsize;
+using std::runtime_error;
+using std::cerr;
 #endif /* biblioteka_h */
