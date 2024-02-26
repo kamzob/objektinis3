@@ -60,7 +60,7 @@ int main() {
     
     vector<Vartotojas> vart;
     int pasirinkimas;   // meniu
-    int gener;  // duomenu ivedimo budas (1 - ranka, 2 - is failo)
+    int gener;  // duomenu ivedimo budas (1 - ranka, 2 - is failo, 3 - baigti darba)
     
     do {
         cout << "Pasirinkite: " << endl;
@@ -116,16 +116,26 @@ int main() {
                                 int pazymys;
                                 int kiek = 0;
                                 while(true){
-                                    cin >> pazymys;
-                                    
-                                    while (!cin>>pazymys || pazymys < 0 || pazymys > 10)
-                                    {
+                                    try {
+                                        cin >> pazymys;
+                                        if(!cin>>pazymys || pazymys < 0 || pazymys > 10)
+                                            throw runtime_error("Netinkama ivestis. Pazymys turi buti sveikasis skaicius nuo 1 iki 10");
+                                    } catch (exception& e) {
+                                        cout << "Klaida: " << e.what() << endl;
                                         cin.clear();
                                         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                                        cout << "Klaida! Pazymys turi buti nuo 1 iki 10: \n";
-                                        cin >> pazymys;
-                                      
+                                        continue;
                                     }
+                                    
+                                    
+//                                    while (!cin>>pazymys || pazymys < 0 || pazymys > 10)
+//                                    {
+//                                        cin.clear();
+//                                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+//                                        cout << "Klaida! Pazymys turi buti nuo 1 iki 10: \n";
+//                                        cin >> pazymys;
+//                                      
+//                                    }
                                     if(pazymys==0)
                                         break;
                                     naujas.nd.push_back(pazymys);
@@ -255,8 +265,7 @@ int main() {
             }
             case 2:{
                 skaityti (vart);
-                rezrikiavimas(vart);
-                spausdinti_skaitomus_duomenis(vart);
+                
                 break;
             }
                 
@@ -343,20 +352,50 @@ string generavimasPav(int pas)
 }
 void skaityti(vector<Vartotojas>& vart)
 {
-//    cout << "Pasirinkite, is kurio failo norite nuskaityti duomenis: " << endl;
-//    cout << "1 - kursiokai.txt\n";
-//    cout << "2 - studentai10000.txt\n";
-//    cout << "3 - studentai100000.txt\n";
-//    cout << "4 - studentai1000000.txt\n";
-    string pavadinimas;
-   
+    string pavadinimas;;
+    int opt;
     cout << "Egzistuojantys .txt failai kataloge: \n";
     system("ls -a *.txt");
-    cout << "Iveskite failo pavadinima, is kurio norite, kad butu skaitomi duomenys: \n";
-    cin >> pavadinimas;
+    cout << "Pasirinkite, is kurio failo norite nuskaityti duomenis: " << endl;
+    cout << "1 - kursiokai.txt\n";
+    cout << "2 - studentai10000.txt\n";
+    cout << "3 - studentai100000.txt\n";
+    cout << "4 - studentai1000000.txt\n";
+    cin >> opt;
+    switch (opt) {
+        case 1:
+            pavadinimas = "kursiokai.txt";
+            break;
+        case 2:
+            pavadinimas = "studentai10000.txt";
+            break;
+        case 3:
+            pavadinimas = "studentai100000.txt";
+            break;
+        case 4:
+            pavadinimas = "studentai1000000.txt";
+            break;
+        default:
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Klaida! Reikia pasirinkti nuo 1 iki 4" << endl;
+            cin >> opt;
+            break;
+    }
+ 
+   
+    
+//    cout << "Iveskite failo pavadinima, is kurio norite, kad butu skaitomi duomenys: \n";
+//    cin >> pavadinimas;
     auto start = chrono::high_resolution_clock::now();
     ifstream failas(pavadinimas);
-    
+    try {
+         if (!failas)
+             throw runtime_error("Failas neegzistuoja arba nepasiekiamas.");
+     } catch(const std::exception& e) {
+         cerr << "Klaida: " << e.what() << endl;
+         return;
+     }
     int kiek;
     string eilute;
     vector<int> pazymiai;
@@ -398,6 +437,8 @@ void skaityti(vector<Vartotojas>& vart)
         vart.push_back(naujas);
         
     }
+    rezrikiavimas(vart);
+    spausdinti_skaitomus_duomenis(vart);
 
 
 }
