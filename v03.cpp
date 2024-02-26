@@ -38,21 +38,13 @@ double generavimasPaz();
 string generavimasVard(int pas);
 string generavimasPav(int pas);
 void skaityti(vector<Vartotojas>& vart);
-void spausdinti_skaitomus_duomenis(vector<Vartotojas>& vart);
-bool rikiuotiVarda(const Vartotojas &a, const Vartotojas &b) {
-    return a.vardas < b.vardas;
-}
-bool rikiuotiPavarde(const Vartotojas &a, const Vartotojas &b) {
-    return a.pavarde < b.pavarde;
-}
-bool rikiuotiVid(const Vartotojas &a, const Vartotojas &b) {
-    return a.galvid < b.galvid;
-}
-bool rikiuotiMed(const Vartotojas &a, const Vartotojas &b) {
-    return a.galmed < b.galmed;
-}
 void rezrikiavimas(vector<Vartotojas>& vart);
-
+void spausdinti_skaitomus_duomenis(vector<Vartotojas>& vart);
+bool rikiuotiVarda(const Vartotojas &a, const Vartotojas &b);
+bool rikiuotiPavarde(const Vartotojas &a, const Vartotojas &b);
+bool rikiuotiVid(const Vartotojas &a, const Vartotojas &b);
+bool rikiuotiMed(const Vartotojas &a, const Vartotojas &b);
+bool arZodis(string tekstas);
 int main() {
     srand( static_cast<unsigned int>(time(nullptr)));       // xcode neveikia srand(time(0))
     int n;
@@ -109,33 +101,42 @@ int main() {
                                 Vartotojas naujas;
                                 double sum = 0.0;
                                 cout << "Iveskite " << i+1 << "-ojo studento varda:" << endl;
-                                cin >> naujas.vardas;
+                                do{
+                                    cin >> naujas.vardas;
+                                }while (!arZodis(naujas.vardas));
+                                
+                               
                                 cout << "Iveskite " << i+1 << "-ojo pavarde:" << endl;
-                                cin >> naujas.pavarde;
+                                do{
+                                    cin >> naujas.pavarde;
+                                }while (!arZodis(naujas.pavarde));
                                 cout << "Iveskite pazymius uz namu darbus kai noresite baigti ivedima, irasykite 0: " << endl;
                                 int pazymys;
                                 int kiek = 0;
                                 while(true){
                                     try {
                                         cin >> pazymys;
-                                        if(!cin>>pazymys || pazymys < 0 || pazymys > 10)
+                                        if(cin.fail() || pazymys < 0 || pazymys > 10)
+                                        {
                                             throw runtime_error("Netinkama ivestis. Pazymys turi buti sveikasis skaicius nuo 1 iki 10");
+                                            
+                                        }
+                                        else if (pazymys == 0)
+                                            break;
+                                        else{
+                                            naujas.nd.push_back(pazymys);
+                                            sum+=pazymys;
+                                            kiek++;
+                                        }
+                                            
                                     } catch (exception& e) {
                                         cout << "Klaida: " << e.what() << endl;
                                         cin.clear();
                                         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                                        continue;
+                                    continue;
+
                                     }
                                     
-                                    
-//                                    while (!cin>>pazymys || pazymys < 0 || pazymys > 10)
-//                                    {
-//                                        cin.clear();
-//                                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-//                                        cout << "Klaida! Pazymys turi buti nuo 1 iki 10: \n";
-//                                        cin >> pazymys;
-//                                      
-//                                    }
                                     if(pazymys==0)
                                         break;
                                     naujas.nd.push_back(pazymys);
@@ -265,11 +266,8 @@ int main() {
             }
             case 2:{
                 skaityti (vart);
-                
                 break;
             }
-                
-                
             default:
                 break;
         }
@@ -489,4 +487,26 @@ void spausdinti_skaitomus_duomenis(vector<Vartotojas>& vart)// spausdina nuskait
         cout << "Rezultatu irasymas i faila uztruko: " << laikas.count() << " sek." << endl;
  
 }
-
+bool rikiuotiVarda(const Vartotojas &a, const Vartotojas &b) {
+    return a.vardas < b.vardas;
+}
+bool rikiuotiPavarde(const Vartotojas &a, const Vartotojas &b) {
+    return a.pavarde < b.pavarde;
+}
+bool rikiuotiVid(const Vartotojas &a, const Vartotojas &b) {
+    return a.galvid < b.galvid;
+}
+bool rikiuotiMed(const Vartotojas &a, const Vartotojas &b) {
+    return a.galmed < b.galmed;
+}
+bool arZodis(string tekstas){
+    for(char i : tekstas)
+    {
+        if(!isalpha(i))
+        {
+            cout << "Vardo ar pavardes ivedimui naudokite tik raides! Iveskite is naujo: \n";
+            return false;
+        }
+    }
+    return true;
+}
