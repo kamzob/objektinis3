@@ -89,6 +89,14 @@ void skaityti(vector<Vartotojas>& vart)
     cout << "3 - studentai100000.txt\n";
     cout << "4 - studentai1000000.txt\n";
     cin >> opt;
+    while(cin.fail()|| opt < 1 || opt > 4)
+    {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Klaida! Reikia pasirinkti nuo 1 iki 4" << endl;
+        cin >> opt;
+        
+    }
     switch (opt) {
         case 1:
             pavadinimas = "kursiokai.txt";
@@ -101,12 +109,6 @@ void skaityti(vector<Vartotojas>& vart)
             break;
         case 4:
             pavadinimas = "studentai1000000.txt";
-            break;
-        default:
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Klaida! Reikia pasirinkti nuo 1 iki 4" << endl;
-            cin >> opt;
             break;
     }
  
@@ -177,6 +179,14 @@ void rezrikiavimas(vector<Vartotojas>& vart){
     cout << "3 - pagal studento galutini ivertinima (vidurki) \n";
     cout << "4 - pagal studento galutini ivertinima (mediana) \n";
     cin >> rinktis;
+    while(cin.fail()|| rinktis < 1 || rinktis > 4)
+    {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Klaida! Reikia pasirinkti nuo 1 iki 4" << endl;
+        cin >> rinktis;
+        
+    }
     switch(rinktis){
         case 1:{
             sort(vart.begin(), vart.end(), rikiuotiVarda);
@@ -194,6 +204,9 @@ void rezrikiavimas(vector<Vartotojas>& vart){
             sort(vart.begin(), vart.end(), rikiuotiMed);
             break;
         }
+        
+            
+            
     }
 }
 void spausdinti_skaitomus_duomenis(vector<Vartotojas>& vart)// spausdina nuskaitytu duomenu rezultatus i faila
@@ -202,6 +215,13 @@ void spausdinti_skaitomus_duomenis(vector<Vartotojas>& vart)// spausdina nuskait
     
         auto start = std::chrono::high_resolution_clock::now();
         ofstream fr("rezultatai.txt");
+        try {
+         if (!fr)
+             throw runtime_error("Rezultatu failas neegzistuoja arba nepasiekiamas.");
+        } catch(const std::exception& e) {
+            cerr << "Klaida: " << e.what() << endl;
+         return;
+     }
         fr << left << setw(20) << "Pavarde" << setw(20) << "Vardas" << setw(20)<< "Galutinis (vid.)" << setw(20)<< "Galutinis (med.)" << endl;
         fr << "--------------------------------------------------------------------------" << endl;
         for ( int i = 0; i < vart.size(); i++)
