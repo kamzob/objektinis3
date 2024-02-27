@@ -73,30 +73,33 @@ int main() {
                                 }while (!arZodis(naujas.pavarde));
                                 cout << "Iveskite pazymius uz namu darbus kai noresite baigti ivedima, irasykite 0: " << endl;
                                 int pazymys;
+                                string input;
                                 int kiek = 0;
                                 while(true){
-                                    try {
-                                        cin >> pazymys;
-                                        if(cin.fail() || pazymys < 0 || pazymys > 10)
-                                        {
-                                            throw runtime_error("Netinkama ivestis. Pazymys turi buti sveikasis skaicius nuo 1 iki 10");
+                                        try {
+                                            cin >> input;
+                                            if(!arSveikasisSk(input)){
+                                                cerr << "Klaida! Pazymys turi buti sveikasis skaicius. Iveskite is naujo!\n";
+                                                continue;
+                                            }
                                             
-                                        }
-                                        else if (pazymys == 0)
-                                            break;
-                                        else{
-                                            naujas.nd.push_back(pazymys);
-                                            sum+=pazymys;
-                                            kiek++;
-                                        }
-                                            
-                                    } catch (exception& e) {
-                                        cout << "Klaida: " << e.what() << endl;
-                                        cin.clear();
-                                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                                    continue;
+                                            pazymys = stoi(input);
+                                            if(cin.fail() || pazymys < 0 || pazymys > 10)
+                                            {
+                                                throw runtime_error("Netinkama ivestis. Pazymys turi buti sveikasis skaicius nuo 1 iki 10");
+                                                
+                                            }
+                                                
+                                        } catch (exception& e) {
+                                            cout << "Klaida: " << e.what() << endl;
+                                            cin.clear();
+                                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                                            cout << "Iveskite is naujo: " << endl;
+                                            cin >> pazymys;
+                                        
 
-                                    }
+                                        }
+
                                     
                                     if(pazymys==0)
                                         break;
@@ -131,9 +134,15 @@ int main() {
                                 Vartotojas naujas;
                                 double sum = 0.0;
                                 cout << "Iveskite " << i+1 << "-ojo studento varda:" << endl;
-                                cin >> naujas.vardas;
+                                do{
+                                    cin >> naujas.vardas;
+                                }while (!arZodis(naujas.vardas));
+                                
                                 cout << "Iveskite " << i+1 << "-ojo pavarde:" << endl;
-                                cin >> naujas.pavarde;
+                                do{
+                                    cin >> naujas.pavarde;
+                                }while (!arZodis(naujas.pavarde));
+                                
                                 int pazymys;
                                 int kiek = 0;
                                 int renku = 0;
