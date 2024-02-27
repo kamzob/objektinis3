@@ -35,4 +35,5 @@ bool rikiuotiPavarde(const Vartotojas &a, const Vartotojas &b);
 bool rikiuotiVid(const Vartotojas &a, const Vartotojas &b);
 bool rikiuotiMed(const Vartotojas &a, const Vartotojas &b);
 bool arZodis(string tekstas);
+bool arSveikasisSk(string tekstas);
 #endif /* funkcijos_h */
