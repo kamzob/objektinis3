@@ -19,7 +19,7 @@ double Mediana(vector<int> paz, int nariai)
     sort(paz.begin(), paz.end());
     if(nariai % 2 != 0)
         return double(paz[nariai/2]);
-    return double(paz[(nariai-1) / 2] + paz[nariai/2] / 2.0);
+    return double(paz[(nariai-1) / 2] + paz[nariai/2]) / 2.0;
     
 }
 
@@ -234,6 +234,16 @@ bool arZodis(string tekstas){
         if(!isalpha(i))
         {
             cout << "Vardo ar pavardes ivedimui naudokite tik raides! Iveskite is naujo: \n";
+            return false;
+        }
+    }
+    return true;
+}
+bool arSveikasisSk(string tekstas){
+    for(char i : tekstas)
+    {
+        if(!isdigit(i))
+        {
             return false;
         }
     }
