@@ -17,6 +17,7 @@
 #include <fstream>
 #include <sstream>
 #include <chrono>
+#include <cctype>
 
 
 using std::cout;
