@@ -94,9 +94,10 @@ void skaityti(vector<Vartotojas>& vart, string pavadinimas)
      }
     int kiek;
     string eilute;
+    string header;
     vector<int> pazymiai;
     vector<string> eilvekt;
-    getline(failas,eilute);
+    getline(failas,header);
     while(failas){
         if(!failas.eof()){
             getline(failas,eilute);
@@ -236,6 +237,7 @@ bool arSveikasisSk(string tekstas){
     return true;
 }
 void FailuGeneravimas (int studSk){
+    auto start = std::chrono::high_resolution_clock::now();
     using hrClock = std::chrono::high_resolution_clock;
     auto now = hrClock::now().time_since_epoch();
     auto count = std::chrono::duration_cast<std::chrono::milliseconds>(now).count();
@@ -254,20 +256,24 @@ void FailuGeneravimas (int studSk){
         fr << "ND" << left << setw(8) << i;
     }
     fr << "Egz.\n";
-    fr << "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
     int pazymys = 0;
     for (int i = 1; i <= studSk; i++)
     {
         fr << "Vardas" << setw(14) << left << i << "Pavarde" << setw(14) << left << i;
-        for ( int i = 0; i <= kiekNd; i++){
+        for (int i = 0; i <= kiekNd; i++){
             pazymys = random10(mt);
             fr << setw(10) << left << pazymys;
         }
         fr << "\n";
     }
     fr.close();
+    auto end = std::chrono::high_resolution_clock::now();
+     std::chrono::duration<double> laikas = end - start;
+    cout << "Failo generavimas uztruko: " << laikas.count() << endl;
 }
 void RusiavimasDviGrupes(vector<Vartotojas>& vart, vector<Vartotojas>& vargsai, vector<Vartotojas>& laimingi){
+    vargsai.clear();
+    laimingi.clear();
     for (int i = 0; i < vart.size(); i++){
         if(vart[i].galvid < 5.0){
             vargsai.push_back(vart[i]);
@@ -315,7 +321,7 @@ void spausdintiLaimingiVargsai (vector<Vartotojas>& vargsai, vector<Vartotojas>&
         fo << left << setw(20) << laimingi[i].vardas << setw(20) << laimingi[i].pavarde << setw(20) << fixed << setprecision(2) << laimingi[i].galvid << endl;
     }
     
-    fr.close();
+    fo.close();
     auto end2 = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> laikas2 = end2 - start2;
     cout << "Kieteku irasymas i faila uztruko: " << laikas2.count() << " sek." << endl;
