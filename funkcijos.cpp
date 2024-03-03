@@ -275,3 +275,49 @@ void RusiavimasDviGrupes(vector<Vartotojas>& vart, vector<Vartotojas>& vargsai, 
         else laimingi.push_back(vart[i]);
     }
 }
+void spausdintiLaimingiVargsai (vector<Vartotojas>& vargsai, vector<Vartotojas>& laimingi){
+    auto start = std::chrono::high_resolution_clock::now();
+    ofstream fr("vargsiukai.txt");
+    try {
+     if (!fr)
+         throw runtime_error("Vargsiukai failas neegzistuoja arba nepasiekiamas.");
+    } catch(const std::exception& e) {
+        cerr << "Klaida: " << e.what() << endl;
+     return;
+ }
+    fr << left << setw(20) << "Vardas" << setw(20) << "Pavarde" << setw(20)<< "Galutinis (vid.)" << endl;
+    fr << "--------------------------------------------------------------------------" << endl;
+    for ( int i = 0; i < vargsai.size(); i++)
+    {
+        
+        fr << left << setw(20) << vargsai[i].vardas << setw(20) << vargsai[i].pavarde << setw(20) << fixed << setprecision(2) << vargsai[i].galvid << endl;
+    }
+    
+    fr.close();
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> laikas = end - start;
+    cout << "Vargsiuku irasymas i faila uztruko: " << laikas.count() << " sek." << endl;
+    auto start2 = std::chrono::high_resolution_clock::now();
+    
+    ofstream fo("kietekai.txt");
+    try {
+     if (!fo)
+         throw runtime_error("Kietekai failas neegzistuoja arba nepasiekiamas.");
+    } catch(const std::exception& e) {
+        cerr << "Klaida: " << e.what() << endl;
+     return;
+ }
+    fo << left << setw(20) << "Vardas" << setw(20) << "Pavarde" << setw(20)<< "Galutinis (vid.)" << endl;
+    fo << "--------------------------------------------------------------------------" << endl;
+    for ( int i = 0; i < laimingi.size(); i++)
+    {
+        
+        fo << left << setw(20) << laimingi[i].vardas << setw(20) << laimingi[i].pavarde << setw(20) << fixed << setprecision(2) << laimingi[i].galvid << endl;
+    }
+    
+    fr.close();
+    auto end2 = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> laikas2 = end2 - start2;
+    cout << "Kieteku irasymas i faila uztruko: " << laikas2.count() << " sek." << endl;
+    
+}
