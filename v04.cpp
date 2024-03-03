@@ -271,37 +271,81 @@ int main() {
              
                
                 skaityti (vart, pavadinimas);
+                rezrikiavimas(vart);
+                spausdinti_skaitomus_duomenis(vart);
                 break;
             }
             case 3:{
                 int rinktis;
-                cout << "Pasirinkite studentu kieki: " << endl;
-                cout << "1 - 100 studentu" << endl;
-                cout << "2 - 1000 studentu" << endl;
-                cout << "3 - 10000 studentu" << endl;
-                cout << "4 - 100000 studentu" << endl;
-                cout << "5 - 100000 studentu" << endl;
-                cout << "6 - 1000000 studentu" << endl;
-                cout << "4 - 10000000 studentu" << endl;
-                switch (rinktis) {
-                    case 1:
-                        FailuGeneravimas(100);
-                        string pav = ";"
-                        break;
-                    case 2:
-                        FailuGeneravimas(1000);
-                        break;
-                    case 3:
-                        FailuGeneravimas(10000);
-                        break;
-                    case 4:
-                        FailuGeneravimas(1000);
-                        break;
-                    default:
-                        break;
-                }
-                FailuGeneravimas(10000000);
-            }
+                string pavadinimas;
+                vector<Vartotojas> vargsai;
+                vector<Vartotojas> laimingi;
+                do{
+                    cout << "Pasirinkite studentu kieki: " << endl;
+                    cout << "1 - 1000 studentu" << endl;
+                    cout << "2 - 10000 studentu" << endl;
+                    cout << "3 - 100000 studentu" << endl;
+                    cout << "4 - 1000000 studentu" << endl;
+                    cout << "5 - 10000000 studentu" << endl;
+                    cout << "6 - baigti darba" << endl;
+                    cin >> rinktis;
+                    while(cin.fail()|| rinktis < 1 || rinktis > 6)
+                    {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        cout << "Klaida! Reikia pasirinkti nuo 1 iki 4" << endl;
+                        cin >> rinktis;
+                        
+                    }
+                    switch (rinktis) {
+                        case 1:{
+                            cout << "1000:" << endl;
+                            FailuGeneravimas(1000);
+                            pavadinimas = "stud1000.txt";
+                            skaityti(vart, pavadinimas);
+                            RusiavimasDviGrupes(vart, vargsai, laimingi);
+                            break;
+                        }
+                            
+                        case 2:{
+                            cout << "10000:" << endl;
+                            FailuGeneravimas(10000);
+                            pavadinimas = "stud10000.txt";
+                            skaityti(vart, pavadinimas);
+                            RusiavimasDviGrupes(vart, vargsai, laimingi);
+                            break;
+                        }
+                           
+                        case 3:{
+                            cout << "100000:" << endl;
+                            FailuGeneravimas(100000);
+                            pavadinimas = "stud100000.txt";
+                            skaityti(vart, pavadinimas);
+                            RusiavimasDviGrupes(vart, vargsai, laimingi);
+                            break;
+                        }
+                            
+                        case 4:{
+                            cout << "1000000:" << endl;
+                            FailuGeneravimas(1000000);
+                            pavadinimas = "stud1000000.txt";
+                            skaityti(vart, pavadinimas);
+                            RusiavimasDviGrupes(vart, vargsai, laimingi);
+                            break;
+                        }
+                        case 5:{
+                            cout << "10000000:" << endl;
+                            FailuGeneravimas(10000000);
+                            pavadinimas = "stud10000000.txt";
+                            skaityti(vart, pavadinimas);
+                            RusiavimasDviGrupes(vart, vargsai, laimingi);
+                            break;
+                        }
+                    }
+                }while(rinktis!=6);
+                
+
+            }///
         }
         
     } while (gener!=4);
