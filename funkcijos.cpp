@@ -82,10 +82,7 @@ string generavimasPav(int pas)
 }
 void skaityti(vector<Vartotojas>& vart, string pavadinimas)
 {
-   
-    
-//    cout << "Iveskite failo pavadinima, is kurio norite, kad butu skaitomi duomenys: \n";
-//    cin >> pavadinimas;
+    vart.clear();
     auto start = std::chrono::high_resolution_clock::now();
     ifstream failas(pavadinimas);
     try {
@@ -136,8 +133,7 @@ void skaityti(vector<Vartotojas>& vart, string pavadinimas)
         vart.push_back(naujas);
         
     }
-    rezrikiavimas(vart);
-    spausdinti_skaitomus_duomenis(vart);
+   
 
 
 }
@@ -270,4 +266,12 @@ void FailuGeneravimas (int studSk){
         fr << "\n";
     }
     fr.close();
+}
+void RusiavimasDviGrupes(vector<Vartotojas>& vart, vector<Vartotojas>& vargsai, vector<Vartotojas>& laimingi){
+    for (int i = 0; i < vart.size(); i++){
+        if(vart[i].galvid < 5.0){
+            vargsai.push_back(vart[i]);
+        }
+        else laimingi.push_back(vart[i]);
+    }
 }
