@@ -304,6 +304,7 @@ int main() {
                             pavadinimas = "stud1000.txt";
                             skaityti(vart, pavadinimas);
                             RusiavimasDviGrupes(vart, vargsai, laimingi);
+                            spausdintiLaimingiVargsai(vargsai, laimingi);
                             break;
                         }
                             
@@ -313,6 +314,7 @@ int main() {
                             pavadinimas = "stud10000.txt";
                             skaityti(vart, pavadinimas);
                             RusiavimasDviGrupes(vart, vargsai, laimingi);
+                            spausdintiLaimingiVargsai(vargsai, laimingi);
                             break;
                         }
                            
@@ -322,6 +324,7 @@ int main() {
                             pavadinimas = "stud100000.txt";
                             skaityti(vart, pavadinimas);
                             RusiavimasDviGrupes(vart, vargsai, laimingi);
+                            spausdintiLaimingiVargsai(vargsai, laimingi);
                             break;
                         }
                             
@@ -331,6 +334,7 @@ int main() {
                             pavadinimas = "stud1000000.txt";
                             skaityti(vart, pavadinimas);
                             RusiavimasDviGrupes(vart, vargsai, laimingi);
+                            spausdintiLaimingiVargsai(vargsai, laimingi);
                             break;
                         }
                         case 5:{
@@ -339,6 +343,7 @@ int main() {
                             pavadinimas = "stud10000000.txt";
                             skaityti(vart, pavadinimas);
                             RusiavimasDviGrupes(vart, vargsai, laimingi);
+                            spausdintiLaimingiVargsai(vargsai, laimingi);
                             break;
                         }
                     }
