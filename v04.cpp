@@ -277,9 +277,22 @@ int main() {
             }
             case 3:{
                 int rinktis;
+                int vm;         // vidurkis ar mediana
                 string pavadinimas;
                 vector<Vartotojas> vargsai;
                 vector<Vartotojas> laimingi;
+                cout << "Pasirinkite, pagal ka noresite, kad rikiuotu duomenis ir isvestu galutini pazymi: " << endl;
+                cout << "0 - pagal vidurki" << endl;
+                cout << "1 - pagal mediana" << endl;
+                cin >> vm;
+                while(cin.fail()|| (vm != 0 && vm != 1))
+                {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cout << "Klaida! Iveskite 1 arba 0: " << endl;
+                    cin >> vm;
+                }
+                
                 do{
                     cout << "Pasirinkite studentu kieki: " << endl;
                     cout << "1 - 1000 studentu" << endl;
@@ -293,57 +306,77 @@ int main() {
                     {
                         cin.clear();
                         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                        cout << "Klaida! Reikia pasirinkti nuo 1 iki 4" << endl;
+                        cout << "Klaida! Reikia pasirinkti nuo 1 iki 6" << endl;
                         cin >> rinktis;
                         
                     }
                     switch (rinktis) {
                         case 1:{
                             cout << "1000:" << endl;
+                            auto start = std::chrono::high_resolution_clock::now();
                             FailuGeneravimas(1000);
                             pavadinimas = "stud1000.txt";
                             skaityti(vart, pavadinimas);
-                            RusiavimasDviGrupes(vart, vargsai, laimingi);
-                            spausdintiLaimingiVargsai(vargsai, laimingi);
+                            RusiavimasDviGrupes(vart, vargsai, laimingi, vm);
+                            spausdintiLaimingiVargsai(vargsai, laimingi, vm);
+                            auto end = std::chrono::high_resolution_clock::now();
+                            std::chrono::duration<double> laikas = end - start;
+                            cout << "Visas programos laikas: " << laikas.count() << " sek." << endl;
                             break;
                         }
                             
                         case 2:{
                             cout << "10000:" << endl;
+                            auto start = std::chrono::high_resolution_clock::now();
                             FailuGeneravimas(10000);
                             pavadinimas = "stud10000.txt";
                             skaityti(vart, pavadinimas);
-                            RusiavimasDviGrupes(vart, vargsai, laimingi);
-                            spausdintiLaimingiVargsai(vargsai, laimingi);
+                            RusiavimasDviGrupes(vart, vargsai, laimingi, vm);
+                            spausdintiLaimingiVargsai(vargsai, laimingi, vm);
+                            auto end = std::chrono::high_resolution_clock::now();
+                            std::chrono::duration<double> laikas = end - start;
+                            cout << "Visas programos laikas: " << laikas.count() << endl;
                             break;
                         }
                            
                         case 3:{
                             cout << "100000:" << endl;
+                            auto start = std::chrono::high_resolution_clock::now();
                             FailuGeneravimas(100000);
                             pavadinimas = "stud100000.txt";
                             skaityti(vart, pavadinimas);
-                            RusiavimasDviGrupes(vart, vargsai, laimingi);
-                            spausdintiLaimingiVargsai(vargsai, laimingi);
+                            RusiavimasDviGrupes(vart, vargsai, laimingi, vm);
+                            spausdintiLaimingiVargsai(vargsai, laimingi, vm);
+                            auto end = std::chrono::high_resolution_clock::now();
+                            std::chrono::duration<double> laikas = end - start;
+                            cout << "Visas programos laikas: " << laikas.count() << endl;
                             break;
                         }
                             
                         case 4:{
                             cout << "1000000:" << endl;
+                            auto start = std::chrono::high_resolution_clock::now();
                             FailuGeneravimas(1000000);
                             pavadinimas = "stud1000000.txt";
                             skaityti(vart, pavadinimas);
-                            RusiavimasDviGrupes(vart, vargsai, laimingi);
-                            spausdintiLaimingiVargsai(vargsai, laimingi);
+                            RusiavimasDviGrupes(vart, vargsai, laimingi, vm);
+                            spausdintiLaimingiVargsai(vargsai, laimingi, vm);
+                            auto end = std::chrono::high_resolution_clock::now();
+                            std::chrono::duration<double> laikas = end - start;
+                            cout << "Visas programos laikas: " << laikas.count() << endl;
                             break;
                         }
                         case 5:{
                             cout << "10000000:" << endl;
+                            auto start = std::chrono::high_resolution_clock::now();
                             FailuGeneravimas(10000000);
                             pavadinimas = "stud10000000.txt";
                             skaityti(vart, pavadinimas);
-                            RusiavimasDviGrupes(vart, vargsai, laimingi);
-                            spausdintiLaimingiVargsai(vargsai, laimingi);
+                            RusiavimasDviGrupes(vart, vargsai, laimingi, vm);
+                            spausdintiLaimingiVargsai(vargsai, laimingi, vm);
+                            auto end = std::chrono::high_resolution_clock::now();
+                            std::chrono::duration<double> laikas = end - start;
+                            cout << "Visas programos laikas: " << laikas.count() << endl;
                             break;
                         }
                     }
