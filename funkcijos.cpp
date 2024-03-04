@@ -101,43 +101,40 @@ void skaityti(vector<Vartotojas>& vart, string pavadinimas)
     while(failas){
         if(!failas.eof()){
             getline(failas,eilute);
-            eilvekt.push_back(eilute);
+            if(!eilute.empty()){
+                istringstream iss(eilute);
+                Vartotojas naujas;
+                double sum = 0;
+                int paz;
+                iss >> naujas.vardas >> naujas.pavarde;
+                while (iss>>paz) {
+                    naujas.nd.push_back(paz);
+                    sum+=paz;
+                }
+                if(!naujas.nd.empty()){
+                    naujas.egz = naujas.nd.back();
+                    sum -= naujas.nd.back();
+                    naujas.nd.pop_back();
+                }
+                kiek = (int)naujas.nd.size();
+                naujas.vid = Vidurkis(sum, kiek);
+                naujas.med = Mediana(naujas.nd, kiek);
+                naujas.galvid = 0.4*naujas.vid+0.6*naujas.egz;
+                naujas.galmed = 0.4*naujas.med+0.6*naujas.egz;
+                vart.push_back(naujas);
+                eilvekt.push_back(eilute);
+            }
+            
         }
         else break;
     }
     failas.close();
-   
-    
-    for ( int i = 0; i < eilvekt.size(); i++){
-        istringstream iss(eilvekt[i]);
-        Vartotojas naujas;
-        double sum = 0;
-        int paz;
-        iss >> naujas.vardas >> naujas.pavarde;
-        while (iss>>paz) {
-            naujas.nd.push_back(paz);
-            sum+=paz;
-        }
-        if(!naujas.nd.empty()){
-            naujas.egz = naujas.nd.back();
-            sum -= naujas.nd.back();
-            naujas.nd.pop_back();
-        }
-        kiek = (int)naujas.nd.size();
-        naujas.vid = Vidurkis(sum, kiek);
-        naujas.med = Mediana(naujas.nd, kiek);
-        naujas.galvid = 0.4*naujas.vid+0.6*naujas.egz;
-        naujas.galmed = 0.4*naujas.med+0.6*naujas.egz;
-        vart.push_back(naujas);
-        
-    }
+  
     auto end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> laikas = end - start;
     
     cout << "Skaitymas uztruko: " << laikas.count() << " sek." << endl;
    
-
-
 }
 void rezrikiavimas(vector<Vartotojas>& vart){
     int rinktis;
