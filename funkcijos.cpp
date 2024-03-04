@@ -106,10 +106,7 @@ void skaityti(vector<Vartotojas>& vart, string pavadinimas)
         else break;
     }
     failas.close();
-    auto end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> laikas = end - start;
-    
-    cout << "Skaitymas is failo uztruko: " << laikas.count() << " sek." << endl;
+   
     
     for ( int i = 0; i < eilvekt.size(); i++){
         istringstream iss(eilvekt[i]);
@@ -134,6 +131,10 @@ void skaityti(vector<Vartotojas>& vart, string pavadinimas)
         vart.push_back(naujas);
         
     }
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> laikas = end - start;
+    
+    cout << "Skaitymas uztruko: " << laikas.count() << " sek." << endl;
    
 
 
@@ -269,19 +270,35 @@ void FailuGeneravimas (int studSk){
     fr.close();
     auto end = std::chrono::high_resolution_clock::now();
      std::chrono::duration<double> laikas = end - start;
-    cout << "Failo generavimas uztruko: " << laikas.count() << endl;
+    cout << "Failo generavimas uztruko: " << laikas.count() << " sek." << endl;
 }
-void RusiavimasDviGrupes(vector<Vartotojas>& vart, vector<Vartotojas>& vargsai, vector<Vartotojas>& laimingi){
+void RusiavimasDviGrupes(vector<Vartotojas>& vart, vector<Vartotojas>& vargsai, vector<Vartotojas>& laimingi, int vm){
     vargsai.clear();
     laimingi.clear();
+    auto start1 = std::chrono::high_resolution_clock::now();
+    
+    if(vm==0) sort(vart.begin(), vart.end(), rikiuotiVid);
+    else sort(vart.begin(), vart.end(), rikiuotiMed);
+    
+    auto end1 = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> laikas1 = end1 - start1;
+    cout << "Vartotoju rikiavimas pagal vartotojo parinkta parametra: " << laikas1.count() << " sek." << endl;
+    
+    auto start2 = std::chrono::high_resolution_clock::now();
     for (int i = 0; i < vart.size(); i++){
-        if(vart[i].galvid < 5.0){
+        if(vm==0) vart[i].gal = vart[i].galvid;
+        if(vm==1) vart[i].gal = vart[i].galmed;
+        
+        if(vart[i].gal < 5.0){
             vargsai.push_back(vart[i]);
         }
-        else laimingi.push_back(vart[i]);
+        if(vart[i].gal>=5.0) laimingi.push_back(vart[i]);
     }
+    auto end2 = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> laikas2 = end2 - start2;
+    cout << "Studentu rusiavimas i du konteinerius uztruko: " << laikas2.count() << " sek." << endl;
 }
-void spausdintiLaimingiVargsai (vector<Vartotojas>& vargsai, vector<Vartotojas>& laimingi){
+void spausdintiLaimingiVargsai (vector<Vartotojas>& vargsai, vector<Vartotojas>& laimingi, int vm){
     auto start = std::chrono::high_resolution_clock::now();
     ofstream fr("vargsiukai.txt");
     try {
@@ -291,12 +308,14 @@ void spausdintiLaimingiVargsai (vector<Vartotojas>& vargsai, vector<Vartotojas>&
         cerr << "Klaida: " << e.what() << endl;
      return;
  }
-    fr << left << setw(20) << "Vardas" << setw(20) << "Pavarde" << setw(20)<< "Galutinis (vid.)" << endl;
+    fr << left << setw(20) << "Vardas" << setw(20) << "Pavarde";
+    if( vm == 0) fr << setw(20)<< "Galutinis (vid.)" << endl;
+    else if(vm == 1) fr << setw(20)<< "Galutinis (med.)" << endl;
     fr << "--------------------------------------------------------------------------" << endl;
     for ( int i = 0; i < vargsai.size(); i++)
     {
         
-        fr << left << setw(20) << vargsai[i].vardas << setw(20) << vargsai[i].pavarde << setw(20) << fixed << setprecision(2) << vargsai[i].galvid << endl;
+        fr << left << setw(20) << vargsai[i].vardas << setw(20) << vargsai[i].pavarde << setw(20) << fixed << setprecision(2) << vargsai[i].gal << endl;
     }
     
     fr.close();
@@ -313,12 +332,14 @@ void spausdintiLaimingiVargsai (vector<Vartotojas>& vargsai, vector<Vartotojas>&
         cerr << "Klaida: " << e.what() << endl;
      return;
  }
-    fo << left << setw(20) << "Vardas" << setw(20) << "Pavarde" << setw(20)<< "Galutinis (vid.)" << endl;
+    fo << left << setw(20) << "Vardas" << setw(20) << "Pavarde";
+    if( vm == 0) fo << setw(20)<< "Galutinis (vid.)" << endl;
+    else if(vm == 1) fo << setw(20)<< "Galutinis (med.)" << endl;
     fo << "--------------------------------------------------------------------------" << endl;
     for ( int i = 0; i < laimingi.size(); i++)
     {
         
-        fo << left << setw(20) << laimingi[i].vardas << setw(20) << laimingi[i].pavarde << setw(20) << fixed << setprecision(2) << laimingi[i].galvid << endl;
+        fo << left << setw(20) << laimingi[i].vardas << setw(20) << laimingi[i].pavarde << setw(20) << fixed << setprecision(2) << laimingi[i].gal << endl;
     }
     
     fo.close();
@@ -327,3 +348,4 @@ void spausdintiLaimingiVargsai (vector<Vartotojas>& vargsai, vector<Vartotojas>&
     cout << "Kieteku irasymas i faila uztruko: " << laikas2.count() << " sek." << endl;
     
 }
+
