@@ -37,7 +37,7 @@ bool rikiuotiMed(const Vartotojas &a, const Vartotojas &b);
 bool arZodis(string tekstas);
 bool arSveikasisSk(string tekstas);
 void FailuGeneravimas (int studSk);
-void RusiavimasDviGrupes(vector<Vartotojas>& vart, vector<Vartotojas>& vargsai, vector<Vartotojas>& laimingi);
-void spausdintiLaimingiVargsai (vector<Vartotojas>& vargsai, vector<Vartotojas>& laimingi);
+void RusiavimasDviGrupes(vector<Vartotojas>& vart, vector<Vartotojas>& vargsai, vector<Vartotojas>& laimingi, int vm);
+void spausdintiLaimingiVargsai (vector<Vartotojas>& vargsai, vector<Vartotojas>& laimingi, int vm);
 
 #endif /* funkcijos_h */
