@@ -335,7 +335,7 @@ int main() {
                             spausdintiLaimingiVargsai(vargsai, laimingi, vm);
                             auto end = std::chrono::high_resolution_clock::now();
                             std::chrono::duration<double> laikas = end - start;
-                            cout << "Visas programos laikas: " << laikas.count() << endl;
+                            cout << "Visas programos laikas: " << laikas.count() << " sek."<< endl;
                             break;
                         }
                            
@@ -349,7 +349,7 @@ int main() {
                             spausdintiLaimingiVargsai(vargsai, laimingi, vm);
                             auto end = std::chrono::high_resolution_clock::now();
                             std::chrono::duration<double> laikas = end - start;
-                            cout << "Visas programos laikas: " << laikas.count() << endl;
+                            cout << "Visas programos laikas: " << laikas.count() << " sek." << endl;
                             break;
                         }
                             
@@ -363,7 +363,7 @@ int main() {
                             spausdintiLaimingiVargsai(vargsai, laimingi, vm);
                             auto end = std::chrono::high_resolution_clock::now();
                             std::chrono::duration<double> laikas = end - start;
-                            cout << "Visas programos laikas: " << laikas.count() << endl;
+                            cout << "Visas programos laikas: " << laikas.count() << " sek." << endl;
                             break;
                         }
                         case 5:{
@@ -376,7 +376,7 @@ int main() {
                             spausdintiLaimingiVargsai(vargsai, laimingi, vm);
                             auto end = std::chrono::high_resolution_clock::now();
                             std::chrono::duration<double> laikas = end - start;
-                            cout << "Visas programos laikas: " << laikas.count() << endl;
+                            cout << "Visas programos laikas: " << laikas.count() << " sek." << endl;
                             break;
                         }
                     }
