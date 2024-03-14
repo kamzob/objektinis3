@@ -290,6 +290,10 @@ int main() {
                 string pavadinimas;
                 vector<Vartotojas> vargsai;
                 vector<Vartotojas> laimingi;
+                
+                list<Vartotojas> vartlist;
+                list<Vartotojas> vargsailist;
+                list<Vartotojas> laimingilist;
                 cout << "Pasirinkite, pagal ka noresite, kad rikiuotu duomenis ir isvestu galutini pazymi: " << endl;
                 cout << "0 - pagal vidurki" << endl;
                 cout << "1 - pagal mediana" << endl;
@@ -324,9 +328,15 @@ int main() {
                             cout << "1000:" << endl;
                             auto start = std::chrono::high_resolution_clock::now();
                             pavadinimas = "stud1000.txt";
+                            cout << "vector" << endl;
                             skaityti(vart, pavadinimas);
                             RusiavimasDviGrupes(vart, vargsai, laimingi, vm);
                             spausdintiLaimingiVargsai(vargsai, laimingi, vm);
+                            cout << "list" << endl;
+                            skaitytiList(vartlist, pavadinimas);
+                            RusiavimasList(vartlist, vargsailist, laimingilist, vm);
+                            spausdintiList(vargsailist, laimingilist, vm);
+                            
                             auto end = std::chrono::high_resolution_clock::now();
                             std::chrono::duration<double> laikas = end - start;
                             cout << "Visas programos laikas: " << laikas.count() << " sek." << endl;
