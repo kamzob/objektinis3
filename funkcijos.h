@@ -40,6 +40,9 @@ bool arSveikasisSk(string tekstas);
 void FailuGeneravimas (int studSk);
 void RusiavimasDviGrupes(vector<Vartotojas>& vart, vector<Vartotojas>& vargsai, vector<Vartotojas>& laimingi, int vm);
 void spausdintiLaimingiVargsai (vector<Vartotojas>& vargsai, vector<Vartotojas>& laimingi, int vm);
-void skaitytiList(list<Vartotojas>& vart, string pavadinimas);
+void skaitytiList(list<Vartotojas>& vartlist, string pavadinimas);
+void RusiavimasList(list<Vartotojas>& vartlist, list<Vartotojas>& vargsailist, list<Vartotojas>& laimingilist, int vm);
+void spausdintiList (list<Vartotojas>& vargsailist, list<Vartotojas>& laimingilist, int vm);
+void skaitytiDeque(list<Vartotojas>& vart, string pavadinimas);
 
 #endif /* funkcijos_h */
