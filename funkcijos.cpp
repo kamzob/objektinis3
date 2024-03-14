@@ -348,9 +348,9 @@ void spausdintiLaimingiVargsai (vector<Vartotojas>& vargsai, vector<Vartotojas>&
     
 }
 
-void skaitytiList(list<Vartotojas>& vart, string pavadinimas)
+void skaitytiList(list<Vartotojas>& vartlist, string pavadinimas)
 {
-    vart.clear();
+    vartlist.clear();
     auto start = std::chrono::high_resolution_clock::now();
     ifstream failas(pavadinimas);
     try {
@@ -388,7 +388,7 @@ void skaitytiList(list<Vartotojas>& vart, string pavadinimas)
                 naujas.med = Mediana(naujas.nd, kiek);
                 naujas.galvid = 0.4*naujas.vid+0.6*naujas.egz;
                 naujas.galmed = 0.4*naujas.med+0.6*naujas.egz;
-                vart.push_back(naujas);
+                vartlist.push_back(naujas);
             }
             
         }
@@ -402,31 +402,79 @@ void skaitytiList(list<Vartotojas>& vart, string pavadinimas)
     cout << "Skaitymas uztruko: " << laikas.count() << " sek." << endl;
    
 }
-void RusiavimasList(list<Vartotojas>& vart, list<Vartotojas>& vargsai, list<Vartotojas>& laimingi, int vm){
-    vargsai.clear();
-    laimingi.clear();
+void RusiavimasList(list<Vartotojas>& vartlist, list<Vartotojas>& vargsailist, list<Vartotojas>& laimingilist, int vm){
+    vargsailist.clear();
+    laimingilist.clear();
     auto start1 = std::chrono::high_resolution_clock::now();
     
-    if(vm==0) sort(vart.begin(), vart.end(), rikiuotiVid);
-    else sort(vart.begin(), vart.end(), rikiuotiMed);
+    if(vm==0) vartlist.sort(rikiuotiVid);
+    else vartlist.sort(rikiuotiMed);
     
     auto end1 = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> laikas1 = end1 - start1;
     cout << "Vartotoju rikiavimas pagal vartotojo parinkta parametra: " << laikas1.count() << " sek." << endl;
     
     auto start2 = std::chrono::high_resolution_clock::now();
-    for (auto it = vart.begin(); it != vart.end(); ++it){
+    for (auto it = vartlist.begin(); it != vartlist.end(); ++it){
         if(vm==0) it->gal = it->galvid;
         if(vm==1) it->gal = it->galmed;
         
         if(it->gal < 5.0){
-            vargsai.push_back(*it);
+            vargsailist.push_back(*it);
         }
-        if(it->gal>=5.0) laimingi.push_back(*it);
+        if(it->gal>=5.0) laimingilist.push_back(*it);
     }
     auto end2 = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> laikas2 = end2 - start2;
     cout << "Studentu rusiavimas i du konteinerius uztruko: " << laikas2.count() << " sek." << endl;
+}
+void spausdintiList (list<Vartotojas>& vargsailist, list<Vartotojas>& laimingilist, int vm){
+    auto start = std::chrono::high_resolution_clock::now();
+    ofstream fr("vargsiukaiList.txt");
+    try {
+     if (!fr)
+         throw runtime_error("Vargsiukai failas neegzistuoja arba nepasiekiamas.");
+    } catch(const std::exception& e) {
+        cerr << "Klaida: " << e.what() << endl;
+     return;
+ }
+    fr << left << setw(20) << "Vardas" << setw(20) << "Pavarde";
+    if( vm == 0) fr << setw(20)<< "Galutinis (vid.)" << endl;
+    else if(vm == 1) fr << setw(20)<< "Galutinis (med.)" << endl;
+    fr << "--------------------------------------------------------------------------" << endl;
+    for (auto it = vargsailist.begin(); it != vargsailist.end(); ++it) {
+           fr << left << setw(20) << it->vardas << setw(20) << it->pavarde << setw(20) << fixed << setprecision(2) << it->gal << endl;
+       }
+       
+    
+    fr.close();
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> laikas = end - start;
+    cout << "Vargsiuku irasymas i faila uztruko: " << laikas.count() << " sek." << endl;
+    auto start2 = std::chrono::high_resolution_clock::now();
+    
+    ofstream fo("kietekaiList.txt");
+    try {
+     if (!fo)
+         throw runtime_error("Kietekai failas neegzistuoja arba nepasiekiamas.");
+    } catch(const std::exception& e) {
+        cerr << "Klaida: " << e.what() << endl;
+     return;
+ }
+    fo << left << setw(20) << "Vardas" << setw(20) << "Pavarde";
+    if( vm == 0) fo << setw(20)<< "Galutinis (vid.)" << endl;
+    else if(vm == 1) fo << setw(20)<< "Galutinis (med.)" << endl;
+    fo << "--------------------------------------------------------------------------" << endl;
+    for (auto it = laimingilist.begin(); it != laimingilist.end(); ++it) {
+           fo << left << setw(20) << it->vardas << setw(20) << it->pavarde << setw(20) << fixed << setprecision(2) << it->gal << endl;
+       }
+       
+    
+    fo.close();
+    auto end2 = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> laikas2 = end2 - start2;
+    cout << "Kieteku irasymas i faila uztruko: " << laikas2.count() << " sek." << endl;
+    
 }
 void skaitytiDeque(deque <Vartotojas>& vart, string pavadinimas)
 {
