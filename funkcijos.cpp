@@ -415,14 +415,98 @@ void RusiavimasList(list<Vartotojas>& vart, list<Vartotojas>& vargsai, list<Vart
     cout << "Vartotoju rikiavimas pagal vartotojo parinkta parametra: " << laikas1.count() << " sek." << endl;
     
     auto start2 = std::chrono::high_resolution_clock::now();
-    for (int i = 0; i < vart.size(); i++){
-        if(vm==0) vart[i].gal = vart[i].galvid;
-        if(vm==1) vart[i].gal = vart[i].galmed;
+    for (auto it = vart.begin(); it != vart.end(); ++it){
+        if(vm==0) it->gal = it->galvid;
+        if(vm==1) it->gal = it->galmed;
         
-        if(vart[i].gal < 5.0){
-            vargsai.push_back(vart[i]);
+        if(it->gal < 5.0){
+            vargsai.push_back(*it);
         }
-        if(vart[i].gal>=5.0) laimingi.push_back(vart[i]);
+        if(it->gal>=5.0) laimingi.push_back(*it);
+    }
+    auto end2 = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> laikas2 = end2 - start2;
+    cout << "Studentu rusiavimas i du konteinerius uztruko: " << laikas2.count() << " sek." << endl;
+}
+void skaitytiDeque(deque <Vartotojas>& vart, string pavadinimas)
+{
+    vart.clear();
+    auto start = std::chrono::high_resolution_clock::now();
+    ifstream failas(pavadinimas);
+    try {
+         if (!failas)
+             throw runtime_error("Failas neegzistuoja arba nepasiekiamas.");
+     } catch(const std::exception& e) {
+         cerr << "Klaida: " << e.what() << endl;
+         return;
+     }
+    int kiek;
+    string eilute;
+    string header;
+    vector<int> pazymiai;
+    getline(failas,header);
+    while(failas){
+        if(!failas.eof()){
+            getline(failas,eilute);
+            if(!eilute.empty()){
+                istringstream iss(eilute);
+                Vartotojas naujas;
+                double sum = 0;
+                int paz;
+                iss >> naujas.vardas >> naujas.pavarde;
+                while (iss>>paz) {
+                    naujas.nd.push_back(paz);
+                    sum+=paz;
+                }
+                if(!naujas.nd.empty()){
+                    naujas.egz = naujas.nd.back();
+                    sum -= naujas.nd.back();
+                    naujas.nd.pop_back();
+                }
+                kiek = (int)naujas.nd.size();
+                naujas.vid = Vidurkis(sum, kiek);
+                naujas.med = Mediana(naujas.nd, kiek);
+                naujas.galvid = 0.4*naujas.vid+0.6*naujas.egz;
+                naujas.galmed = 0.4*naujas.med+0.6*naujas.egz;
+                vart.push_back(naujas);
+            }
+            
+        }
+        else break;
+    }
+    failas.close();
+  
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> laikas = end - start;
+    
+    cout << "Skaitymas uztruko: " << laikas.count() << " sek." << endl;
+   
+}
+void RusiavimasDeque(deque<Vartotojas>& vart, deque<Vartotojas>& vargsai, deque<Vartotojas>& laimingi, int vm) {
+    vargsai.clear();
+    laimingi.clear();
+    auto start1 = std::chrono::high_resolution_clock::now();
+    
+    if(vm == 0)
+        sort(vart.begin(), vart.end(), rikiuotiVid);
+    else
+        sort(vart.begin(), vart.end(), rikiuotiMed);
+    
+    auto end1 = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> laikas1 = end1 - start1;
+    cout << "Vartotoju rikiavimas pagal vartotojo parinkta parametra: " << laikas1.count() << " sek." << endl;
+    
+    auto start2 = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < vart.size(); i++) {
+        if(vm == 0)
+            vart[i].gal = vart[i].galvid;
+        else
+            vart[i].gal = vart[i].galmed;
+
+        if (vart[i].gal < 5.0)
+            vargsai.push_back(vart[i]);
+        else
+            laimingi.push_back(vart[i]);
     }
     auto end2 = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> laikas2 = end2 - start2;
