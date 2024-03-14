@@ -43,6 +43,7 @@ void spausdintiLaimingiVargsai (vector<Vartotojas>& vargsai, vector<Vartotojas>&
 void skaitytiList(list<Vartotojas>& vartlist, string pavadinimas);
 void RusiavimasList(list<Vartotojas>& vartlist, list<Vartotojas>& vargsailist, list<Vartotojas>& laimingilist, int vm);
 void spausdintiList (list<Vartotojas>& vargsailist, list<Vartotojas>& laimingilist, int vm);
-void skaitytiDeque(list<Vartotojas>& vart, string pavadinimas);
-
+void skaitytiDeque(deque <Vartotojas>& vartdeq, string pavadinimas);
+void RusiavimasDeque(deque<Vartotojas>& vartdeq, deque<Vartotojas>& vargsaideq, deque<Vartotojas>& laimingideq, int vm);
+void spausdintiDeque (deque<Vartotojas>& vargsaideq, deque<Vartotojas>& laimingideq, int vm);
 #endif /* funkcijos_h */
