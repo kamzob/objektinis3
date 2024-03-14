@@ -294,6 +294,10 @@ int main() {
                 list<Vartotojas> vartlist;
                 list<Vartotojas> vargsailist;
                 list<Vartotojas> laimingilist;
+                
+                deque<Vartotojas> vartdeq;
+                deque<Vartotojas> vargsaideq;
+                deque<Vartotojas> laimingideq;
                 cout << "Pasirinkite, pagal ka noresite, kad rikiuotu duomenis ir isvestu galutini pazymi: " << endl;
                 cout << "0 - pagal vidurki" << endl;
                 cout << "1 - pagal mediana" << endl;
@@ -336,6 +340,10 @@ int main() {
                             skaitytiList(vartlist, pavadinimas);
                             RusiavimasList(vartlist, vargsailist, laimingilist, vm);
                             spausdintiList(vargsailist, laimingilist, vm);
+                            cout << "deque" << endl;
+                            skaitytiDeque(vartdeq, pavadinimas);
+                            RusiavimasDeque(vartdeq, vargsaideq, laimingideq, vm);
+                            spausdintiDeque (vargsaideq, laimingideq, vm);
                             
                             auto end = std::chrono::high_resolution_clock::now();
                             std::chrono::duration<double> laikas = end - start;
@@ -347,9 +355,19 @@ int main() {
                             cout << "10000:" << endl;
                             auto start = std::chrono::high_resolution_clock::now();
                             pavadinimas = "stud10000.txt";
+                            cout << "vector" << endl;
                             skaityti(vart, pavadinimas);
                             RusiavimasDviGrupes(vart, vargsai, laimingi, vm);
                             spausdintiLaimingiVargsai(vargsai, laimingi, vm);
+                            cout << "list" << endl;
+                            skaitytiList(vartlist, pavadinimas);
+                            RusiavimasList(vartlist, vargsailist, laimingilist, vm);
+                            spausdintiList(vargsailist, laimingilist, vm);
+                            cout << "deque" << endl;
+                            skaitytiDeque(vartdeq, pavadinimas);
+                            RusiavimasDeque(vartdeq, vargsaideq, laimingideq, vm);
+                            spausdintiDeque (vargsaideq, laimingideq, vm);
+                            
                             auto end = std::chrono::high_resolution_clock::now();
                             std::chrono::duration<double> laikas = end - start;
                             cout << "Visas programos laikas: " << laikas.count() << " sek."<< endl;
@@ -360,9 +378,19 @@ int main() {
                             cout << "100000:" << endl;
                             auto start = std::chrono::high_resolution_clock::now();
                             pavadinimas = "stud100000.txt";
+                            cout << "vector" << endl;
                             skaityti(vart, pavadinimas);
                             RusiavimasDviGrupes(vart, vargsai, laimingi, vm);
                             spausdintiLaimingiVargsai(vargsai, laimingi, vm);
+                            cout << "list" << endl;
+                            skaitytiList(vartlist, pavadinimas);
+                            RusiavimasList(vartlist, vargsailist, laimingilist, vm);
+                            spausdintiList(vargsailist, laimingilist, vm);
+                            cout << "deque" << endl;
+                            skaitytiDeque(vartdeq, pavadinimas);
+                            RusiavimasDeque(vartdeq, vargsaideq, laimingideq, vm);
+                            spausdintiDeque (vargsaideq, laimingideq, vm);
+                            
                             auto end = std::chrono::high_resolution_clock::now();
                             std::chrono::duration<double> laikas = end - start;
                             cout << "Visas programos laikas: " << laikas.count() << " sek." << endl;
@@ -373,9 +401,19 @@ int main() {
                             cout << "1000000:" << endl;
                             auto start = std::chrono::high_resolution_clock::now();
                             pavadinimas = "stud1000000.txt";
+                            cout << "vector" << endl;
                             skaityti(vart, pavadinimas);
                             RusiavimasDviGrupes(vart, vargsai, laimingi, vm);
                             spausdintiLaimingiVargsai(vargsai, laimingi, vm);
+                            cout << "list" << endl;
+                            skaitytiList(vartlist, pavadinimas);
+                            RusiavimasList(vartlist, vargsailist, laimingilist, vm);
+                            spausdintiList(vargsailist, laimingilist, vm);
+                            cout << "deque" << endl;
+                            skaitytiDeque(vartdeq, pavadinimas);
+                            RusiavimasDeque(vartdeq, vargsaideq, laimingideq, vm);
+                            spausdintiDeque (vargsaideq, laimingideq, vm);
+                            
                             auto end = std::chrono::high_resolution_clock::now();
                             std::chrono::duration<double> laikas = end - start;
                             cout << "Visas programos laikas: " << laikas.count() << " sek." << endl;
@@ -385,9 +423,19 @@ int main() {
                             cout << "10000000:" << endl;
                             auto start = std::chrono::high_resolution_clock::now();
                             pavadinimas = "stud10000000.txt";
+                            cout << "vector" << endl;
                             skaityti(vart, pavadinimas);
                             RusiavimasDviGrupes(vart, vargsai, laimingi, vm);
                             spausdintiLaimingiVargsai(vargsai, laimingi, vm);
+                            cout << "list" << endl;
+                            skaitytiList(vartlist, pavadinimas);
+                            RusiavimasList(vartlist, vargsailist, laimingilist, vm);
+                            spausdintiList(vargsailist, laimingilist, vm);
+                            cout << "deque" << endl;
+                            skaitytiDeque(vartdeq, pavadinimas);
+                            RusiavimasDeque(vartdeq, vargsaideq, laimingideq, vm);
+                            spausdintiDeque (vargsaideq, laimingideq, vm);
+                            
                             auto end = std::chrono::high_resolution_clock::now();
                             std::chrono::duration<double> laikas = end - start;
                             cout << "Visas programos laikas: " << laikas.count() << " sek." << endl;
