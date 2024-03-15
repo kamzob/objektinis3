@@ -586,7 +586,7 @@ void spausdintiDeque (deque<Vartotojas>& vargsaideq, deque<Vartotojas>& laimingi
 //    cout << "Vargsiuku irasymas i faila uztruko: " << laikas.count() << " sek." << endl;
 //    auto start2 = std::chrono::high_resolution_clock::now();
     
-    ofstream fo("kietekai.txt");
+    ofstream fo("kietekaideq.txt");
     try {
      if (!fo)
          throw runtime_error("Kietekai failas neegzistuoja arba nepasiekiamas.");
