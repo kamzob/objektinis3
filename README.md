@@ -1,6 +1,6 @@
 # objektinis1
 # V1.0 
-## Testavimas
+# Testavimas 1
 Su iš anksčiau sugeneruotais 1000, 10000, 100000, 1000000, 10000000 failais bus atliekamas testavimas su skirtingais konteineriais: vector, list, deque.
 ## Testavimo sistemos parametrai
 1. Apple M2 chip 8-core CPU 
@@ -12,3 +12,8 @@ Su iš anksčiau sugeneruotais 1000, 10000, 100000, 1000000, 10000000 failais bu
 <img width="452" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/484a30b6-fceb-485a-841b-c5226e7b1c43">
 <img width="452" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/cdca3e6b-2701-4135-8182-748f90d0ea3e">
 <img width="452" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/cd6883d2-42e5-4175-a483-404d2cb03b25">
+
+# Testavimas 2
+## 1 strategija
+### 1000:
+
