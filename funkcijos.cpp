@@ -610,3 +610,85 @@ void spausdintiDeque (deque<Vartotojas>& vargsaideq, deque<Vartotojas>& laimingi
 //    cout << "Kieteku irasymas i faila uztruko: " << laikas2.count() << " sek." << endl;
 //
 }
+void RusiavimasDviGrupes2(vector<Vartotojas>& vart, vector<Vartotojas>& vargsai, int vm){
+    vargsai.clear();
+    auto start1 = std::chrono::high_resolution_clock::now();
+    
+    if(vm==0) sort(vart.begin(), vart.end(), rikiuotiVid);
+    else sort(vart.begin(), vart.end(), rikiuotiMed);
+    
+    auto end1 = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> laikas1 = end1 - start1;
+    cout << "Vartotoju rikiavimas pagal vartotojo parinkta parametra: " << laikas1.count() << " sek." << endl;
+    
+    auto start2 = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < vart.size();){
+        if(vm==0) vart[i].gal = vart[i].galvid;
+        if(vm==1) vart[i].gal = vart[i].galmed;
+        
+        if(vart[i].gal < 5.0){
+            vargsai.push_back(vart[i]);
+            vart.erase(vart.begin()+i);
+            
+        }
+        else i++;
+    }
+    auto end2 = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> laikas2 = end2 - start2;
+    cout << "2: Studentu rusiavimas i du konteinerius uztruko: " << laikas2.count() << " sek." << endl;
+    spausdintiLaimingiVargsai(vargsai, vart, vm);
+}
+void RusiavimasDeque2(deque<Vartotojas>& vartdeq, deque<Vartotojas>& vargsaideq, int vm) {
+    vargsaideq.clear();
+    auto start1 = std::chrono::high_resolution_clock::now();
+    
+    if(vm == 0)
+        sort(vartdeq.begin(), vartdeq.end(), rikiuotiVid);
+    else
+        sort(vartdeq.begin(), vartdeq.end(), rikiuotiMed);
+    
+    auto end1 = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> laikas1 = end1 - start1;
+    cout << "Vartotoju rikiavimas pagal vartotojo parinkta parametra: " << laikas1.count() << " sek." << endl;
+    
+    auto start2 = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < vartdeq.size(); i++) {
+        if(vm == 0)
+            vartdeq[i].gal = vartdeq[i].galvid;
+        else
+            vartdeq[i].gal = vartdeq[i].galmed;
+
+        if (vartdeq[i].gal < 5.0)
+            vargsaideq.push_back(vartdeq[i]);
+            vartdeq.erase(vartdeq.begin() + i);
+    }
+    auto end2 = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> laikas2 = end2 - start2;
+    cout << "Studentu rusiavimas i du konteinerius uztruko: " << laikas2.count() << " sek." << endl;
+    spausdintiDeque(vargsaideq, vartdeq, vm);
+}
+void RusiavimasList2(list<Vartotojas>& vartlist, list<Vartotojas>& vargsailist, int vm){
+    vargsailist.clear();
+    auto start1 = std::chrono::high_resolution_clock::now();
+    
+    if(vm==0) vartlist.sort(rikiuotiVid);
+    else vartlist.sort(rikiuotiMed);
+    
+    auto end1 = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> laikas1 = end1 - start1;
+    cout << "Vartotoju rikiavimas pagal vartotojo parinkta parametra: " << laikas1.count() << " sek." << endl;
+    
+    auto start2 = std::chrono::high_resolution_clock::now();
+    for (auto it = vartlist.begin(); it != vartlist.end(); ++it){
+        if(vm==0) it->gal = it->galvid;
+        if(vm==1) it->gal = it->galmed;
+        
+        if(it->gal < 5.0){
+            vargsailist.push_back(*it);
+            
+        }
+    }
+    auto end2 = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> laikas2 = end2 - start2;
+    cout << "Studentu rusiavimas i du konteinerius uztruko: " << laikas2.count() << " sek." << endl;
+}
