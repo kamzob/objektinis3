@@ -5,7 +5,7 @@ Su iš anksčiau sugeneruotais 1000, 10000, 100000, 1000000, 10000000 failais bu
 ## Testavimo sistemos parametrai
 1. Apple M2 chip 8-core CPU 
 2. 16GB RAM 
-3. 256GB SSD
+3. 512GB SSD
 ## 1 dalies rezultatai
 <img width="452" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/641ffeff-d175-4a3a-ba75-008122e0a28e">
 <img width="452" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/fb48a627-5dbc-442d-bdbe-17c9145a87c6">
