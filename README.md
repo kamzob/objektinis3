@@ -60,5 +60,5 @@ Programa buvo palikta veikti per naktį, kadangi vektoriaus skirstymo laikas buv
 ### 10000000:
 <img width="452" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/fe061623-ebfe-4734-b6a8-4c0e79bc9e6a">
 <img width="227" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/12d42395-81ef-48f3-a7f0-ecfa3b345dfd">
-Pateikiami rezultatai tik su list ir deque, nes vector naudojant 2 strategiją per ilgas skirstymo laikas, kadangi kiekvieną kartą ištrynus elementą, kiekvieną vektoriaus elementą reikia perstumti.
+Pateikiami rezultatai tik su list ir deque, nes vector naudojant 2 strategiją per ilgas skirstymo laikas, kadangi kiekvieną kartą ištrynus elementą, kiekvieną vektoriaus elementą, esantį prieš trinamą elementą, reikia perstumti per 1 poziciją atgal.
 
