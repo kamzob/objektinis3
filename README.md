@@ -93,5 +93,40 @@ Visų konteinerių efektyvumui pagerinti naudojama remove_if
 | 1000000 | 0.517403 | 45229.9. | 0.406475 | 0.370716 | 0.456799 | 0.396621 | 0.346574 |0.453579 | 0.357981 |
 | 10000000 | 5.19888 | - | 4.51907 | 4.09259 | 4.30961 | 4.64485 | 4.08952 | 5.23358 | 5.79361|
 # Naudojimo instrukcija
-1. 
+1. Parsisiųskite programą iš [versijų puslapio](https://github.com/kamzob/ojektinis1/tags), o jei kažkas neaišku, pridedu nuorodą: https://blog.hubspot.com/website/download-from-github
+2. Parsisiųskite ir įsidiekite C++ kompiliatorių
+3. Parsisiųskite (jei esate MacBook naudotojas) Xcode: https://www.youtube.com/watch?v=LBYj-xVvM1k, o visoms OS tinka Visual Studio: https://www.youtube.com/watch?v=DMWD7wfhgNY.
+4. Tuomet jei naudojat MacBook, nueinate į ta aplanką, kuriame yra visi parsisiųsti failai, spaudžiate dešinį pelės klavišą ir Open in terminal: 
+<img width="234" alt="Screenshot 2024-03-19 at 23 16 19" src="https://github.com/kamzob/ojektinis1/assets/149818908/9e516c7d-9673-4cc8-aea2-fd1eafef7e11">
 
+5. Jei esat kitos OS naudotojai, tai nukopijuojat pathname, atsidarote terminalą, rašote cd ir įklijuojate kelią iki jūsų aplankalo.
+6. Tada galit parašyti ls, spaudžiate enter ir turėtumėte matyti visus failus, esančius jūsų aplanke.
+7. Įrašykite į terminalą:  make pagrindine, spauskite enter
+8. Įrašykite į terminalą:  make funkcijos, spauskite enter
+9. Įrašykite į terminalą:  make prog, spauskite enter
+10. Įrašykite į terminalą:  ./prog, spauskite enter
+    
+Čia pateikiu pavyzdį:
+<img width="452" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/801841b2-a2a3-49d2-8caa-88f6be2e79b1">
+
+# Programos naudojimas
+1. Jei neturite testavimo failų, spauskite 3, jie bus sugeneruojami automatiškai.
+2. Spauskite 4 jei norite dirbti su sugeneruotais failais.
+3. Paspaudę 4 jūs turėsite pasirinkti pagal ka noresite, kad rikiuotu duomenis ir isvestu galutini pazymi: 0 - pagal vidurkį, 1 - pagal medianą.
+4. Tuomet jūs turėsite pasirinkti strategiją:
+
+1 strategija (ji skaičiuos gan greitai, tačiau labai neefektyvi atminties atžvilgiu): Bendro studentai konteinerio (vector, list ir deque tipų) skaidymas (rūšiavimas) į du naujus to paties tipo konteinerius: "vargsai" ir "laimingi". Tokiu būdu tas pats studentas yra dvejuose konteineriuose: bendrame studentai ir viename iš suskaidytų (vargsai arba laimingi).
+
+2 strategija (šis būdas efektyvesnis atminties atžvilgiu, tačiau su didesniais konteineriais, pvz. vector gali būti skausmingas, tačiau su list veikia puikiai): Bendro studentų konteinerio (vector, list ir deque) skaidymas (rūšiavimas) panaudojant tik vieną naują konteinerį: "vargšiukai". Tokiu būdu, jei studentas yra vargsas, jį turime įkelti į naująjį "vargsai" konteinerį ir ištrinti iš bendro studentai konteinerio.
+
+3 strategija (šį būdą ir patarčiau naudoti, nes atminties užima panašiai kaip ir 2 strategija, tačiau dėl remove_if efektyvumo veikia žymiai sparčiau): perdaryta 2 strategija, naudojant efektyvius skirstymo būdus.
+
+5. Dabar jums reikės pasirinkti, su kokio dydžio failu norėsite dirbti: 1000, 10000, 100000, 1000000, 10000000.
+6. Po šio pasirinkimo ekrane jūs matysite rezultatus su kiekvienu konteineriu (vector, list, deque):
+   
+   Skaitymo iš failo laiką
+   
+   Rikiavimo didėjimo tvarka pagal galutinį pažymį (su vidurkiu ar mediana kaip pasirinkote) laiką
+   
+   Skirstymo į atskirus konteinerius laiką.
+7. Po išvestų rezultatų, jus grąžins į meniu su failų dydžiais, jei norėsite pakeisti strategiją arba galutinio pažymio skaičiavimą, spauskite 6 - baigti darbą ir kartokite viską iš pradžių, o jei norite tęsti darbą - pasirinkite su kokiu kitu failu norėsite dirbti.
