@@ -287,6 +287,7 @@ int main() {
             case 4:{
                 int rinktis;
                 int vm;         // vidurkis ar mediana
+                int strategy;
                 string pavadinimas;
                 vector<Vartotojas> vargsai;
                 vector<Vartotojas> laimingi;
@@ -309,7 +310,15 @@ int main() {
                     cout << "Klaida! Iveskite 1 arba 0: " << endl;
                     cin >> vm;
                 }
-                
+                cout << "Pasirinkite strategija 1 arba 2 arba 3: " << endl;
+                cin >> strategy;
+                while(cin.fail()|| (strategy != 1 && strategy != 2 && strategy != 3))
+                {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cout << "Klaida! Iveskite 1 arba 0: " << endl;
+                    cin >> strategy;
+                }
                 do{
                     cout << "Pasirinkite studentu kieki: " << endl;
                     cout << "1 - 1000 studentu" << endl;
@@ -330,20 +339,39 @@ int main() {
                     switch (rinktis) {
                         case 1:{
                             cout << "1000:" << endl;
+                            cout << strategy << " strategija" << endl;
                             auto start = std::chrono::high_resolution_clock::now();
                             pavadinimas = "stud1000.txt";
-                            cout << "vector" << endl;
-                            skaityti(vart, pavadinimas);
-                            RusiavimasDviGrupes(vart, vargsai, laimingi, vm);
-                            spausdintiLaimingiVargsai(vargsai, laimingi, vm);
-                            cout << "list" << endl;
-                            skaitytiList(vartlist, pavadinimas);
-                            RusiavimasList(vartlist, vargsailist, laimingilist, vm);
-                            spausdintiList(vargsailist, laimingilist, vm);
-                            cout << "deque" << endl;
-                            skaitytiDeque(vartdeq, pavadinimas);
-                            RusiavimasDeque(vartdeq, vargsaideq, laimingideq, vm);
-                            spausdintiDeque (vargsaideq, laimingideq, vm);
+                            if(strategy == 1){
+                                cout << "vector" << endl;
+                                skaityti(vart, pavadinimas);
+                                RusiavimasDviGrupes(vart, vargsai, laimingi, vm);
+                                spausdintiLaimingiVargsai(vargsai, laimingi, vm);
+                                cout << "list" << endl;
+                                skaitytiList(vartlist, pavadinimas);
+                                RusiavimasList(vartlist, vargsailist, laimingilist, vm);
+                                spausdintiList(vargsailist, laimingilist, vm);
+                                cout << "deque" << endl;
+                                skaitytiDeque(vartdeq, pavadinimas);
+                                RusiavimasDeque(vartdeq, vargsaideq, laimingideq, vm);
+                                spausdintiDeque (vargsaideq, laimingideq, vm);
+                            }
+                            if(strategy==2){
+                                cout << "vector" << endl;
+                                skaityti(vart, pavadinimas);
+                                RusiavimasDviGrupes2(vart, vargsai, vm);
+                                cout << "list" << endl;
+                                skaitytiList(vartlist, pavadinimas);
+                                RusiavimasList2(vartlist, vargsailist, vm);
+                                cout << "deque" << endl;
+                                skaitytiDeque(vartdeq, pavadinimas);
+                                RusiavimasDeque2(vartdeq, vargsaideq, vm);
+                            }
+                            
+                          
+                            
+                            
+
                             
                             auto end = std::chrono::high_resolution_clock::now();
                             std::chrono::duration<double> laikas = end - start;
@@ -353,20 +381,34 @@ int main() {
                             
                         case 2:{
                             cout << "10000:" << endl;
+                            cout << strategy << " strategija" << endl;
                             auto start = std::chrono::high_resolution_clock::now();
                             pavadinimas = "stud10000.txt";
-                            cout << "vector" << endl;
-                            skaityti(vart, pavadinimas);
-                            RusiavimasDviGrupes(vart, vargsai, laimingi, vm);
-                            spausdintiLaimingiVargsai(vargsai, laimingi, vm);
-                            cout << "list" << endl;
-                            skaitytiList(vartlist, pavadinimas);
-                            RusiavimasList(vartlist, vargsailist, laimingilist, vm);
-                            spausdintiList(vargsailist, laimingilist, vm);
-                            cout << "deque" << endl;
-                            skaitytiDeque(vartdeq, pavadinimas);
-                            RusiavimasDeque(vartdeq, vargsaideq, laimingideq, vm);
-                            spausdintiDeque (vargsaideq, laimingideq, vm);
+                            if(strategy == 1){
+                                cout << "vector" << endl;
+                                skaityti(vart, pavadinimas);
+                                RusiavimasDviGrupes(vart, vargsai, laimingi, vm);
+                                spausdintiLaimingiVargsai(vargsai, laimingi, vm);
+                                cout << "list" << endl;
+                                skaitytiList(vartlist, pavadinimas);
+                                RusiavimasList(vartlist, vargsailist, laimingilist, vm);
+                                spausdintiList(vargsailist, laimingilist, vm);
+                                cout << "deque" << endl;
+                                skaitytiDeque(vartdeq, pavadinimas);
+                                RusiavimasDeque(vartdeq, vargsaideq, laimingideq, vm);
+                                spausdintiDeque (vargsaideq, laimingideq, vm);
+                            }
+                            if(strategy==2){
+                                cout << "vector" << endl;
+                                skaityti(vart, pavadinimas);
+                                RusiavimasDviGrupes2(vart, vargsai, vm);
+                                cout << "list" << endl;
+                                skaitytiList(vartlist, pavadinimas);
+                                RusiavimasList2(vartlist, vargsailist, vm);
+                                cout << "deque" << endl;
+                                skaitytiDeque(vartdeq, pavadinimas);
+                                RusiavimasDeque2(vartdeq, vargsaideq, vm);
+                            }
                             
                             auto end = std::chrono::high_resolution_clock::now();
                             std::chrono::duration<double> laikas = end - start;
@@ -376,21 +418,34 @@ int main() {
                            
                         case 3:{
                             cout << "100000:" << endl;
+                            cout << strategy << " strategija" << endl;
                             auto start = std::chrono::high_resolution_clock::now();
                             pavadinimas = "stud100000.txt";
-                            cout << "vector" << endl;
-                            skaityti(vart, pavadinimas);
-                            RusiavimasDviGrupes(vart, vargsai, laimingi, vm);
-                            spausdintiLaimingiVargsai(vargsai, laimingi, vm);
-                            cout << "list" << endl;
-                            skaitytiList(vartlist, pavadinimas);
-                            RusiavimasList(vartlist, vargsailist, laimingilist, vm);
-                            spausdintiList(vargsailist, laimingilist, vm);
-                            cout << "deque" << endl;
-                            skaitytiDeque(vartdeq, pavadinimas);
-                            RusiavimasDeque(vartdeq, vargsaideq, laimingideq, vm);
-                            spausdintiDeque (vargsaideq, laimingideq, vm);
-                            
+                            if(strategy == 1){
+                                cout << "vector" << endl;
+                                skaityti(vart, pavadinimas);
+                                RusiavimasDviGrupes(vart, vargsai, laimingi, vm);
+                                spausdintiLaimingiVargsai(vargsai, laimingi, vm);
+                                cout << "list" << endl;
+                                skaitytiList(vartlist, pavadinimas);
+                                RusiavimasList(vartlist, vargsailist, laimingilist, vm);
+                                spausdintiList(vargsailist, laimingilist, vm);
+                                cout << "deque" << endl;
+                                skaitytiDeque(vartdeq, pavadinimas);
+                                RusiavimasDeque(vartdeq, vargsaideq, laimingideq, vm);
+                                spausdintiDeque (vargsaideq, laimingideq, vm);
+                            }
+                            if(strategy==2){
+                                cout << "vector" << endl;
+                                skaityti(vart, pavadinimas);
+                                RusiavimasDviGrupes2(vart, vargsai, vm);
+                                cout << "list" << endl;
+                                skaitytiList(vartlist, pavadinimas);
+                                RusiavimasList2(vartlist, vargsailist, vm);
+                                cout << "deque" << endl;
+                                skaitytiDeque(vartdeq, pavadinimas);
+                                RusiavimasDeque2(vartdeq, vargsaideq, vm);
+                            }
                             auto end = std::chrono::high_resolution_clock::now();
                             std::chrono::duration<double> laikas = end - start;
                             cout << "Visas programos laikas: " << laikas.count() << " sek." << endl;
@@ -399,20 +454,34 @@ int main() {
                             
                         case 4:{
                             cout << "1000000:" << endl;
+                            cout << strategy << " strategija" << endl;
                             auto start = std::chrono::high_resolution_clock::now();
                             pavadinimas = "stud1000000.txt";
-                            cout << "vector" << endl;
-                            skaityti(vart, pavadinimas);
-                            RusiavimasDviGrupes(vart, vargsai, laimingi, vm);
-                            spausdintiLaimingiVargsai(vargsai, laimingi, vm);
-                            cout << "list" << endl;
-                            skaitytiList(vartlist, pavadinimas);
-                            RusiavimasList(vartlist, vargsailist, laimingilist, vm);
-                            spausdintiList(vargsailist, laimingilist, vm);
-                            cout << "deque" << endl;
-                            skaitytiDeque(vartdeq, pavadinimas);
-                            RusiavimasDeque(vartdeq, vargsaideq, laimingideq, vm);
-                            spausdintiDeque (vargsaideq, laimingideq, vm);
+                            if(strategy == 1){
+                                cout << "vector" << endl;
+                                skaityti(vart, pavadinimas);
+                                RusiavimasDviGrupes(vart, vargsai, laimingi, vm);
+                                spausdintiLaimingiVargsai(vargsai, laimingi, vm);
+                                cout << "list" << endl;
+                                skaitytiList(vartlist, pavadinimas);
+                                RusiavimasList(vartlist, vargsailist, laimingilist, vm);
+                                spausdintiList(vargsailist, laimingilist, vm);
+                                cout << "deque" << endl;
+                                skaitytiDeque(vartdeq, pavadinimas);
+                                RusiavimasDeque(vartdeq, vargsaideq, laimingideq, vm);
+                                spausdintiDeque (vargsaideq, laimingideq, vm);
+                            }
+                            if(strategy==2){
+                                cout << "vector" << endl;
+                                skaityti(vart, pavadinimas);
+                                RusiavimasDviGrupes2(vart, vargsai, vm);
+                                cout << "list" << endl;
+                                skaitytiList(vartlist, pavadinimas);
+                                RusiavimasList2(vartlist, vargsailist, vm);
+                                cout << "deque" << endl;
+                                skaitytiDeque(vartdeq, pavadinimas);
+                                RusiavimasDeque2(vartdeq, vargsaideq, vm);
+                            }
                             
                             auto end = std::chrono::high_resolution_clock::now();
                             std::chrono::duration<double> laikas = end - start;
@@ -421,21 +490,34 @@ int main() {
                         }
                         case 5:{
                             cout << "10000000:" << endl;
+                            cout << strategy << " strategija" << endl;
                             auto start = std::chrono::high_resolution_clock::now();
                             pavadinimas = "stud10000000.txt";
-                            cout << "vector" << endl;
-                            skaityti(vart, pavadinimas);
-                            RusiavimasDviGrupes(vart, vargsai, laimingi, vm);
-                            spausdintiLaimingiVargsai(vargsai, laimingi, vm);
-                            cout << "list" << endl;
-                            skaitytiList(vartlist, pavadinimas);
-                            RusiavimasList(vartlist, vargsailist, laimingilist, vm);
-                            spausdintiList(vargsailist, laimingilist, vm);
-                            cout << "deque" << endl;
-                            skaitytiDeque(vartdeq, pavadinimas);
-                            RusiavimasDeque(vartdeq, vargsaideq, laimingideq, vm);
-                            spausdintiDeque (vargsaideq, laimingideq, vm);
-                            
+                            if(strategy == 1){
+                                cout << "vector" << endl;
+                                skaityti(vart, pavadinimas);
+                                RusiavimasDviGrupes(vart, vargsai, laimingi, vm);
+                                spausdintiLaimingiVargsai(vargsai, laimingi, vm);
+                                cout << "list" << endl;
+                                skaitytiList(vartlist, pavadinimas);
+                                RusiavimasList(vartlist, vargsailist, laimingilist, vm);
+                                spausdintiList(vargsailist, laimingilist, vm);
+                                cout << "deque" << endl;
+                                skaitytiDeque(vartdeq, pavadinimas);
+                                RusiavimasDeque(vartdeq, vargsaideq, laimingideq, vm);
+                                spausdintiDeque (vargsaideq, laimingideq, vm);
+                            }
+                            if(strategy==2){
+//                                cout << "vector" << endl;
+//                                skaityti(vart, pavadinimas);
+//                                RusiavimasDviGrupes2(vart, vargsai, vm);
+                                cout << "list" << endl;
+                                skaitytiList(vartlist, pavadinimas);
+                                RusiavimasList2(vartlist, vargsailist, vm);
+                                cout << "deque" << endl;
+                                skaitytiDeque(vartdeq, pavadinimas);
+                                RusiavimasDeque2(vartdeq, vargsaideq, vm);
+                            }
                             auto end = std::chrono::high_resolution_clock::now();
                             std::chrono::duration<double> laikas = end - start;
                             cout << "Visas programos laikas: " << laikas.count() << " sek." << endl;
