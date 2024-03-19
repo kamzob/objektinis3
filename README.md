@@ -15,6 +15,8 @@ Su iš anksčiau sugeneruotais 1000, 10000, 100000, 1000000, 10000000 failais bu
 
 # Testavimas 2
 ## 1 strategija
+Bendro studentai konteinerio (vector, list ir deque tipų) skaidymas (rūšiavimas) į du naujus to paties tipo konteinerius: "vargšiukų" ir "kietiakų". Tokiu būdu tas pats studentas yra dvejuose konteineriuose: bendrame studentai ir viename iš suskaidytų (vargšiukai arba kietiakai).
+Ši strategija ypač neefektyvi dėl naudojamos atminties kiekio.
 ### 1000:
 <img width="452" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/b2abb4d9-f3ad-4e49-91e9-bb5fa2880523">
 <img width="223" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/a008628f-78ba-42dd-8636-f8c6213a63f7">
@@ -34,4 +36,29 @@ Su iš anksčiau sugeneruotais 1000, 10000, 100000, 1000000, 10000000 failais bu
 ### 10000000:
 <img width="452" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/66b6f5ea-416d-44da-b4c0-b8920ab94c3e">
 <img width="217" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/503abb76-6223-4673-84e7-985ba996d966">
+
+## 2 strategija
+Bendro studentų konteinerio (vector, list ir deque) skaidymas (rūšiavimas) panaudojant tik vieną naują konteinerį: "vargšiukai". Tokiu būdu, jei studentas yra vargšiukas, jį turime įkelti į naująjį "vargšiukų" konteinerį ir ištrinti iš bendro studentai konteinerio. Po šio žingsnio studentai konteineryje liks vien tik kietiakai. 
+Dirbant su šia strategija, atminties naudojama žymiai mažiau nei dirbant su 1, tačiau ši strategija ypač skausminga vector konteineriams.
+### 1000:
+<img width="452" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/5381066e-a37d-427e-8713-420628da1c81">
+<img width="222" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/435a3404-4df3-4227-bc46-8a1e616e0e40">
+
+### 10000:
+<img width="452" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/0d7683f3-c0f0-47ab-8ecc-d38454cb8ae2">
+<img width="222" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/476d4e12-c188-42b9-995e-a701f367f206">
+
+### 100000:
+<img width="452" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/216559e4-2faa-4a6e-bcca-aa32e9f50d6c">
+<img width="230" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/94f33fdc-ee9b-4c74-b050-53b1df7505de">
+
+### 1000000:
+<img width="452" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/3f6a19f2-409b-46ad-bd37-ad4cc3c8b870">
+<img width="238" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/b15aefb0-755e-4f56-afd9-2850cf0da519">
+Programa buvo palikta veikti per naktį, kadangi vektoriaus skirstymo laikas buvo labai didelis.
+
+### 10000000:
+<img width="452" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/fe061623-ebfe-4734-b6a8-4c0e79bc9e6a">
+<img width="227" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/12d42395-81ef-48f3-a7f0-ecfa3b345dfd">
+Pateikiami rezultatai tik su list ir deque, nes vector naudojant 2 strategiją per ilgas skirstymo laikas, kadangi kiekvieną kartą ištrynus elementą, kiekvieną vektoriaus elementą reikia perstumti.
 
