@@ -40,7 +40,7 @@ bool arSveikasisSk(string tekstas);
 void FailuGeneravimas (int studSk);
 void RusiavimasDviGrupes(vector<Vartotojas>& vart, vector<Vartotojas>& vargsai, vector<Vartotojas>& laimingi, int vm);
 void spausdintiLaimingiVargsai (vector<Vartotojas>& vargsai, vector<Vartotojas>& laimingi, int vm);
-void skaitytiList(list<Vartotojas>& vartlist, string pavadinimas);
+void skaitytiList(list<Vartotojas>& vartlist, string pavadinimas, int vm);
 void RusiavimasList(list<Vartotojas>& vartlist, list<Vartotojas>& vargsailist, list<Vartotojas>& laimingilist, int vm);
 void spausdintiList (list<Vartotojas>& vargsailist, list<Vartotojas>& laimingilist, int vm);
 void skaitytiDeque(deque <Vartotojas>& vartdeq, string pavadinimas);
@@ -49,4 +49,7 @@ void spausdintiDeque (deque<Vartotojas>& vargsaideq, deque<Vartotojas>& laimingi
 void RusiavimasDviGrupes2(vector<Vartotojas>& vart, vector<Vartotojas>& vargsai, int vm);
 void RusiavimasDeque2(deque<Vartotojas>& vartdeq, deque<Vartotojas>& vargsaideq, int vm);
 void RusiavimasList2(list<Vartotojas>& vartlist, list<Vartotojas>& vargsailist, int vm);
+void RusiavimasDviGrupes3(vector<Vartotojas>& vart, vector<Vartotojas>& vargsai, int vm);
+void RusiavimasList3(list<Vartotojas>& vartlist, list<Vartotojas>& vargsailist, int vm);
+void RusiavimasDeque3(deque<Vartotojas>& vartdeq, deque<Vartotojas>& vargsaideq, int vm);
 #endif /* funkcijos_h */
