@@ -93,7 +93,7 @@ Visų konteinerių efektyvumui pagerinti naudojama remove_if
 | 1000000 | 0.517403 | 45229.9. | 0.406475 | 0.370716 | 0.456799 | 0.396621 | 0.346574 |0.453579 | 0.357981 |
 | 10000000 | 5.19888 | - | 4.51907 | 4.09259 | 4.30961 | 4.64485 | 4.08952 | 5.23358 | 5.79361|
 # Naudojimo instrukcija
-1. Parsisiųskite programą iš [versijų puslapio](https://github.com/kamzob/ojektinis1/tags), o jei kažkas neaišku, pridedu nuorodą: https://blog.hubspot.com/website/download-from-github
+1. Parsisiųskite programą iš [versijų puslapio](https://github.com/kamzob/ojektinis1/tags), o jei kažkas neaišku, pridedu nuorodą: https://blog.hubspot.com/website/download-from-github. Jums reikia šių failų: **makefile, v1.cpp, biblioteka.h, funkcijos.cpp, funkcijos.h**
 2. Parsisiųskite ir įsidiekite C++ kompiliatorių
 3. Parsisiųskite (jei esate MacBook naudotojas) Xcode: https://www.youtube.com/watch?v=LBYj-xVvM1k, o visoms OS tinka Visual Studio: https://www.youtube.com/watch?v=DMWD7wfhgNY.
 4. Tuomet jei naudojat MacBook, nueinate į ta aplanką, kuriame yra visi parsisiųsti failai, spaudžiate dešinį pelės klavišą ir Open in terminal: 
