@@ -129,4 +129,11 @@ Visų konteinerių efektyvumui pagerinti naudojama remove_if
    Rikiavimo didėjimo tvarka pagal galutinį pažymį (su vidurkiu ar mediana kaip pasirinkote) laiką
    
    Skirstymo į atskirus konteinerius laiką.
-7. Po išvestų rezultatų, jus grąžins į meniu su failų dydžiais, jei norėsite pakeisti strategiją arba galutinio pažymio skaičiavimą, spauskite 6 - baigti darbą ir kartokite viską iš pradžių, o jei norite tęsti darbą - pasirinkite su kokiu kitu failu norėsite dirbti.
+7. Po išvestų rezultatų, jus grąžins į meniu su failų dydžiais, jei norėsite pakeisti strategiją arba galutinio pažymio skaičiavimą, spauskite 6 - baigti darbą, jus grąžins į pradinį meniu (1 punktas) ir kartokite viską iš pradžių, o jei norite tęsti darbą - pasirinkite su kokiu kitu failu norėsite dirbti.
+8. Surikiuoti studentai ir jų galutiniai pažymiai, dirbant su failais (4 punktas), išvesti failuose:
+
+   kietekai.txt, vargsiukai.txt (vector)
+   
+   kietekaiList.txt, vargsiukaiList.txt (list)
+
+   kietekaideq.txt, vargsiukaideq.txt (deque)
