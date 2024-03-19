@@ -62,3 +62,24 @@ Programa buvo palikta veikti per naktį, kadangi vektoriaus skirstymo laikas buv
 <img width="227" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/12d42395-81ef-48f3-a7f0-ecfa3b345dfd">
 Pateikiami rezultatai tik su list ir deque, nes vector naudojant 2 strategiją per ilgas skirstymo laikas, kadangi kiekvieną kartą ištrynus elementą, kiekvieną vektoriaus elementą, esantį prieš trinamą elementą, reikia perstumti per 1 poziciją atgal.
 
+## 3 strategija
+Visų konteinerių efektyvumui pagerinti naudojama remove_if
+### 1000:
+<img width="452" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/2c965988-821d-4cf4-9395-19f5bbe285ef">
+<img width="230" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/230f6203-ee6b-43b8-a3be-34c573eceaf9">
+
+### 10000:
+<img width="452" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/e8db6740-7a03-492a-bbb7-ab6ad4c77bcc">
+<img width="219" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/0a129abe-1da1-4426-b350-e35e91c4a13f">
+
+### 100000:
+<img width="452" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/212b9534-3a83-4942-a320-1d674059d1aa">
+<img width="229" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/c2d5049d-457f-47b9-9159-5f33909b8d16">
+
+### 1000000:
+<img width="452" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/e5c97362-7de1-4454-bf75-7ff7aa8fea69">
+<img width="236" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/384d08b7-3fbc-4408-8c79-32c7c360cb5a">
+
+### 10000000:
+<img width="452" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/ea57c3aa-c8b3-4e08-9cca-d82dd9a4e935">
+<img width="218" alt="image" src="https://github.com/kamzob/ojektinis1/assets/149818908/23a8eebb-c139-4423-9ded-2e10154bba80">
