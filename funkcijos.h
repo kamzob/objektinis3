@@ -46,4 +46,7 @@ void spausdintiList (list<Vartotojas>& vargsailist, list<Vartotojas>& laimingili
 void skaitytiDeque(deque <Vartotojas>& vartdeq, string pavadinimas);
 void RusiavimasDeque(deque<Vartotojas>& vartdeq, deque<Vartotojas>& vargsaideq, deque<Vartotojas>& laimingideq, int vm);
 void spausdintiDeque (deque<Vartotojas>& vargsaideq, deque<Vartotojas>& laimingideq, int vm);
+void RusiavimasDviGrupes2(vector<Vartotojas>& vart, vector<Vartotojas>& vargsai, int vm);
+void RusiavimasDeque2(deque<Vartotojas>& vartdeq, deque<Vartotojas>& vargsaideq, int vm);
+void RusiavimasList2(list<Vartotojas>& vartlist, list<Vartotojas>& vargsailist, int vm);
 #endif /* funkcijos_h */
