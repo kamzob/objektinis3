@@ -3,4 +3,4 @@ pagrindine:
 funkcijos:
 	g++ -std=c++11 -c funkcijos.cpp
 prog:
-	g++ -std=c++11 -o prog v1.O funkcijos.o
+	g++ -std=c++11 -o prog v1.o funkcijos.o
