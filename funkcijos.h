@@ -7,8 +7,21 @@
 
 #ifndef funkcijos_h
 #define funkcijos_h
-#include "biblioteka.h"
 
+#include "biblioteka.h"
+struct Vartotojas1
+{
+    string vardas;
+    string pavarde;
+    vector<int> nd;              // namu darbu vekt
+    int egz;                // studento egzamino rezultatas
+    double vid = 0.0;       // namu darbu pazymiu vidurkis
+    double gal = 0.0;       // galutinis ivertinimas
+    double med = 0.0;       // namu darbu mediana
+    double galmed = 0.0;
+    double galvid = 0.0;
+    
+};
 class Vartotojas
 {
 private:
@@ -55,8 +68,15 @@ public:
         galmed_=galm;
     }
     //getteriai
-    void getVar()
-    
+    string getVar() const { return vardas_;}
+    string getPav() const {return pavarde_;}
+    const vector<int>& getPaz() const { return nd_; }
+    int getEgz() const { return egz_; }
+    double getVid() const { return vid_; }
+    double getGal() const { return gal_; }
+    double getMed() const { return med_; }
+    double getGalmed() const { return galmed_; }
+    double getGalvid() const { return galvid_; }
 };
 double Vidurkis(double suma, int nariai);
 double Mediana(vector<int> paz, int nariai);
