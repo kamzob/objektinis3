@@ -102,6 +102,7 @@ void skaityti(vector<Vartotojas>& vart, string pavadinimas, int vm)
             if(!eilute.empty()){
                 istringstream iss(eilute);
                 Vartotojas naujas;
+                pazymiai.clear();
                 double sum = 0;
                 int paz;
                 iss >> v >> p;
@@ -375,6 +376,7 @@ void skaitytiList(list<Vartotojas>& vartlist, string pavadinimas, int vm)
             if(!eilute.empty()){
                 istringstream iss(eilute);
                 Vartotojas naujas;
+                pazymiai.clear();
                 double sum = 0;
                 int paz;
                 iss >> v >> p;
@@ -507,6 +509,7 @@ void skaitytiDeque(deque <Vartotojas>& vartdeq, string pavadinimas, int vm)
             if(!eilute.empty()){
                 istringstream iss(eilute);
                 Vartotojas naujas;
+                pazymiai.clear();
                 double sum = 0;
                 int paz;
                 iss >> v >> p;
