@@ -78,7 +78,7 @@ string generavimasPav(int pas)
         return vyr_pav[rand()%10];
     return mot_pav[rand()%10];
 }
-void skaityti(vector<Vartotojas>& vart, string pavadinimas)
+void skaityti(vector<Vartotojas>& vart, string pavadinimas, int vm)
 {
     vart.clear();
     auto start = std::chrono::high_resolution_clock::now();
@@ -94,6 +94,7 @@ void skaityti(vector<Vartotojas>& vart, string pavadinimas)
     string eilute;
     string header;
     vector<int> pazymiai;
+    string v, p;
     getline(failas,header);
     while(failas){
         if(!failas.eof()){
@@ -103,21 +104,28 @@ void skaityti(vector<Vartotojas>& vart, string pavadinimas)
                 Vartotojas naujas;
                 double sum = 0;
                 int paz;
-                iss >> naujas.vardas >> naujas.pavarde;
+                iss >> v >> p;
+                naujas.setVar(v);
+                naujas.setPav(p);
                 while (iss>>paz) {
-                    naujas.nd.push_back(paz);
+                    pazymiai.push_back(paz);
                     sum+=paz;
                 }
-                if(!naujas.nd.empty()){
-                    naujas.egz = naujas.nd.back();
-                    sum -= naujas.nd.back();
-                    naujas.nd.pop_back();
+                if(!pazymiai.empty()){
+                    naujas.setEgz(pazymiai.back());
+                    sum -= pazymiai.back();
+                    pazymiai.pop_back();
+                    for(const auto& pzm : pazymiai){
+                        naujas.setPaz(pzm);
+                    }
                 }
-                kiek = (int)naujas.nd.size();
-                naujas.vid = Vidurkis(sum, kiek);
-                naujas.med = Mediana(naujas.nd, kiek);
-                naujas.galvid = 0.4*naujas.vid+0.6*naujas.egz;
-                naujas.galmed = 0.4*naujas.med+0.6*naujas.egz;
+                kiek = (int)pazymiai.size();
+                naujas.setVid(Vidurkis(sum, kiek));
+                naujas.setMed(Mediana(naujas.getPaz(), kiek));
+                naujas.setGalmed(0.4*naujas.getMed()+0.6*naujas.getEgz());
+                naujas.setGalvid(0.4*naujas.getVid()+0.6*naujas.getEgz());
+                if (vm == 0) naujas.setGal(naujas.getGalvid());
+                else naujas.setGal(naujas.getGalmed());
                 vart.push_back(naujas);
             }
             
@@ -185,10 +193,10 @@ void spausdinti_skaitomus_duomenis(vector<Vartotojas>& vart)// spausdina nuskait
      }
         fr << left << setw(20) << "Pavarde" << setw(20) << "Vardas" << setw(20)<< "Galutinis (vid.)" << setw(20)<< "Galutinis (med.)" << endl;
         fr << "--------------------------------------------------------------------------" << endl;
-        for ( int i = 0; i < vart.size(); i++)
+        for (const auto& stud : vart)
         {
             
-            fr << left << setw(20) << vart[i].pavarde << setw(20) << vart[i].vardas << setw(20) << fixed << setprecision(2) << vart[i].galvid << setw(20) << setprecision(2) << vart[i].galmed << endl;
+            fr << left << setw(20) << stud.getPav() << setw(20) << stud.getVar() << setw(20) << fixed << setprecision(2) << stud.getGalvid() << setw(20) << setprecision(2) << stud.getGalmed() << endl;
         }
         
         fr.close();
@@ -198,16 +206,16 @@ void spausdinti_skaitomus_duomenis(vector<Vartotojas>& vart)// spausdina nuskait
  
 }
 bool rikiuotiVarda(const Vartotojas &a, const Vartotojas &b) {
-    return a.vardas < b.vardas;
+    return a.getVar() < b.getVar();
 }
 bool rikiuotiPavarde(const Vartotojas &a, const Vartotojas &b) {
-    return a.pavarde < b.pavarde;
+    return a.getPav() < b.getPav();
 }
 bool rikiuotiVid(const Vartotojas &a, const Vartotojas &b) {
-    return a.galvid < b.galvid;
+    return a.getGalvid() < b.getGalvid();
 }
 bool rikiuotiMed(const Vartotojas &a, const Vartotojas &b) {
-    return a.galmed < b.galmed;
+    return a.getGalmed() < b.getGalmed();
 }
 bool arZodis(string tekstas){
     for(char i : tekstas)
@@ -281,14 +289,12 @@ void RusiavimasDviGrupes(vector<Vartotojas>& vart, vector<Vartotojas>& vargsai, 
     cout << "Vartotoju rikiavimas pagal vartotojo parinkta parametra: " << laikas1.count() << " sek." << endl;
     
     auto start2 = std::chrono::high_resolution_clock::now();
-    for (int i = 0; i < vart.size(); i++){
-        if(vm==0) vart[i].gal = vart[i].galvid;
-        if(vm==1) vart[i].gal = vart[i].galmed;
+    for (const auto& stud : vart){
         
-        if(vart[i].gal < 5.0){
-            vargsai.push_back(vart[i]);
+        if(stud.getGal() < 5.0){
+            vargsai.push_back(stud);
         }
-        if(vart[i].gal>=5.0) laimingi.push_back(vart[i]);
+        if(stud.getGal()>=5.0) laimingi.push_back(stud);
     }
     auto end2 = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> laikas2 = end2 - start2;
@@ -308,10 +314,10 @@ void spausdintiLaimingiVargsai (vector<Vartotojas>& vargsai, vector<Vartotojas>&
     if( vm == 0) fr << setw(20)<< "Galutinis (vid.)" << endl;
     else if(vm == 1) fr << setw(20)<< "Galutinis (med.)" << endl;
     fr << "--------------------------------------------------------------------------" << endl;
-    for ( int i = 0; i < vargsai.size(); i++)
+    for (const auto& var : vargsai)
     {
         
-        fr << left << setw(20) << vargsai[i].vardas << setw(20) << vargsai[i].pavarde << setw(20) << fixed << setprecision(2) << vargsai[i].gal << endl;
+        fr << left << setw(20) << var.getVar() << setw(20) << var.getPav() << setw(20) << fixed << setprecision(2) << var.getGal() << endl;
     }
     
     fr.close();
@@ -332,10 +338,10 @@ void spausdintiLaimingiVargsai (vector<Vartotojas>& vargsai, vector<Vartotojas>&
     if( vm == 0) fo << setw(20)<< "Galutinis (vid.)" << endl;
     else if(vm == 1) fo << setw(20)<< "Galutinis (med.)" << endl;
     fo << "--------------------------------------------------------------------------" << endl;
-    for ( int i = 0; i < laimingi.size(); i++)
+    for (const auto& mldc : laimingi)
     {
         
-        fo << left << setw(20) << laimingi[i].vardas << setw(20) << laimingi[i].pavarde << setw(20) << fixed << setprecision(2) << laimingi[i].gal << endl;
+        fo << left << setw(20) << mldc.getVar() << setw(20) << mldc.getPav() << setw(20) << fixed << setprecision(2) << mldc.getGal() << endl;
     }
     
     fo.close();
@@ -361,6 +367,7 @@ void skaitytiList(list<Vartotojas>& vartlist, string pavadinimas, int vm)
     string eilute;
     string header;
     vector<int> pazymiai;
+    string v, p;
     getline(failas,header);
     while(failas){
         if(!failas.eof()){
@@ -370,23 +377,27 @@ void skaitytiList(list<Vartotojas>& vartlist, string pavadinimas, int vm)
                 Vartotojas naujas;
                 double sum = 0;
                 int paz;
-                iss >> naujas.vardas >> naujas.pavarde;
+                iss >> v >> p;
+                naujas.setVar(v);
+                naujas.setPav(p);
                 while (iss>>paz) {
-                    naujas.nd.push_back(paz);
+                    pazymiai.push_back(paz);
                     sum+=paz;
                 }
-                if(!naujas.nd.empty()){
-                    naujas.egz = naujas.nd.back();
-                    sum -= naujas.nd.back();
-                    naujas.nd.pop_back();
+                if(!pazymiai.empty()){
+                    naujas.setEgz(pazymiai.back());
+                    sum -= pazymiai.back();
+                    pazymiai.pop_back();
+                    for (const auto& pzm : pazymiai)
+                        naujas.setPaz(pzm);
                 }
-                kiek = (int)naujas.nd.size();
-                naujas.vid = Vidurkis(sum, kiek);
-                naujas.med = Mediana(naujas.nd, kiek);
-                naujas.galvid = 0.4*naujas.vid+0.6*naujas.egz;
-                naujas.galmed = 0.4*naujas.med+0.6*naujas.egz;
-                if (vm == 0) naujas.gal =naujas.galvid;
-                else naujas.gal = naujas.galmed;
+                kiek = (int)pazymiai.size();
+                naujas.setVid(Vidurkis(sum, kiek));
+                naujas.setMed(Mediana(naujas.getPaz(), kiek));
+                naujas.setGalvid(0.4*naujas.getVid()+0.6*naujas.getEgz());
+                naujas.setGalmed(0.4*naujas.getMed()+0.6*naujas.getEgz());
+                if (vm == 0) naujas.setGal(naujas.getGalvid());
+                else naujas.setGal(naujas.getGalmed());
                 vartlist.push_back(naujas);
             }
             
@@ -415,10 +426,10 @@ void RusiavimasList(list<Vartotojas>& vartlist, list<Vartotojas>& vargsailist, l
     
     auto start2 = std::chrono::high_resolution_clock::now();
     for (auto it = vartlist.begin(); it != vartlist.end(); ++it){
-        if(it->gal < 5.0){
+        if(it->getGal() < 5.0){
             vargsailist.push_back(*it);
         }
-        if(it->gal>=5.0) laimingilist.push_back(*it);
+        if(it->getGal()>=5.0) laimingilist.push_back(*it);
     }
     auto end2 = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> laikas2 = end2 - start2;
@@ -439,7 +450,7 @@ void spausdintiList (list<Vartotojas>& vargsailist, list<Vartotojas>& laimingili
     else if(vm == 1) fr << setw(20)<< "Galutinis (med.)" << endl;
     fr << "--------------------------------------------------------------------------" << endl;
     for (auto it = vargsailist.begin(); it != vargsailist.end(); ++it) {
-           fr << left << setw(20) << it->vardas << setw(20) << it->pavarde << setw(20) << fixed << setprecision(2) << it->gal << endl;
+           fr << left << setw(20) << it->getVar() << setw(20) << it->getPav() << setw(20) << fixed << setprecision(2) << it->getGal() << endl;
        }
        
     
@@ -462,7 +473,7 @@ void spausdintiList (list<Vartotojas>& vargsailist, list<Vartotojas>& laimingili
     else if(vm == 1) fo << setw(20)<< "Galutinis (med.)" << endl;
     fo << "--------------------------------------------------------------------------" << endl;
     for (auto it = laimingilist.begin(); it != laimingilist.end(); ++it) {
-           fo << left << setw(20) << it->vardas << setw(20) << it->pavarde << setw(20) << fixed << setprecision(2) << it->gal << endl;
+           fo << left << setw(20) << it->getVar() << setw(20) << it->getPav() << setw(20) << fixed << setprecision(2) << it->getGal() << endl;
        }
        
     
@@ -472,7 +483,7 @@ void spausdintiList (list<Vartotojas>& vargsailist, list<Vartotojas>& laimingili
 //    cout << "Kieteku irasymas i faila uztruko: " << laikas2.count() << " sek." << endl;
 //
 }
-void skaitytiDeque(deque <Vartotojas>& vartdeq, string pavadinimas)
+void skaitytiDeque(deque <Vartotojas>& vartdeq, string pavadinimas, int vm)
 {
     vartdeq.clear();
     auto start = std::chrono::high_resolution_clock::now();
@@ -488,6 +499,7 @@ void skaitytiDeque(deque <Vartotojas>& vartdeq, string pavadinimas)
     string eilute;
     string header;
     vector<int> pazymiai;
+    string v, p;
     getline(failas,header);
     while(failas){
         if(!failas.eof()){
@@ -497,21 +509,27 @@ void skaitytiDeque(deque <Vartotojas>& vartdeq, string pavadinimas)
                 Vartotojas naujas;
                 double sum = 0;
                 int paz;
-                iss >> naujas.vardas >> naujas.pavarde;
+                iss >> v >> p;
+                naujas.setVar(v);
+                naujas.setPav(p);
                 while (iss>>paz) {
-                    naujas.nd.push_back(paz);
+                    pazymiai.push_back(paz);
                     sum+=paz;
                 }
-                if(!naujas.nd.empty()){
-                    naujas.egz = naujas.nd.back();
-                    sum -= naujas.nd.back();
-                    naujas.nd.pop_back();
+                if(!pazymiai.empty()){
+                    naujas.setEgz(pazymiai.back());
+                    sum -= pazymiai.back();
+                    pazymiai.pop_back();
+                    for (const auto& pzm : pazymiai)
+                        naujas.setPaz(pzm);
                 }
-                kiek = (int)naujas.nd.size();
-                naujas.vid = Vidurkis(sum, kiek);
-                naujas.med = Mediana(naujas.nd, kiek);
-                naujas.galvid = 0.4*naujas.vid+0.6*naujas.egz;
-                naujas.galmed = 0.4*naujas.med+0.6*naujas.egz;
+                kiek = (int)pazymiai.size();
+                naujas.setVid(Vidurkis(sum, kiek));
+                naujas.setMed(Mediana(naujas.getPaz(), kiek));
+                naujas.setGalvid(0.4*naujas.getVid()+0.6*naujas.getEgz());
+                naujas.setGalmed(0.4*naujas.getMed()+0.6*naujas.getEgz());
+                if (vm == 0) naujas.setGal(naujas.getGalvid());
+                else naujas.setGal(naujas.getGalmed());
                 vartdeq.push_back(naujas);
             }
             
@@ -541,16 +559,12 @@ void RusiavimasDeque(deque<Vartotojas>& vartdeq, deque<Vartotojas>& vargsaideq, 
     cout << "Vartotoju rikiavimas pagal vartotojo parinkta parametra: " << laikas1.count() << " sek." << endl;
     
     auto start2 = std::chrono::high_resolution_clock::now();
-    for (int i = 0; i < vartdeq.size(); i++) {
-        if(vm == 0)
-            vartdeq[i].gal = vartdeq[i].galvid;
-        else
-            vartdeq[i].gal = vartdeq[i].galmed;
+    for (const auto& var : vartdeq) {
 
-        if (vartdeq[i].gal < 5.0)
-            vargsaideq.push_back(vartdeq[i]);
+        if (var.getGal() < 5.0)
+            vargsaideq.push_back(var);
         else
-            laimingideq.push_back(vartdeq[i]);
+            laimingideq.push_back(var);
     }
     auto end2 = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> laikas2 = end2 - start2;
@@ -570,10 +584,10 @@ void spausdintiDeque (deque<Vartotojas>& vargsaideq, deque<Vartotojas>& laimingi
     if( vm == 0) fr << setw(20)<< "Galutinis (vid.)" << endl;
     else if(vm == 1) fr << setw(20)<< "Galutinis (med.)" << endl;
     fr << "--------------------------------------------------------------------------" << endl;
-    for ( int i = 0; i < vargsaideq.size(); i++)
+    for (const auto& var : vargsaideq)
     {
         
-        fr << left << setw(20) << vargsaideq[i].vardas << setw(20) << vargsaideq[i].pavarde << setw(20) << fixed << setprecision(2) << vargsaideq[i].gal << endl;
+        fr << left << setw(20) << var.getVar() << setw(20) << var.getPav() << setw(20) << fixed << setprecision(2) << var.getGal() << endl;
     }
     
     fr.close();
@@ -594,10 +608,10 @@ void spausdintiDeque (deque<Vartotojas>& vargsaideq, deque<Vartotojas>& laimingi
     if( vm == 0) fo << setw(20)<< "Galutinis (vid.)" << endl;
     else if(vm == 1) fo << setw(20)<< "Galutinis (med.)" << endl;
     fo << "--------------------------------------------------------------------------" << endl;
-    for ( int i = 0; i < laimingideq.size(); i++)
+    for (const auto& mldc : laimingideq)
     {
         
-        fo << left << setw(20) << laimingideq[i].vardas << setw(20) << laimingideq[i].pavarde << setw(20) << fixed << setprecision(2) << laimingideq[i].gal << endl;
+        fo << left << setw(20) << mldc.getVar() << setw(20) << mldc.getPav() << setw(20) << fixed << setprecision(2) << mldc.getGal() << endl;
     }
     
     fo.close();
@@ -620,10 +634,8 @@ void RusiavimasDviGrupes2(vector<Vartotojas>& vart, vector<Vartotojas>& vargsai,
     
     auto start2 = std::chrono::high_resolution_clock::now();
     for (int i = 0; i < vart.size();){
-        if(vm==0) vart[i].gal = vart[i].galvid;
-        if(vm==1) vart[i].gal = vart[i].galmed;
         
-        if(vart[i].gal < 5.0){
+        if(vart[i].getGal() < 5.0){
             vargsai.push_back(vart[i]);
             vart.erase(vart.begin()+i);
             
@@ -651,12 +663,7 @@ void RusiavimasDeque2(deque<Vartotojas>& vartdeq, deque<Vartotojas>& vargsaideq,
     
     auto start2 = std::chrono::high_resolution_clock::now();
     for (int i = 0; i < vartdeq.size();) {
-        if(vm == 0)
-            vartdeq[i].gal = vartdeq[i].galvid;
-        else
-            vartdeq[i].gal = vartdeq[i].galmed;
-
-        if (vartdeq[i].gal < 5.0){
+        if (vartdeq[i].getGal() < 5.0){
             vargsaideq.push_back(vartdeq[i]);
             vartdeq.erase(vartdeq.begin() + i);
         }
@@ -684,7 +691,7 @@ void RusiavimasList2(list<Vartotojas>& vartlist, list<Vartotojas>& vargsailist, 
     auto it = vartlist.begin(); // Nustatomas iteratorius į pirmąjį elementą
     while (it != vartlist.end()) {
 
-           if (it->gal < 5.0) {
+           if (it->getGal() < 5.0) {
                vargsailist.push_back(*it);
                it = vartlist.erase(it);
            } else {
@@ -711,15 +718,14 @@ void RusiavimasDviGrupes3(vector<Vartotojas>& vart, vector<Vartotojas>& vargsai,
     
     auto start2 = std::chrono::high_resolution_clock::now();
     for (auto& v : vart) {
-            v.gal = (vm == 0) ? v.galvid : v.galmed;
             
-            if (v.gal < 5.0) {
+            if (v.getGal() < 5.0) {
                 vargsai.push_back(v);
             }
         }
         
         vart.erase(std::remove_if(vart.begin(), vart.end(), [&vm](const Vartotojas& v) {
-            return (vm == 0) ? v.galvid < 5.0 : v.galmed < 5.0;
+            return (vm == 0) ? v.getGalvid() < 5.0 : v.getGalmed()< 5.0;
         }), vart.end());
     auto end2 = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> laikas2 = end2 - start2;
@@ -740,7 +746,7 @@ void RusiavimasList3(list<Vartotojas>& vartlist, list<Vartotojas>& vargsailist, 
     
     auto start2 = std::chrono::high_resolution_clock::now();
     vartlist.remove_if([&](const Vartotojas& v) {
-            if (v.gal < 5.0) {
+            if (v.getGal() < 5.0) {
                 vargsailist.push_back(v);
                 return true; // Pasalinamas is bendro sar
             }
@@ -767,14 +773,13 @@ void RusiavimasDeque3(deque<Vartotojas>& vartdeq, deque<Vartotojas>& vargsaideq,
     
     auto start2 = std::chrono::high_resolution_clock::now();
     for (auto& v : vartdeq) {
-            v.gal = (vm == 0) ? v.galvid : v.galmed;
             
-            if (v.gal < 5.0) {  // stable partition su move
+            if (v.getGal() < 5.0) {  // stable partition su move
                 vargsaideq.push_back(v);
             }
         }
     auto it = std::remove_if(vartdeq.begin(), vartdeq.end(), [&](const Vartotojas &v) {
-        return v.gal < 5.0;
+        return v.getGal() < 5.0;
     });
     vartdeq.erase(it, vartdeq.end());
     auto end2 = std::chrono::high_resolution_clock::now();
