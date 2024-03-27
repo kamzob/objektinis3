@@ -58,3 +58,25 @@ public:
     double getGalvid() const { return galvid_; }
 };
 ```
+# Testas 1
+## class
+### 100000
+<img width="452" alt="image" src="https://github.com/kamzob/objektinis2/assets/149818908/3f294b02-a70a-455f-a7dc-86445668ab77">
+<img width="256" alt="image" src="https://github.com/kamzob/objektinis2/assets/149818908/65ef9e1f-cb3d-40fe-a3e3-a641fbfce504">
+
+### 1000000
+<img width="452" alt="image" src="https://github.com/kamzob/objektinis2/assets/149818908/09a4665b-757f-450b-9541-10c24e32f414">
+<img width="248" alt="image" src="https://github.com/kamzob/objektinis2/assets/149818908/f1ad260f-2ac0-49a3-9601-179c2086d5fc">
+
+## struct
+### 100000
+<img width="452" alt="image" src="https://github.com/kamzob/objektinis2/assets/149818908/d3fbbc30-c51d-4a8a-bf19-4462fcbefe97">
+<img width="217" alt="image" src="https://github.com/kamzob/objektinis2/assets/149818908/f1cd5be7-7dd4-47f7-8985-b43bbe8792e6">
+
+### 1000000
+<img width="452" alt="image" src="https://github.com/kamzob/objektinis2/assets/149818908/243df1ac-0dcd-4465-a35d-bc3eb820990f">
+<img width="221" alt="image" src="https://github.com/kamzob/objektinis2/assets/149818908/4ec09799-6188-49f2-a92b-26dcb36ca965">
+
+
+
+
