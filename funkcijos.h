@@ -28,6 +28,44 @@ public:
     Vartotojas(string vardas, string pavarde, const vector<int>& nd, int egz, double vid, double gal, double med, double galmed, double galvid)
     : vardas_(vardas), pavarde_(pavarde), nd_(nd), egz_(egz), vid_(vid), gal_(gal), med_(med), galmed_(galmed), galvid_(galvid) {}
     ~Vartotojas() {nd_.clear(), vardas_.clear(), pavarde_.clear();}
+    // copy konstruktorius
+    Vartotojas(const Vartotojas& other)
+    : vardas_(other.vardas_), pavarde_(other.pavarde_), nd_(other.nd_), egz_(other.egz_), vid_(other.vid_), gal_(other.gal_), med_(other.med_), galmed_(other.galmed_), galvid_(other.galvid_) {}
+    
+    // Copy assignment operatorius
+        Vartotojas& operator=(const Vartotojas& other) {
+            if (this != &other) {
+                vardas_ = other.vardas_;
+                pavarde_ = other.pavarde_;
+                nd_ = other.nd_;
+                egz_ = other.egz_;
+                vid_ = other.vid_;
+                gal_ = other.gal_;
+                med_ = other.med_;
+                galmed_ = other.galmed_;
+                galvid_ = other.galvid_;
+            }
+            return *this;
+        }
+    // move konstruktorius
+    Vartotojas(Vartotojas&& other) noexcept
+    : vardas_(std::move(other.vardas_)), pavarde_(std::move(other.pavarde_)), nd_(std::move(other.nd_)), egz_(other.egz_), vid_(other.vid_), gal_(other.gal_), med_(other.med_), galmed_(other.galmed_), galvid_(other.galvid_) {}
+    Vartotojas& operator=(Vartotojas&& other) noexcept {
+            if (this != &other) {
+                vardas_ = std::move(other.vardas_);
+                pavarde_ = std::move(other.pavarde_);
+                nd_ = std::move(other.nd_);
+                egz_ = other.egz_;
+                vid_ = other.vid_;
+                gal_ = other.gal_;
+                med_ = other.med_;
+                galmed_ = other.galmed_;
+                galvid_ = other.galvid_;
+            }
+            return *this;
+        }
+
+
     //setteriai
     void setVar (string vard) {
         vardas_=vard;
