@@ -414,3 +414,79 @@ void RusiavimasDviGrupes3(vector<Vartotojas>& vart, vector<Vartotojas>& vargsai,
     //cout << vart.size() << " " << vargsai.size() << endl;
     spausdintiLaimingiVargsai(vargsai, vart, vm);
 }
+void testas(){
+    // konstruktoriaus testavimas
+    string vardas = "Jonas", pavarde = "Jonaitis";
+    vector <int> pzm = {4, 6, 8, 10};
+    int egz = 8;
+    double vid = 7.0;
+    double med = 7.0;
+    double gal = 0.6*vid + 0.4*egz;
+    double galm = 0.6*med + 0.4*egz;
+    double galv = 0.6*vid + 0.4*egz;
+    
+    Vartotojas v1 (vardas, pavarde, pzm, egz, vid, gal, med, galm, galv);
+    assert(v1.getVar()==vardas);
+    assert(v1.getPav()==pavarde);
+    assert(v1.getPaz()==pzm);
+    assert(v1.getEgz()==egz);
+    assert(v1.getVid()==vid);
+    assert(v1.getGal()==gal);
+    assert(v1.getMed()==med);
+    assert(v1.getGalmed()==galm);
+    assert(v1.getGalvid()==galv);
+    cout << "Konstruktoriaus testavimas pavyko!" << endl;
+    // copy konstruktoriaus testavimas
+    Vartotojas v2(v1);
+    assert(v1.getVar()==v2.getVar());
+    assert(v1.getPav()==v2.getPav());
+    assert(v1.getPaz()==v2.getPaz());
+    assert(v1.getEgz()==v2.getEgz());
+    assert(v1.getVid()==v2.getVid());
+    assert(v1.getGal()==v2.getGal());
+    assert(v1.getMed()==v2.getMed());
+    assert(v1.getGalmed()==v2.getGalmed());
+    assert(v1.getGalvid()==v2.getGalvid());
+    cout << "Copy konstruktoriaus testavimas pavyko!" << endl;
+    // move konstruktoriaus testavimas
+    Vartotojas v3(std::move(v1));
+    assert(v3.getVar() == vardas);
+    assert(v3.getPav() == pavarde);
+    assert(v3.getPaz() == pzm);
+    assert(v3.getEgz() == egz);
+    assert(v3.getVid() == vid);
+    assert(v3.getGal() == gal);
+    assert(v3.getMed() == med);
+    assert(v3.getGalmed() == galm);
+    assert(v3.getGalvid() == galv);
+    cout << "Move konstruktoriaus testavimas pavyko!" << endl;
+    // Kopijavimo priskyrimo operatoriaus testavimas
+    Vartotojas v4;
+    v4 = v3;
+    assert(v4.getVar() == vardas);
+    assert(v4.getPav() == pavarde);
+    assert(v4.getPaz() == pzm);
+    assert(v4.getEgz() == egz);
+    assert(v4.getVid() == vid);
+    assert(v4.getGal() == gal);
+    assert(v4.getMed() == med);
+    assert(v4.getGalmed() == galm);
+    assert(v4.getGalvid() == galv);
+    cout << "Kopijavimo priskyrimo operatoriaus testavimas pavyko!" << endl;
+// Perkėlimo priskyrimo operatoriaus testavimas
+    Vartotojas v5;
+    v5 = std::move(v3);
+    assert(v5.getVar() == vardas);
+    assert(v5.getPav() == pavarde);
+    assert(v5.getPaz() == pzm);
+    assert(v5.getEgz() == egz);
+    assert(v5.getVid() == vid);
+    assert(v5.getGal() == gal);
+    assert(v5.getMed() == med);
+    assert(v5.getGalmed() == galm);
+    assert(v5.getGalvid() == galv);
+    cout << "Perkėlimo priskyrimo operatoriaus testavimas pavyko!" << endl;
+
+    
+    
+}
