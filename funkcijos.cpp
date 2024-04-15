@@ -31,31 +31,26 @@ double Mediana(vector<int> paz, int nariai)
 
 void spausdinti(int rnkts, vector<Vartotojas>& vart, int n)// spausdina i ekrana ranka sugeneruotus duomenis
 {
-    while (!cin>>rnkts || (rnkts != 0 && rnkts !=1))
-    {
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Klaida! Turite pasirinkti 0 (galutinis ivert. skaiciuojamas pagal vidurki) arba 1 (pagal mediana): \n";
-        cin >> rnkts;
-    }
+    
     if (rnkts == 0)
     {
-        cout << left << setw(15) << "Pavarde" << setw(15) << "Vardas" << setw(15)<< "Galutinis (vid.)" << endl;
+        cout << left << setw(20) << "Pavarde" << setw(20) << "Vardas" << setw(20)<< "Galutinis (vid.)" << endl;
         cout << "---------------------------------------------------" << endl;
         for (const auto& stud : vart)
         {
-            cout << left << setw(15) << stud.getVar() << setw(15) << stud.getPav() << setw(15) << fixed << setprecision(2) << stud.getGalvid() << endl;
+            
+            cout << stud;       // isvesties operatoriu perdengimas
         }
         
         
     }
     else if (rnkts == 1)
     {
-        cout << left << setw(15) << "Pavarde" << setw(15) << "Vardas" << setw(15)<< "Galutinis (med.)" << endl;
+        cout << left << setw(20) << "Pavarde" << setw(20) << "Vardas" << setw(20)<< "Galutinis (med.)" << endl;
         cout << "---------------------------------------------------" << endl;
         for (const auto& stud : vart)
         {
-            cout << left << setw(15) << stud.getVar() << setw(15) << stud.getPav() << setw(15) << fixed << setprecision(2) << stud.getGalmed() << endl;
+            cout << stud;
         }
         
     }
@@ -106,23 +101,11 @@ void skaityti(vector<Vartotojas>& vart, string pavadinimas, int vm)
                 Vartotojas naujas;
                 pazymiai.clear();
                 double sum = 0;
-                int paz;
-                iss >> v >> p;
-                naujas.setVar(v);
-                naujas.setPav(p);
-                while (iss>>paz) {
-                    pazymiai.push_back(paz);
+                iss >> naujas;  // naudojamas ivesties operatoriu perdengimas
+                for(int paz : naujas.getPaz()){
                     sum+=paz;
                 }
-                if(!pazymiai.empty()){
-                    naujas.setEgz(pazymiai.back());
-                    sum -= pazymiai.back();
-                    pazymiai.pop_back();
-                    for(const auto& pzm : pazymiai){
-                        naujas.setPaz(pzm);
-                    }
-                }
-                kiek = (int)pazymiai.size();
+                kiek = int(naujas.getPaz().size());
                 naujas.setVid(Vidurkis(sum, kiek));
                 naujas.setMed(Mediana(naujas.getPaz(), kiek));
                 naujas.setGalmed(0.4*naujas.getMed()+0.6*naujas.getEgz());
@@ -320,7 +303,7 @@ void spausdintiLaimingiVargsai (vector<Vartotojas>& vargsai, vector<Vartotojas>&
     for (const auto& var : vargsai)
     {
         
-        fr << left << setw(20) << var.getVar() << setw(20) << var.getPav() << setw(20) << fixed << setprecision(2) << var.getGal() << endl;
+        fr << var;          // isvesties operatoriu perdengimas
     }
     
     fr.close();
@@ -344,7 +327,7 @@ void spausdintiLaimingiVargsai (vector<Vartotojas>& vargsai, vector<Vartotojas>&
     for (const auto& mldc : laimingi)
     {
         
-        fo << left << setw(20) << mldc.getVar() << setw(20) << mldc.getPav() << setw(20) << fixed << setprecision(2) << mldc.getGal() << endl;
+        fo << mldc;     // isvesties operatoriu perdengimas
     }
     
     fo.close();
@@ -435,6 +418,7 @@ void testas(){
     assert(v1.getMed()==med);
     assert(v1.getGalmed()==galm);
     assert(v1.getGalvid()==galv);
+    cout << v1;
     cout << "Konstruktoriaus testavimas pavyko!" << endl;
     // copy konstruktoriaus testavimas
     Vartotojas v2(v1);
@@ -447,6 +431,7 @@ void testas(){
     assert(v1.getMed()==v2.getMed());
     assert(v1.getGalmed()==v2.getGalmed());
     assert(v1.getGalvid()==v2.getGalvid());
+    cout << v2;
     cout << "Copy konstruktoriaus testavimas pavyko!" << endl;
     // move konstruktoriaus testavimas
     Vartotojas v3(std::move(v1));
@@ -459,6 +444,7 @@ void testas(){
     assert(v3.getMed() == med);
     assert(v3.getGalmed() == galm);
     assert(v3.getGalvid() == galv);
+    cout << v3;
     cout << "Move konstruktoriaus testavimas pavyko!" << endl;
     // Kopijavimo priskyrimo operatoriaus testavimas
     Vartotojas v4;
@@ -472,6 +458,7 @@ void testas(){
     assert(v4.getMed() == med);
     assert(v4.getGalmed() == galm);
     assert(v4.getGalvid() == galv);
+    cout << v4;
     cout << "Kopijavimo priskyrimo operatoriaus testavimas pavyko!" << endl;
 // Perkėlimo priskyrimo operatoriaus testavimas
     Vartotojas v5;
@@ -485,6 +472,7 @@ void testas(){
     assert(v5.getMed() == med);
     assert(v5.getGalmed() == galm);
     assert(v5.getGalvid() == galv);
+    cout << v5;
     cout << "Perkėlimo priskyrimo operatoriaus testavimas pavyko!" << endl;
 
     
