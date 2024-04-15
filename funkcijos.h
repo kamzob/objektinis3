@@ -64,7 +64,32 @@ public:
             }
             return *this;
         }
+    friend ostream& operator<<(ostream& out, const Vartotojas &vart){
+        out << left << setw(20) << vart.vardas_ << setw(20) << vart.pavarde_ << setw(20) << fixed << setprecision(2) << vart.gal_ << endl;
+        return out;
+    }
+    friend istream& operator>>(istream& in, Vartotojas &vart){
+        in >> vart.vardas_ >> vart.pavarde_;
+        int paz;
+        vector <int> pzm;
+        while(in >> paz){
+            pzm.push_back(paz);
+        }
+        if (!pzm.empty()) {
+                vart.egz_ = pzm.back();
+                pzm.pop_back();
+                }
+        vart.nd_=pzm;
+        return in;
+    }
 
+//    friend std::ostream& operator<<(std::ostream& out, const Vartotojas &vart) {
+//          out << vart.vardas_ << " " << vart.pavarde_ << " " << vart.gal_ << "\n";
+//          return out;
+//        };
+//        friend std::istream& operator>>(std::istream& in, Vartotojas &vart) {
+//          in >> vart.vardas_ >> vart.pavarde_ >> vart.gal_;
+//        }
 
     //setteriai
     void setVar (string vard) {
@@ -104,6 +129,7 @@ public:
     double getMed() const { return med_; }
     double getGalmed() const { return galmed_; }
     double getGalvid() const { return galvid_; }
+    
 };
 double Vidurkis(double suma, int nariai);
 double Mediana(vector<int> paz, int nariai);
@@ -125,6 +151,7 @@ void RusiavimasDviGrupes(vector<Vartotojas>& vart, vector<Vartotojas>& vargsai, 
 void spausdintiLaimingiVargsai (vector<Vartotojas>& vargsai, vector<Vartotojas>& laimingi, int vm);
 void RusiavimasDviGrupes2(vector<Vartotojas>& vart, vector<Vartotojas>& vargsai, int vm);
 void RusiavimasDviGrupes3(vector<Vartotojas>& vart, vector<Vartotojas>& vargsai, int vm);
+void testas();
 
 
 #endif /* funkcijos_h */
