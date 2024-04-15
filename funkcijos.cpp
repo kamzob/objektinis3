@@ -473,6 +473,7 @@ void testas(){
     assert(v5.getGalvid() == galv);
     cout << v5;
     cout << "Perkėlimo priskyrimo operatoriaus testavimas pavyko!" << endl;
+    cout << "Zmogus yra abstrakti klase (1 - taip, 0 - ne): " << std::is_abstract<Zmogus>::value << std::endl;
 
     
     
