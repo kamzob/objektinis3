@@ -21,9 +21,10 @@ int main() {
         cout << "Iveskite 2 jei norite, kad duomenis skaitytu is failo" << endl;
         cout << "Iveskite 3 jei norite, kad duomenu failai butu sugeneruojami automatiskai" << endl;
         cout << "Iveskite 4 jei norite, kad butu dirbama su duomenimis is sugeneruotu failu" << endl;
-        cout << "Iveskite 5 jei norite baigti darba" << endl;
+        cout << "Iveskite 5 jei norite, kad butu atliekamas testavimas su klase" << endl;
+        cout << "Iveskite 6 jei norite baigti darba" << endl;
         cin >> gener;
-        while(!cin>>gener || gener < 1 || gener > 5)
+        while(!cin>>gener || gener < 1 || gener > 6)
         {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -41,6 +42,16 @@ int main() {
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     cout << "Klaida! Turite ivesti vartotoju skaiciu!" << endl;
                     cin >> n;
+                }
+                int rnkts;      // pasirinkimas, kaip norima skaiciuoti galutini ivertinima - pagal vidurki ar mediana
+                cout << "Pasirinkite kaip norite, kad skaiciuotu jusu galutini ivertinima: 0 - pagal vidurki, 1 - pagal mediana: " << endl;
+                cin >> rnkts;
+                while (!cin>>rnkts || (rnkts != 0 && rnkts !=1))
+                {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cout << "Klaida! Turite pasirinkti 0 (galutinis ivert. skaiciuojamas pagal vidurki) arba 1 (pagal mediana): \n";
+                    cin >> rnkts;
                 }
                 do{
                     // meniu skiltis pasirinkimai
@@ -125,11 +136,10 @@ int main() {
                                 var.setVid(Vidurkis(sum, kiek));
                                 var.setGalmed(0.4*var.getMed()+0.6*var.getEgz());
                                 var.setGalvid(0.4*var.getVid()+0.6*var.getEgz());
+                                if(rnkts==0) var.setGal(var.getGalvid());
+                                else var.setGal(var.getMed());
                                 vart.push_back(var);
                             }
-                            int rnkts;      // pasirinkimas, kaip norima skaiciuoti galutini ivertinima - pagal vidurki ar mediana
-                            cout << "Pasirinkite kaip norite, kad skaiciuotu jusu galutini ivertinima: 0 - pagal vidurki, 1 - pagal mediana: " << endl;
-                            cin >> rnkts;
                             spausdinti (rnkts, vart, n);
                             break;
                             
@@ -181,11 +191,10 @@ int main() {
                                 var.setMed(Mediana(var.getPaz(), kiek));
                                 var.setGalmed(0.4*var.getMed()+0.6*var.getEgz());
                                 var.setGalvid(0.4*var.getVid()+0.6*var.getEgz());
+                                if(rnkts==0) var.setGal(var.getGalvid());
+                                else var.setGal(var.getMed());
                                 vart.push_back(var);
                             }
-                            int rnkts;      // pasirinkimas, kaip norima skaiciuoti galutini ivertinima - pagal vidurki ar mediana
-                            cout << "Pasirinkite kaip norite, kad skaiciuotu jusu galutini ivertinima: 0 - pagal vidurki, 1 - pagal mediana: " << endl;
-                            cin >> rnkts;
                             spausdinti (rnkts, vart, n);
                             break;
                         }
@@ -233,11 +242,11 @@ int main() {
                                 var.setVid(Vidurkis(sum, kiek));
                                 var.setGalmed(0.4*var.getMed()+0.6*var.getEgz());
                                 var.setGalvid(0.4*var.getVid()+0.6*var.getEgz());
+                                if(rnkts==0) var.setGal(var.getGalvid());
+                                else var.setGal(var.getMed());
                                 vart.push_back(var);
                             }
-                            int rnkts;      // pasirinkimas, kaip norima skaiciuoti galutini ivertinima - pagal vidurki ar mediana
-                            cout << "Pasirinkite kaip norite, kad skaiciuotu jusu galutini ivertinima: 0 - pagal vidurki, 1 - pagal mediana: " << endl;
-                            cin >> rnkts;
+                            
                             spausdinti (rnkts, vart, n);
                             break;
                         }
@@ -304,13 +313,6 @@ int main() {
                 vector<Vartotojas> vargsai;
                 vector<Vartotojas> laimingi;
                 
-                list<Vartotojas> vartlist;
-                list<Vartotojas> vargsailist;
-                list<Vartotojas> laimingilist;
-                
-                deque<Vartotojas> vartdeq;
-                deque<Vartotojas> vargsaideq;
-                deque<Vartotojas> laimingideq;
                 cout << "Pasirinkite, pagal ka noresite, kad rikiuotu duomenis ir isvestu galutini pazymi: " << endl;
                 cout << "0 - pagal vidurki" << endl;
                 cout << "1 - pagal mediana" << endl;
@@ -487,11 +489,14 @@ int main() {
                 }while(rinktis!=6);
                 
 
-            }///
-                ///
+            }
+            case 5:{
+                testas();
+            }
+                
         }
         
-    } while (gener!=5);
+    } while (gener!=6);
     
     
     return 0;
