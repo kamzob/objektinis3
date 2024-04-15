@@ -136,6 +136,7 @@ public:
     Zmogus(string vardas, string pavarde)
     : vardas_(vardas), pavarde_(pavarde) {}
     virtual ~Zmogus() {}
+    virtual void  kazkas() const = 0;
     virtual void setVar (string vard) {
         vardas_=vard;
     }
@@ -164,6 +165,7 @@ public:
     // copy konstruktorius
     Vartotojas(const Vartotojas& other)
     : Zmogus(other.getVar(), other.getPav()), nd_(other.nd_), egz_(other.egz_), vid_(other.vid_), gal_(other.gal_), med_(other.med_), galmed_(other.galmed_), galvid_(other.galvid_) {}
+    void kazkas () const override{}
     
     // Copy assignment operatorius
         Vartotojas& operator=(const Vartotojas& other) {
