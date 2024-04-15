@@ -22,6 +22,8 @@
 #include <random>
 #include <list>
 #include <deque>
+#include <utility>
+#include <assert.h>
 
 
 using std::cout;
@@ -46,4 +48,8 @@ using std::runtime_error;
 using std::cerr;
 using std::list;
 using std::deque;
+using std::move;
+using std::ostream;
+using std::istream;
+using std::accumulate;
 #endif /* biblioteka_h */
