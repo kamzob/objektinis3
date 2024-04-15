@@ -22,8 +22,14 @@
 <img width="436" alt="Screenshot 2024-04-15 at 16 26 58" src="https://github.com/kamzob/objektinis2/assets/149818908/69a3a8fa-e7f8-4ebf-8f8c-265b952dfbb4">
 
 ### Move assignment operator
-(*perkėlimo priskyrimo operatorius) - operatorius, kuris perkeltą objektą priskiria kitam objektui, naudojant operatorių =.
+(*perkėlimo priskyrimo operatorius*) - operatorius, kuris perkeltą objektą priskiria kitam objektui, naudojant operatorių =.
 <img width="421" alt="Screenshot 2024-04-15 at 16 28 49" src="https://github.com/kamzob/objektinis2/assets/149818908/862ebfb9-7ed3-425a-8ed4-49cfa323ac99">
+
+### Rule of five testavimas programoje
+<img width="581" alt="Screenshot 2024-04-15 at 16 38 30" src="https://github.com/kamzob/objektinis2/assets/149818908/08cdbdcc-8dcd-4719-91cc-4cf15184ea5e">
+<img width="587" alt="Screenshot 2024-04-15 at 16 38 53" src="https://github.com/kamzob/objektinis2/assets/149818908/f38a21d3-88df-4830-9b1b-f72b9a1566b1">
+
+
 
 ## Įvesties/išvesties operatorių perdengimas
 <img width="657" alt="Screenshot 2024-04-15 at 16 29 53" src="https://github.com/kamzob/objektinis2/assets/149818908/bba410b7-76a5-4592-88b0-a8ab3eec4101">
