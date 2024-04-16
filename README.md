@@ -13,15 +13,16 @@ public:
     Zmogus(string vardas, string pavarde)
     : vardas_(vardas), pavarde_(pavarde) {}
     virtual ~Zmogus() {}
-    virtual void  kazkas() const = 0;
+   // virtual void  kazkas() const = 0;
     virtual void setVar (string vard) {
         vardas_=vard;
     }
     virtual void setPav (string pav) {
         pavarde_=pav;
     }
-    virtual string getVar() const { return vardas_;}
-    virtual string getPav() const {return pavarde_;}
+
+    virtual string getVar() const = 0;
+    virtual string getPav() const = 0;
 };
 ```
 ### derived Vartotojas
@@ -41,11 +42,14 @@ public:
     Vartotojas(const string vardas, const string pavarde, const vector<int>& nd, int egz, double vid, double gal, double med, double galmed, double galvid)
     : Zmogus(vardas, pavarde), nd_(nd), egz_(egz), vid_(vid), gal_(gal), med_(med), galmed_(galmed), galvid_(galvid) {}
     // destruktorius
-    ~Vartotojas() { nd_.clear(); }
+    ~Vartotojas() {
+        cout << "Objektas sunaikintas" << endl;
+        nd_.clear();
+        }
     // copy konstruktorius
     Vartotojas(const Vartotojas& other)
     : Zmogus(other.getVar(), other.getPav()), nd_(other.nd_), egz_(other.egz_), vid_(other.vid_), gal_(other.gal_), med_(other.med_), galmed_(other.galmed_), galvid_(other.galvid_) {}
-    void kazkas () const override{}
+    //void kazkas () const override{}
     
     // Copy assignment operatorius
         Vartotojas& operator=(const Vartotojas& other) {
@@ -130,12 +134,48 @@ public:
     double getMed() const { return med_; }
     double getGalmed() const { return galmed_; }
     double getGalvid() const { return galvid_; }
-    string getVar() const override { return Zmogus::getVar(); }
-    string getPav() const override { return Zmogus::getPav(); }
+    string getVar() const override { return vardas_; }
+    string getPav() const override { return pavarde_; }
     
     
 };
+ 
 ```
+## class Zmogus abstrakti
+Kad klase Zmogus butu abstrakti, naudojamos grynai virtualios funkcijos:
+<img width="225" alt="Screenshot 2024-04-17 at 00 29 06" src="https://github.com/kamzob/objektinis2/assets/149818908/6a1d294f-7da8-4d77-93b7-5d849a30f2f0">
+
+Jos override'inamos klaseje Vartotojas:
+<img width="325" alt="Screenshot 2024-04-17 at 00 29 58" src="https://github.com/kamzob/objektinis2/assets/149818908/999028db-c12c-497c-a9f7-33142643289e">
+
+## Rule of five
+### Destructor
+(*destruktorius*) - jis užtikrina išvalymą/resursų atlaisvinimą:
+<img width="300" alt="Screenshot 2024-04-17 at 00 32 50" src="https://github.com/kamzob/objektinis2/assets/149818908/e827cccd-7dac-41ec-85e1-03c5c144e3ca">
+
+
+
+### Copy constructor
+(*kopijavimo konstruktorius*) - konstruktorius, skirtas sukurti naują objektą kaip esamo objekto kopiją.
+<img width="599" alt="Screenshot 2024-04-17 at 00 33 15" src="https://github.com/kamzob/objektinis2/assets/149818908/1d614795-257c-4f24-82d6-cb4dedb2b586">
+
+
+### Move constructor
+(*perkėlimo konstruktorius*) - perkėlimo konstruktorius yra naudojamas perkelti resursus iš vieno objekto į kitą objektą, nepriklausomai nuo to, kuriuo objektu yra naudojamas šis konstruktorius.
+<img width="635" alt="Screenshot 2024-04-17 at 00 33 38" src="https://github.com/kamzob/objektinis2/assets/149818908/904e8225-50ba-475b-a81c-46bf352956ca">
+
+
+
+### Copy asssignment operator
+(*kopijavimo priskyrimo operatorius*) - operatorius, kuris priskira vieną objektą kitam, naudojant operatoriu =. 
+<img width="339" alt="Screenshot 2024-04-17 at 00 34 11" src="https://github.com/kamzob/objektinis2/assets/149818908/f3bd3de2-8ac9-490d-81d0-3a6daf2ca93b">
+
+
+
+### Move assignment operator
+(*perkėlimo priskyrimo operatorius*) - operatorius, kuris perkeltą objektą priskiria kitam objektui, naudojant operatorių =.
+<img width="355" alt="Screenshot 2024-04-17 at 00 34 45" src="https://github.com/kamzob/objektinis2/assets/149818908/896ca3bb-09bb-4464-9614-d4fe117d0bd5">
+
 ## Atliktas testavimas
 ### Testuojamas kodas
 <img width="569" alt="Screenshot 2024-04-15 at 23 33 32" src="https://github.com/kamzob/objektinis2/assets/149818908/a3032425-2b80-4abb-95ae-ea5483680442">
@@ -143,5 +183,6 @@ public:
 <img width="846" alt="Screenshot 2024-04-15 at 23 34 06" src="https://github.com/kamzob/objektinis2/assets/149818908/90294b3c-18c2-40de-96ac-766b41e51644">
 
 ### Testavimo rezultatas
-<img width="477" alt="Screenshot 2024-04-15 at 23 34 53" src="https://github.com/kamzob/objektinis2/assets/149818908/92311991-f8d5-4a69-8984-d69ad619a4d7">
+<img width="366" alt="Screenshot 2024-04-17 at 00 25 19" src="https://github.com/kamzob/objektinis2/assets/149818908/f832aeb7-5a0e-42be-bbfb-46703de7156f">
+
 
