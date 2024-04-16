@@ -188,4 +188,15 @@ Jos override'inamos klaseje Vartotojas:
 ### Testavimo rezultatas
 <img width="366" alt="Screenshot 2024-04-17 at 00 25 19" src="https://github.com/kamzob/objektinis2/assets/149818908/f832aeb7-5a0e-42be-bbfb-46703de7156f">
 
+## Įvesties/išvesties operatorių perdengimas
+<img width="657" alt="Screenshot 2024-04-15 at 16 29 53" src="https://github.com/kamzob/objektinis2/assets/149818908/bba410b7-76a5-4592-88b0-a8ab3eec4101">
+
+### Panaudojimas programoje
+#### Isvestis
+<img width="480" alt="Screenshot 2024-04-15 at 16 30 40" src="https://github.com/kamzob/objektinis2/assets/149818908/ba60e17e-8245-4518-9a7a-50e02ebd41f7">
+<img width="450" alt="Screenshot 2024-04-15 at 16 31 24" src="https://github.com/kamzob/objektinis2/assets/149818908/ad71120a-9039-42cb-b5c2-ec6cb1687bae">
+<img width="637" alt="Screenshot 2024-04-15 at 16 32 54" src="https://github.com/kamzob/objektinis2/assets/149818908/b0aa13d2-a0d3-4db5-9950-1b71d6221770">
+
+#### Ivestis
+<img width="508" alt="Screenshot 2024-04-15 at 16 34 12" src="https://github.com/kamzob/objektinis2/assets/149818908/902f9d4a-dd47-457d-9e5c-0a38327722f2">
 
