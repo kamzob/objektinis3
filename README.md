@@ -29,6 +29,10 @@
 <img width="581" alt="Screenshot 2024-04-15 at 16 38 30" src="https://github.com/kamzob/objektinis2/assets/149818908/08cdbdcc-8dcd-4719-91cc-4cf15184ea5e">
 <img width="587" alt="Screenshot 2024-04-15 at 16 38 53" src="https://github.com/kamzob/objektinis2/assets/149818908/f38a21d3-88df-4830-9b1b-f72b9a1566b1">
 
+#### Testavimo rezultatas
+
+<img width="412" alt="Screenshot 2024-04-16 at 22 46 56" src="https://github.com/kamzob/objektinis2/assets/149818908/291b03c9-367f-4c53-9802-43083c18a147">
+
 
 
 ## Įvesties/išvesties operatorių perdengimas
