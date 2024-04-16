@@ -157,17 +157,20 @@ Jos override'inamos klaseje Vartotojas:
 
 ### Copy constructor
 (*kopijavimo konstruktorius*) - konstruktorius, skirtas sukurti naują objektą kaip esamo objekto kopiją.
+
 <img width="599" alt="Screenshot 2024-04-17 at 00 33 15" src="https://github.com/kamzob/objektinis2/assets/149818908/1d614795-257c-4f24-82d6-cb4dedb2b586">
 
 
 ### Move constructor
-(*perkėlimo konstruktorius*) - perkėlimo konstruktorius yra naudojamas perkelti resursus iš vieno objekto į kitą objektą, nepriklausomai nuo to, kuriuo objektu yra naudojamas šis konstruktorius.
+(*perkėlimo konstruktorius*) - perkėlimo konstruktorius yra naudojamas perkelti resursus iš vieno objekto į kitą objektą.
+
 <img width="635" alt="Screenshot 2024-04-17 at 00 33 38" src="https://github.com/kamzob/objektinis2/assets/149818908/904e8225-50ba-475b-a81c-46bf352956ca">
 
 
 
 ### Copy asssignment operator
 (*kopijavimo priskyrimo operatorius*) - operatorius, kuris priskira vieną objektą kitam, naudojant operatoriu =. 
+
 <img width="339" alt="Screenshot 2024-04-17 at 00 34 11" src="https://github.com/kamzob/objektinis2/assets/149818908/f3bd3de2-8ac9-490d-81d0-3a6daf2ca93b">
 
 
