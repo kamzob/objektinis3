@@ -311,6 +311,7 @@ int main() {
                     FailuGeneravimas(kiek);
                     kiek*=10;
                 }
+                break;
             }
             case 4:{
                 int rinktis;
@@ -494,11 +495,12 @@ int main() {
                         }
                     }
                 }while(rinktis!=6);
-                
+                break;
 
             }
             case 5:{
                 testas();
+                break;
             }
                 
         }
