@@ -200,3 +200,20 @@ Jos override'inamos klaseje Vartotojas:
 #### Ivestis
 <img width="508" alt="Screenshot 2024-04-15 at 16 34 12" src="https://github.com/kamzob/objektinis2/assets/149818908/902f9d4a-dd47-457d-9e5c-0a38327722f2">
 
+## Laikai
+### nepadalinta klase
+| Studentu kiekis | Skaitymas (sek.) | Rikiavimas (sek.) | Rusiavimas i konteinerius (sek.)| 
+|-----------------|-----------------|-----------------|-----------------|
+| 1000 | 0.0306058 | 0.000639958 | 0.000361125 | 
+| 10000 |  0.133864 | 0.00610438 | 0.00361938 | 
+| 100000 | 1.10602 | 0.059842 | 0.0345146 | 
+| 1000000 | 10.8627 | 0.603886 | 0.369491 |
+| 10000000 | 128.084 | 7.25368 | 4.99316 |
+### isskirstyta klase i bazine ir derived
+| Studentu kiekis | Skaitymas (sek.) | Rikiavimas (sek.) | Rusiavimas i konteinerius (sek.)| 
+|-----------------|-----------------|-----------------|-----------------|
+| 1000 | 0.0302277 | 0.000499375 | 0.000349708 | 
+| 10000 |  0.136767 | 0.00476746 | 0.00327629 | 
+| 100000 | 1.14226 | 0.0465272 | 0.0325425 | 
+| 1000000 | 11.2364 | 0.475037 | 0.35646 |
+| 10000000 | 114.4 | 4.86333 | 4.16166 |
