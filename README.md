@@ -148,6 +148,8 @@ Kad klase Zmogus butu abstrakti, naudojamos grynai virtualios funkcijos:
 Jos override'inamos klaseje Vartotojas:
 <img width="325" alt="Screenshot 2024-04-17 at 00 29 58" src="https://github.com/kamzob/objektinis2/assets/149818908/999028db-c12c-497c-a9f7-33142643289e">
 
+<img width="972" alt="Screenshot 2024-04-17 at 12 00 42" src="https://github.com/kamzob/objektinis2/assets/149818908/1d7b3121-9337-42c1-ace4-03860cc799fa">
+
 ## Rule of five
 ### Destructor
 (*destruktorius*) - jis užtikrina išvalymą/resursų atlaisvinimą:
