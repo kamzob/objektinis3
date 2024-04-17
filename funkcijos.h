@@ -48,7 +48,7 @@ public:
     : Zmogus(vardas, pavarde), nd_(nd), egz_(egz), vid_(vid), gal_(gal), med_(med), galmed_(galmed), galvid_(galvid) {}
     // destruktorius
     ~Vartotojas() {
-        cout << "Objektas sunaikintas" << endl;
+        //cout << "Objektas sunaikintas" << endl;
         nd_.clear();
         }
     // copy konstruktorius
@@ -73,7 +73,14 @@ public:
         }
     // move konstruktorius
     Vartotojas(Vartotojas&& other) noexcept
-    : Zmogus(std::move(other.vardas_), std::move(other.pavarde_)), nd_(std::move(other.nd_)), egz_(other.egz_), vid_(other.vid_), gal_(other.gal_), med_(other.med_), galmed_(other.galmed_), galvid_(other.galvid_) {}
+    : Zmogus(std::move(other.vardas_), std::move(other.pavarde_)), nd_(std::move(other.nd_)), egz_(other.egz_), vid_(other.vid_), gal_(other.gal_), med_(other.med_), galmed_(other.galmed_), galvid_(other.galvid_) {
+        other.egz_ = 0;
+        other.vid_ = 0.0;
+        other.gal_ = 0.0;
+        other.med_ = 0.0;
+        other.galmed_ = 0.0;
+        other.galvid_ = 0.0;
+    }
     // move assignment operatorius
     Vartotojas& operator=(Vartotojas&& other) noexcept {
             if (this != &other) {
@@ -86,6 +93,12 @@ public:
                 med_ = other.med_;
                 galmed_ = other.galmed_;
                 galvid_ = other.galvid_;
+                other.egz_ = 0;
+                other.vid_ = 0.0;
+                other.gal_ = 0.0;
+                other.med_ = 0.0;
+                other.galmed_ = 0.0;
+                other.galvid_ = 0.0;
             }
             return *this;
         }
