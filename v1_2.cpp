@@ -281,7 +281,7 @@ int main() {
                         pavadinimas = "kursiokai.txt";
                         break;
                     case 2:
-                        pavadinimas = "studentai10000.txt";
+                        pavadinimas = "stud10000.txt";
                         break;
                     case 3:
                         pavadinimas = "studentai100000.txt";
@@ -487,11 +487,13 @@ int main() {
                         }
                     }
                 }while(rinktis!=6);
+                break;
                 
 
             }
             case 5:{
                 testas();
+                break;
             }
                 
         }
