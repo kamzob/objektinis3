@@ -1,6 +1,9 @@
 # objektinis1
 # V2.0 
 ## Sukurta dokumentacija naudojant Doxygen
+
+<img width="1702" alt="Screenshot 2024-05-01 at 19 34 48" src="https://github.com/kamzob/objektinis2/assets/149818908/251e6d51-9d5d-4621-8abd-5776f9df6d9b">
+
 <img width="985" alt="Screenshot 2024-05-01 at 14 42 42" src="https://github.com/kamzob/objektinis2/assets/149818908/ccc1e375-ef8a-4070-a9c8-91843d5df73e">
 
 ## Unit Test Instrukcija
