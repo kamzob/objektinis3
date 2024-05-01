@@ -136,10 +136,14 @@ public:
             }
             return *this;
         }
+    /**
+            * @brief Išvesties perdengimo operatoriai. */
     friend ostream& operator<<(ostream& out, const Vartotojas &vart){
         out << left << setw(20) << vart.vardas_ << setw(20) << vart.pavarde_ << setw(20) << fixed << setprecision(2) << vart.gal_ << endl;
         return out;
     }
+    /**
+            * @brief Įvesties perdengimo operatoriai. */
     friend istream& operator>>(istream& in, Vartotojas &vart){
         in >> vart.vardas_ >> vart.pavarde_;
         int paz;
