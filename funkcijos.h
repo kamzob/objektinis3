@@ -5,19 +5,32 @@
 //  Created by Kamilė Zobėlaitė on 2024-04-29.
 //
 
-
+/**
+ * @file funkcijos.h
+ * @brief Zmogus ir Vartotojas klases deklaracija ir funkciju reiksmiu priskyrimas.
+ */
 #ifndef funkcijos_h
 #define funkcijos_h
 
 #include "biblioteka.h"
-
+/**
+ * @class Zmogus
+ * @brief atstovauja zmogu su vardu ir pavarde
+ */
 class Zmogus
 {
 protected:
-    string vardas_;
-    string pavarde_;
+    
+    string vardas_; ///< Studento vardas
+    string pavarde_; ///< Studento pavardė.
 public:
+    /**
+        * @brief default Zmogus klasės konstruktorius.
+        */
     Zmogus() = default;
+    /**
+        * @brief Zmogus klasės konstruktorius su parametrais.
+        */
     Zmogus(string vardas, string pavarde)
     : vardas_(vardas), pavarde_(pavarde) {}
     virtual ~Zmogus() {}
@@ -32,31 +45,48 @@ public:
     virtual string getVar() const = 0;
     virtual string getPav() const = 0;
 };
+/**
+ * @class Vartotojas
+ * @brief atstovauja vartotoja
+ */
 class Vartotojas : public Zmogus
 {
 private:
-    vector<int> nd_;              // namu darbu vekt
-    int egz_;                // studento egzamino rezultatas
-    double vid_;       // namu darbu pazymiu vidurkis
-    double gal_;       // galutinis ivertinimas
-    double med_;       // namu darbu mediana
-    double galmed_;
-    double galvid_;
+    vector<int> nd_;  ///< Studento namų darbai.
+    int egz_;         ///< Studento  egzamino rezultatas.
+    double vid_;       ///< Studento namų darbų pažymių vidurkis.
+    double gal_;       ///< Studento galutinis įvertinimas.
+    double med_;       ///< Studento namų darbų pažymių mediana.
+    double galmed_;     ///< Studento galutinis įvertinimas su mediana.
+    double galvid_;     ///< Studento galutinis įvertinimas su vidurkiu.
 public:
+    /**
+        * @brief Vartotojas klasės konstruktorius su nulinėmis reikšmėmis.
+        */
     Vartotojas() : vid_(0.0), gal_(0.0), med_(0.0), galmed_(0.0), galvid_(0.0) {}
+    /**
+        * @brief Vartotojas klasės konstruktorius su parametrais.
+        */
     Vartotojas(const string vardas, const string pavarde, const vector<int>& nd, int egz, double vid, double gal, double med, double galmed, double galvid)
     : Zmogus(vardas, pavarde), nd_(nd), egz_(egz), vid_(vid), gal_(gal), med_(med), galmed_(galmed), galvid_(galvid) {}
     // destruktorius
+    /**
+        * @brief Vartotojas klasės destruktorius.
+        */
     ~Vartotojas() {
         //cout << "Objektas sunaikintas" << endl;
         nd_.clear();
         }
     // copy konstruktorius
+    /**
+            * @brief kopijavimo konstruktorius. */
     Vartotojas(const Vartotojas& other)
     : Zmogus(other.getVar(), other.getPav()), nd_(other.nd_), egz_(other.egz_), vid_(other.vid_), gal_(other.gal_), med_(other.med_), galmed_(other.galmed_), galvid_(other.galvid_) {}
     //void kazkas () const override{}
     
     // Copy assignment operatorius
+    /**
+            * @brief copy assignment operatorius. */
         Vartotojas& operator=(const Vartotojas& other) {
             if (this != &other) {
                 Zmogus::setVar(other.getVar());
@@ -72,6 +102,8 @@ public:
             return *this;
         }
     // move konstruktorius
+    /**
+            * @brief move (perkėlimo) konstruktorius. */
     Vartotojas(Vartotojas&& other) noexcept
     : Zmogus(std::move(other.vardas_), std::move(other.pavarde_)), nd_(std::move(other.nd_)), egz_(other.egz_), vid_(other.vid_), gal_(other.gal_), med_(other.med_), galmed_(other.galmed_), galvid_(other.galvid_) {
         other.egz_ = 0;
@@ -82,6 +114,8 @@ public:
         other.galvid_ = 0.0;
     }
     // move assignment operatorius
+    /**
+            * @brief move assignment operatorius. */
     Vartotojas& operator=(Vartotojas&& other) noexcept {
             if (this != &other) {
                 Zmogus::setVar(std::move(other.vardas_));
@@ -120,39 +154,75 @@ public:
         vart.nd_=pzm;
         return in;
     }
+    /**
+            * @brief Nustato namų darbų pažymius. */
     void setPaz(int paz){
         nd_.push_back(paz);
     }
+    /**
+            * @brief Nustato namų darbų pažymių vidurkį. */
     void setVid(double vidurkis){
         vid_=vidurkis;
     }
+    /**
+            * @brief Nustato namų darbų pažymių medianą. */
     void setMed(double med){
         med_=med;
     }
+    /**
+            * @brief Nustato egzamino rezultatą. */
     void setEgz (int egz){
         egz_ = egz;
     }
+    /**
+            * @brief Nustato galutinį pažymį. */
     void setGal(double gal){
         gal_ = gal;
     }
+    /**
+            * @brief Nustato galutinį pažymį su namų darbų vidurkiu. */
     void setGalvid(double galv){
         galvid_=galv;
     }
+    /**
+            * @brief Nustato galutinį pažymį su namų darbų mediana. */
     void setGalmed(double galm){
         galmed_=galm;
     }
+    /**
+            * @brief Nustato studento varda.*/
     void setVar(const std::string& vard) { Zmogus::setVar(vard); }
+    /**
+            * @brief Nustato studento varda.*/
 
     void setPav(const std::string& pav) { Zmogus::setPav(pav);
     }
+    /**
+            * @brief Grąžina namų darbų pažymius. */
     const vector<int>& getPaz() const { return nd_; }
+    /**
+            * @brief Grąžina egzamino rezultatą. */
     int getEgz() const { return egz_; }
+    /**
+            * @brief Grąžina namų darbų pažymių vidurkį. */
     double getVid() const { return vid_; }
+    /**
+            * @brief Grąžina galutinį pažymį. */
     double getGal() const { return gal_; }
+    /**
+            * @brief Grąžina namų darbų medianą. */
     double getMed() const { return med_; }
+    /**
+            * @brief Grąžina galutinį pažymį su mediana. */
     double getGalmed() const { return galmed_; }
+    /**
+            * @brief Grąžina galutinį pažymį su vidurkiu. */
     double getGalvid() const { return galvid_; }
+    /**
+            * @brief Grąžina vardą. */
     string getVar() const override { return vardas_; }
+    /**
+            * @brief Grąžina pavardę. */
     string getPav() const override { return pavarde_; }
     
     
