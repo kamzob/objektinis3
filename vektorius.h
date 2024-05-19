@@ -22,6 +22,8 @@ public:
     typedef T* iterator;
     typedef const T* const_iterator;
     typedef size_t size_type;
+    typedef std::reverse_iterator<iterator> reverse_iterator;
+    typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
     
     // MEMBER FUNCTIONS
     // Konstruktoriai
@@ -44,6 +46,16 @@ public:
 //            mduom_ = new T[mdydis_];
 //            std::copy(first, last, mduom_);
 //        }
+    // (3) Range constructor
+        template <typename InputIterator>
+        Vektorius(InputIterator first, InputIterator last)
+            : mduom_(nullptr), mdydis_(0), mtalpa_(0)
+        {
+            while (first != last) {
+                push_back(*first);
+                ++first;
+            }
+        }
 
         // (4) Copy constructor
         Vektorius(const Vektorius& kitas)
@@ -110,32 +122,8 @@ public:
       return *this; // grąžiname objektą
     }
     
-    void push_back(const T& x)
-        {
-            if (mdydis_ == mtalpa_)
-                reserve(mtalpa_ == 0 ? 1 : mtalpa_ * 2);
-            mduom_[mdydis_++] = x;
-        }
-
-        void reserve(size_type naujaTalpa)
-        {
-            if (naujaTalpa <= mtalpa_)
-                return;
-
-            T* naujiDuom = new T[naujaTalpa];
-            for (size_type k = 0; k < mdydis_; ++k)
-                naujiDuom[k] = std::move(mduom_[k]);
-
-            delete[] mduom_;
-            mduom_ = naujiDuom;
-            mtalpa_ = naujaTalpa;
-        }
-
-        void pop_back()
-        {
-            if (mdydis_ > 0)
-                --mdydis_;
-        }
+    
+        // element access
 
         T& operator[](size_type indeksas)
         {
@@ -191,19 +179,133 @@ public:
                 throw std::out_of_range("Vektorius tuscias");
             return mduom_[mdydis_ - 1];
         }
+        T* data() noexcept { return mduom_; }
+
+        const T* data() const noexcept { return mduom_; }
+    // capacity
 
         size_type size() const noexcept { return mdydis_; }
         size_type capacity() const noexcept { return mtalpa_; }
         bool empty() const noexcept { return mdydis_ == 0; }
+        size_type max_size() const noexcept { return std::numeric_limits<size_type>::max(); }
+        void reserve(size_type naujaTalpa)
+        {
+            if (naujaTalpa <= mtalpa_)
+                return;
 
+            T* naujiDuom = new T[naujaTalpa];
+            for (size_type k = 0; k < mdydis_; ++k)
+                naujiDuom[k] = std::move(mduom_[k]);
+
+            delete[] mduom_;
+            mduom_ = naujiDuom;
+            mtalpa_ = naujaTalpa;
+        }
+        void shrink_to_fit() 
+        {
+            if (mdydis_ < mtalpa_) {
+                T* naujiDuom = new T[mdydis_];
+                std::copy(mduom_, mduom_ + mdydis_, naujiDuom);
+                delete[] mduom_;
+                mduom_ = naujiDuom;
+                mtalpa_ = mdydis_;
+            }
+        }
+
+
+
+    
+    
+        // ITERATORIAI
         iterator begin() noexcept { return mduom_; }
         const_iterator begin() const noexcept { return mduom_; }
         iterator end() noexcept { return mduom_ + mdydis_; }
         const_iterator end() const noexcept { return mduom_ + mdydis_; }
+        const_iterator cbegin() const noexcept { return mduom_; }
+        const_iterator cend() const noexcept { return mduom_ + mdydis_; }
+        reverse_iterator rbegin() noexcept { return reverse_iterator(end()); }
+        const_reverse_iterator rbegin() const noexcept { return const_reverse_iterator(end()); }
+        reverse_iterator rend() noexcept { return reverse_iterator(begin()); }
+        const_reverse_iterator rend() const noexcept { return const_reverse_iterator(begin()); }
+        const_reverse_iterator crbegin() const noexcept { return const_reverse_iterator(end()); }
+        const_reverse_iterator crend() const noexcept { return const_reverse_iterator(begin()); }
+        
+        // MODIFIERS
 
         void clear() noexcept
         {
             mdydis_ = 0;
         }
+        iterator insert(const_iterator pos, const T& value) {
+            size_type index = pos - begin();
+            if (mdydis_ == mtalpa_) {
+                size_type new_capacity = (mtalpa_ == 0) ? 1 : mtalpa_ * 2;
+                reserve(new_capacity);
+            }
+
+            // Perstumiam visus elementus nuo įterpimo vietos į dešinę per viena
+            for (size_type i = mdydis_; i > index; --i) {
+                mduom_[i] = std::move(mduom_[i - 1]);
+            }
+
+            // Įterpiame naują elementą į vietą 'pos'
+            mduom_[index] = value;
+            ++mdydis_;
+
+            return begin() + index;
+        }
+        iterator erase(const_iterator pos) {
+            size_type index = pos - begin();
+            if (index >= mdydis_) {
+                throw std::out_of_range("Index out of range");
+            }
+
+            // Perstumiam visus elementus nuo 'pos' vienetu į kairę
+            for (size_type i = index; i < mdydis_ - 1; ++i) {
+                mduom_[i] = std::move(mduom_[i + 1]);
+            }
+
+            --mdydis_;
+            return begin() + index;
+        }
+        void push_back(const T& x)
+            {
+                if (mdydis_ == mtalpa_)
+                    reserve(mtalpa_ == 0 ? 1 : mtalpa_ * 2);
+                mduom_[mdydis_++] = x;
+            }
+
+
+
+        void pop_back()
+            {
+                if (mdydis_ > 0)
+                    --mdydis_;
+            }
+        void resize(size_type new_size, const T& value = T())
+        {
+            if (new_size < mdydis_) {
+                mdydis_ = new_size;
+            } else if (new_size > mdydis_) {
+                reserve(new_size);
+                for (size_type i = mdydis_; i < new_size; ++i) {
+                    mduom_[i] = value;
+                }
+                mdydis_ = new_size;
+            }
+        }
+        void resize(size_type new_size)
+        {
+            if (new_size < mdydis_) {
+                mdydis_ = new_size;
+            } else if (new_size > mdydis_) {
+                reserve(new_size);
+                mdydis_ = new_size;
+            }
+        }
+
+
+
+
 };
 #endif /* vektorius_h */
