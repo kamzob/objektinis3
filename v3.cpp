@@ -9,6 +9,7 @@
 
 
 #include "funkcijos.h"
+#include "vektorius.h"
 /**
  * @file v2.cpp
  * @brief Pagrindinio failo vykdymas
@@ -18,7 +19,7 @@ int main() {
     int n;
     
     
-    vector<Vartotojas> vart;
+    Vektorius<Vartotojas> vart;
     int pasirinkimas;   // meniu
     int gener;  // duomenu ivedimo budas (1 - ranka, 2 - is failo, 3 - baigti darba)
     
@@ -29,13 +30,14 @@ int main() {
         cout << "Iveskite 3 jei norite, kad duomenu failai butu sugeneruojami automatiskai" << endl;
         cout << "Iveskite 4 jei norite, kad butu dirbama su duomenimis is sugeneruotu failu" << endl;
         cout << "Iveskite 5 jei norite, kad butu atliekamas testavimas su klase" << endl;
-        cout << "Iveskite 6 jei norite baigti darba" << endl;
+        cout << "Iveskite 6 jei norite isbandyti custom vektoriu:" << endl;
+        cout << "Iveskite 7 jei norite baigti darba:" << endl;
         cin >> gener;
-        while(!cin>>gener || gener < 1 || gener > 6)
+        while(!cin>>gener || gener < 1 || gener > 7)
         {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Klaida! Turite pasirinkti nuo 1 iki 5: \n";
+            cout << "Klaida! Turite pasirinkti nuo 1 iki 7: \n";
             cin >> gener;
             
         }
@@ -318,8 +320,8 @@ int main() {
                 int vm;         // vidurkis ar mediana
                 int strategy;
                 string pavadinimas;
-                vector<Vartotojas> vargsai;
-                vector<Vartotojas> laimingi;
+                Vektorius<Vartotojas> vargsai;
+                Vektorius<Vartotojas> laimingi;
                 
                 cout << "Pasirinkite, pagal ka noresite, kad rikiuotu duomenis ir isvestu galutini pazymi: " << endl;
                 cout << "0 - pagal vidurki" << endl;
@@ -378,7 +380,12 @@ int main() {
                             if(strategy==3){
                                 cout << "vector" << endl;
                                 skaityti(vart, pavadinimas, vm);
+//                                for (size_t i = 0; i < 15; ++i) {
+//                                        std::cout << "Studento " << i + 1 << " pazymiai: ";
+//                                        vart[i].getPaz().print();
+//                                    }
                                 RusiavimasDviGrupes3(vart, vargsai, vm);
+                                
                             }
                             auto end = std::chrono::high_resolution_clock::now();
                             std::chrono::duration<double> laikas = end - start;
@@ -502,10 +509,82 @@ int main() {
                 testas();
                 break;
             }
+            case 6:{
+//                std::vector<int> v1{1,5,6,8,9,7,4,5,6,2,1,3,5,8,9,5,6,8,7,4,5,5,5,8,7,8,9,6,5,8,74,5,6,8,7,4,5,56,4,45};
+//                 std::cout << "Vector v.size(): "<< v1.at(2)<<"\n";
+//                Vektorius<int> v2{1,5,6,8,9,7,4,5,6,2,1,3,5,8,9,5,6,8,7,4,5,5,5,8,7,8,9,6,5,8,74,5,6,8,7,4,5,56,4,45};
+//                std::cout << "Vector v2.size(): "<< v2.at(2)<<"\n";
+//                Vektorius<int> v3(6,5);
+//                cout << v3 << endl;
+//                std::cout << "Vector v2.size(): "<< v3.size()<<"\n";
+//                Vektorius<int> original(10, 5); // Sukuriamas vektorius su 10 elementų, kurių kiekvienas lygus 5
+//                Vektorius<int> moved;
+//                moved = std::move(original); // Naudojamas perkėlimo priskyrimo operatorius
+//
+//                for(int i = 0; i < moved.size(); i++)
+//                {
+//                    cout << moved[i] << " ";
+//                }
+//                cout << moved.begin() << " " << moved.end() << endl;
+//                cout << moved.capacity() << endl;
+//                unsigned int sz = 100000000;
+//                Vektorius<int> v2;
+//                int vector_perskirstymas = 0;
+//                for (int i = 0; i < sz; ++i) {
+//                    v2.push_back(i);
+//                    if (v2.capacity() == v2.size()) {
+//                        ++vector_perskirstymas;
+//                    }
+//                }
+//                cout << "Atmintis buvo perskirstyta " << vector_perskirstymas << " kartu su Vector" << endl;
+                cout << left << setw(20) << "El. kiekis" << setw(20) << "std::vector laikas (s)" << setw(20)<< "Vektorius laikas" << setw(25)<< "std::vector perskirstymai"<< setw(25) << "Vektorius perskirstymai" << endl;
+                cout << "--------------------------------------------------------------------------" << endl;
+                // Pradėti v1 užpildymo laiko matavimą
+                for (unsigned int sz : {10000, 100000, 1000000, 10000000, 100000000})
+                {
+                    auto start1 = std::chrono::high_resolution_clock::now();
+                    int perskirstymas1 = 0;
+                    std::vector<int> v1;
+                    for (int i = 1; i <= sz; ++i)
+                    {
+                        v1.push_back(i);
+                        if(v1.size()==v1.capacity())
+                        {
+                            perskirstymas1++;
+                        }
+                        
+                    }
+                      
+                    auto end1 = std::chrono::high_resolution_clock::now();
+                    std::chrono::duration<double> laikas1 = end1- start1;
+                    // Baigti v1 užpildymo laiko matavimą
+
+                    // Pradėti v2 užpildymo laiko matavimą
+                    auto start2 = std::chrono::high_resolution_clock::now();
+                    int perskirstymas2 = 0;
+                    Vektorius<int> v2;
+                    for (int i = 1; i <= sz; ++i)
+                    {
+                        v2.push_back(i);
+                        if(v2.size()==v2.capacity())
+                        {
+                            perskirstymas2++;
+                        }
+                    }
+                      
+                    auto end2 = std::chrono::high_resolution_clock::now();
+                    std::chrono::duration<double> laikas2 = end2 - start2;
+                    // Baigti v2 užpildymo laiko matavimą
+                    cout << left << setw(20) << sz << setw(20) << laikas1.count() << setw(20)<< laikas2.count() << setw(25)<< perskirstymas1<< setw(25) << perskirstymas2 << endl;
+                }
+                unsigned int sz = 10000;  // 100000, 1000000, 10000000, 100000000
+
+
+            }
                 
         }
         
-    } while (gener!=6);
+    } while (gener!=7);
     
     
     return 0;
