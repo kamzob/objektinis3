@@ -156,16 +156,6 @@ public:
         in >> vart.vardas_ >> vart.pavarde_;
         int paz;
         Vektorius <int> pzm;
-//        while(in >> paz){
-//            pzm.push_back(paz);
-//            cout << paz << " ";
-//        }
-//        cout << endl;
-//    
-//        if (!pzm.empty()) {
-//                vart.egz_ = pzm.back();
-//                pzm.pop_back();
-//                }
         while(in >> paz)
         {
             vart.nd_.push_back(paz);
