@@ -20,6 +20,7 @@
 #define funkcijos_h
 
 #include "biblioteka.h"
+#include "vektorius.h"
 /**
  * @class Zmogus
  * @brief atstovauja zmogu su vardu ir pavarde
@@ -59,7 +60,7 @@ public:
 class Vartotojas : public Zmogus
 {
 private:
-    vector<int> nd_;  ///< Studento namų darbai.
+    Vektorius<int> nd_;  ///< Studento namų darbai.
     int egz_;         ///< Studento  egzamino rezultatas.
     double vid_;       ///< Studento namų darbų pažymių vidurkis.
     double gal_;       ///< Studento galutinis įvertinimas.
@@ -74,7 +75,7 @@ public:
     /**
         * @brief Vartotojas klasės konstruktorius su parametrais.
         */
-    Vartotojas(const string vardas, const string pavarde, const vector<int>& nd, int egz, double vid, double gal, double med, double galmed, double galvid)
+    Vartotojas(const string vardas, const string pavarde, const Vektorius<int>& nd, int egz, double vid, double gal, double med, double galmed, double galvid)
     : Zmogus(vardas, pavarde), nd_(nd), egz_(egz), vid_(vid), gal_(gal), med_(med), galmed_(galmed), galvid_(galvid) {}
     // destruktorius
     /**
@@ -154,15 +155,27 @@ public:
     friend istream& operator>>(istream& in, Vartotojas &vart){
         in >> vart.vardas_ >> vart.pavarde_;
         int paz;
-        vector <int> pzm;
-        while(in >> paz){
-            pzm.push_back(paz);
+        Vektorius <int> pzm;
+//        while(in >> paz){
+//            pzm.push_back(paz);
+//            cout << paz << " ";
+//        }
+//        cout << endl;
+//    
+//        if (!pzm.empty()) {
+//                vart.egz_ = pzm.back();
+//                pzm.pop_back();
+//                }
+        while(in >> paz)
+        {
+            vart.nd_.push_back(paz);
         }
-        if (!pzm.empty()) {
-                vart.egz_ = pzm.back();
-                pzm.pop_back();
-                }
-        vart.nd_=pzm;
+        if(!vart.nd_.empty())
+        {
+            vart.egz_ = vart.nd_.back();
+            vart.nd_.pop_back();
+        }
+        
         return in;
     }
     /**
@@ -210,7 +223,7 @@ public:
     }
     /**
             * @brief Grąžina namų darbų pažymius. */
-    const vector<int>& getPaz() const { return nd_; }
+    const Vektorius<int>& getPaz() const { return nd_; }
     /**
             * @brief Grąžina egzamino rezultatą. */
     int getEgz() const { return egz_; }
@@ -240,14 +253,14 @@ public:
 };
 
 double Vidurkis(double suma, int nariai);
-double Mediana(vector<int> paz, int nariai);
-void spausdinti(int rnkts, vector<Vartotojas>& vart, int n);
+double Mediana(Vektorius<int> paz, int nariai);
+void spausdinti(int rnkts, Vektorius<Vartotojas>& vart, int n);
 double generavimasPaz();
 string generavimasVard(int pas);
 string generavimasPav(int pas);
-void skaityti(vector<Vartotojas>& vart, string pavadinimas, int vm);
-void rezrikiavimas(vector<Vartotojas>& vart);
-void spausdinti_skaitomus_duomenis(vector<Vartotojas>& vart);
+void skaityti(Vektorius<Vartotojas>& vart, string pavadinimas, int vm);
+void rezrikiavimas(Vektorius<Vartotojas>& vart);
+void spausdinti_skaitomus_duomenis(Vektorius<Vartotojas>& vart);
 bool rikiuotiVarda(const Vartotojas &a, const Vartotojas &b);
 bool rikiuotiPavarde(const Vartotojas &a, const Vartotojas &b);
 bool rikiuotiVid(const Vartotojas &a, const Vartotojas &b);
@@ -255,10 +268,10 @@ bool rikiuotiMed(const Vartotojas &a, const Vartotojas &b);
 bool arZodis(string tekstas);
 bool arSveikasisSk(string tekstas);
 void FailuGeneravimas (int studSk);
-void RusiavimasDviGrupes(vector<Vartotojas>& vart, vector<Vartotojas>& vargsai, vector<Vartotojas>& laimingi, int vm);
-void spausdintiLaimingiVargsai (vector<Vartotojas>& vargsai, vector<Vartotojas>& laimingi, int vm);
-void RusiavimasDviGrupes2(vector<Vartotojas>& vart, vector<Vartotojas>& vargsai, int vm);
-void RusiavimasDviGrupes3(vector<Vartotojas>& vart, vector<Vartotojas>& vargsai, int vm);
+void RusiavimasDviGrupes(Vektorius<Vartotojas>& vart, Vektorius<Vartotojas>& vargsai, Vektorius<Vartotojas>& laimingi, int vm);
+void spausdintiLaimingiVargsai (Vektorius<Vartotojas>& vargsai, Vektorius<Vartotojas>& laimingi, int vm);
+void RusiavimasDviGrupes2(Vektorius<Vartotojas>& vart, Vektorius<Vartotojas>& vargsai, int vm);
+void RusiavimasDviGrupes3(Vektorius<Vartotojas>& vart, Vektorius<Vartotojas>& vargsai, int vm);
 void testas();
 
 
