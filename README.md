@@ -7,7 +7,7 @@ Operatoriu funkcijos grąžina T(true) arba F(false).
 2. != grąžina true, jei vektoriai nėra lygūs
 3. < grąžina true, jei vektorius mažesnis už kitą vektorių
 4. <= grąžina true, jei vektorius yra mažesnis arba lygus kitam vektoriui, kitaip sakant ne didesnis už kitą vektorių
-5. > grąžina true, jei vektorius yra didesnis už kitą vektorių.
+5. '>' grąžina true, jei vektorius yra didesnis už kitą vektorių.
 6. => grąžina true, jei vektorius yra didesnis už kitą vektorių arba lygus jam, kitaip sakant ne mažesnis.
 #### Testuojami operatoriai (==, !=, <, <=, >, >=):
 ```
@@ -198,4 +198,19 @@ Vektoriaus talpa po shrink_to_fit: 10
 |100000 |  0.0109413 | 0.0006915 |17 | 17  |                        
 1000000 |0.0286203 | 0.00552029 | 20 | 20  |                       
 10000000 | 0.383573 | 0.0697559 | 24 | 24  |                        
-100000000 |3.53119| 0.691559 | 27|27 |                   
+100000000 |3.53119| 0.691559 | 27|27 |   
+
+## std::vector vs Vektorius spartos analize su studentu duomenimis
+### std::vector
+| Studentu kiekis | Skaitymas (sek.) | Rikiavimas (sek.) | Rusiavimas i konteinerius (sek.)| Isvedimas i vargsai.txt | Isvedimas i kietekai.txt| Is viso (sek.) | 
+|-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
+| 100000 | 1.20998 | 0.0542597 | 0.0346759 | 0.0819693 | 0.11674 | 1.49781 |
+| 1000000 | 12.0064 | 0.564367 | 0.366011 | 0.825077 | 1.15436 | 14.951|
+| 10000000 | 158.929 | 9.71048 | 6.15945 | 15.0602 | 20.6769 | 210.887 |
+### Vektorius
+
+| Studentu kiekis | Skaitymas (sek.) | Rikiavimas (sek.) | Rusiavimas i konteinerius (sek.) | Isvedimas i vargsai.txt | Isvedimas i kietekai.txt| Is viso (sek.) | 
+|-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|----------------|
+| 100000 | 0.898518 | 0.03412 | 0.0194003 | 0.0871021 | 0.11902 | 1.1582 |
+| 1000000 | 8.46058 | 0.311572 | 0.163012 | 0.811127 | 1.13099 | 10.8774 |
+| 10000000 | 94.177 | 3.74071 | 2.50641 | 10.4105 | 14.6244 | 125.459 |
