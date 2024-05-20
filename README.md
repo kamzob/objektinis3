@@ -2,6 +2,13 @@
 # V3.0
 ## Vektorius klases funkcionalumas
 ### 1. Operatoriu tikrinimas
+Operatoriu funkcijos grąžina T(true) arba F(false).
+1. == grąžina true, jei vektoriai lygūs
+2. != grąžina true, jei vektoriai nėra lygūs
+3. < grąžina true, jei vektorius mažesnis už kitą vektorių
+4. <= grąžina true, jei vektorius yra mažesnis arba lygus kitam vektoriui, kitaip sakant ne didesnis už kitą vektorių
+5. > grąžina true, jei vektorius yra didesnis už kitą vektorių.
+6. => grąžina true, jei vektorius yra didesnis už kitą vektorių arba lygus jam, kitaip sakant ne mažesnis.
 #### Testuojami operatoriai (==, !=, <, <=, >, >=):
 ```
         bool operator== (const Vektorius<T>& other) const {
@@ -53,6 +60,7 @@ pirmas yra mazesnis arba lygus antram
 <img width="241" alt="Screenshot 2024-05-20 at 17 28 08" src="https://github.com/kamzob/objektinis3/assets/149818908/1418f96f-74ca-4f65-8658-86d082203026">
 
 ### 2. resize() tikrinimas
+resize() funkcija yra skirta pakeisti vektoriaus dydį (elementų kiekį vektoriuje).
 #### Testuojama funkcija:
 ```
             void resize(size_type new_size)
@@ -91,6 +99,7 @@ Vektorius po dydzio pakeitimo iki 2: { 1 2 }
 <img width="326" alt="Screenshot 2024-05-20 at 20 48 37" src="https://github.com/kamzob/objektinis3/assets/149818908/59955d5a-ef5f-4ae3-8aa9-ce79e8809471">
 
 ### 3. size()
+size() funkcija grąžina vektoriaus dydį (t.y. skaičių, kiek elementų yra vektoriuje).
 #### Testuojama funkcija
 ```
 size_type size() const noexcept { return mdydis_; }
@@ -111,6 +120,7 @@ Jis sudarytas is 4 elementu.
 <img width="225" alt="Screenshot 2024-05-20 at 20 58 38" src="https://github.com/kamzob/objektinis3/assets/149818908/ec45ff8c-8c23-47be-8469-021871977aac">
 
 ### 4. clear()
+clear() funkcija skirta išvalyti vektorių. Ji ištrina visus elementus, todėl vektoriaus dydis lieka 0, o capacity išlieka nepakitęs.
 #### Testuojama funkcija
 ```
         void clear() noexcept
@@ -143,6 +153,7 @@ Size=0, Capacity=3
 <img width="153" alt="Screenshot 2024-05-20 at 20 52 59" src="https://github.com/kamzob/objektinis3/assets/149818908/31fcfb08-a955-4611-871d-f93cde9b9ce1">
 
 ### 5. shrink_to_fit()
+shrink_to_fit() funkcija skirta pašalinti neišnaudotą vieta (capacity()), t.y. capacity tampa lygus size. 
 #### Testuojama funkcija
 ```
 void shrink_to_fit() 
