@@ -28,7 +28,7 @@ double Vidurkis(double suma, int nariai)
     
 }
 
-double Mediana(vector<int> paz, int nariai)
+double Mediana(Vektorius<int> paz, int nariai)
 {
     if (nariai==0)
         return 0.0;
@@ -39,7 +39,7 @@ double Mediana(vector<int> paz, int nariai)
     
 }
 
-void spausdinti(int rnkts, vector<Vartotojas>& vart, int n)// spausdina i ekrana ranka sugeneruotus duomenis
+void spausdinti(int rnkts, Vektorius<Vartotojas>& vart, int n)// spausdina i ekrana ranka sugeneruotus duomenis
 {
     
     if (rnkts == 0)
@@ -71,21 +71,21 @@ double generavimasPaz()
 }
 string generavimasVard(int pas)
 {
-    vector<string> vyr_vard = {"Petras", "Arnas", "Jonas", "Juozas", "Aleksandras", "Kajus", "Kipras", "Mantas", "Matas", "Algis"};
-    vector<string>  mot_vard = {"Agne", "Jurgita", "Emilija", "Kamile", "Rugile", "Selina", "Paulina", "Marija", "Ugne", "Monika"};
+    Vektorius<string> vyr_vard = {"Petras", "Arnas", "Jonas", "Juozas", "Aleksandras", "Kajus", "Kipras", "Mantas", "Matas", "Algis"};
+    Vektorius<string>  mot_vard = {"Agne", "Jurgita", "Emilija", "Kamile", "Rugile", "Selina", "Paulina", "Marija", "Ugne", "Monika"};
     if(pas==0)
         return vyr_vard[rand()%10];
     return mot_vard[rand()%10];
 }
 string generavimasPav(int pas)
 {
-    vector<string>  vyr_pav={"Petraitis", "Jonaitis", "Sabonis", "Macaitis", "Pocius", "Malinauskas", "Pociunas", "Grabauskas", "Girulis", "Zobela"};
-    vector<string>  mot_pav={"Petraityte", "Macaite", "Girulyte", "Grabauskaite", "Genyte", "Rimkute", "Mockute", "Povilaityte", "Zobelaite", "Brazauskiene"};
+    Vektorius<string>  vyr_pav={"Petraitis", "Jonaitis", "Sabonis", "Macaitis", "Pocius", "Malinauskas", "Pociunas", "Grabauskas", "Girulis", "Zobela"};
+    Vektorius<string>  mot_pav={"Petraityte", "Macaite", "Girulyte", "Grabauskaite", "Genyte", "Rimkute", "Mockute", "Povilaityte", "Zobelaite", "Brazauskiene"};
     if(pas==0)
         return vyr_pav[rand()%10];
     return mot_pav[rand()%10];
 }
-void skaityti(vector<Vartotojas>& vart, string pavadinimas, int vm)
+void skaityti(Vektorius<Vartotojas>& vart, string pavadinimas, int vm)
 {
     vart.clear();
     auto start = std::chrono::high_resolution_clock::now();
@@ -110,13 +110,15 @@ void skaityti(vector<Vartotojas>& vart, string pavadinimas, int vm)
                 istringstream iss(eilute);
                 Vartotojas naujas;
                 pazymiai.clear();
-                double sum = 0;
+                double sum = 0.0;
                 iss >> naujas;  // naudojamas ivesties operatoriu perdengimas
                 for(int paz : naujas.getPaz()){
-                    sum+=paz;
+                    sum+=(double)paz;
                 }
                 kiek = int(naujas.getPaz().size());
+                //cout << kiek << " " << sum << endl;
                 naujas.setVid(Vidurkis(sum, kiek));
+                //cout << naujas.getVid() << " ";
                 naujas.setMed(Mediana(naujas.getPaz(), kiek));
                 naujas.setGalmed(0.4*naujas.getMed()+0.6*naujas.getEgz());
                 naujas.setGalvid(0.4*naujas.getVid()+0.6*naujas.getEgz());
@@ -136,7 +138,7 @@ void skaityti(vector<Vartotojas>& vart, string pavadinimas, int vm)
     cout << "Skaitymas uztruko: " << laikas.count() << " sek." << endl;
    
 }
-void rezrikiavimas(vector<Vartotojas>& vart){
+void rezrikiavimas(Vektorius<Vartotojas>& vart){
     int rinktis;
     cout << "Pasirinkita pagal kokia tvarka norite, kad surikiuotu ir spausdintu rezultatus:" << endl;
     cout << "1 - pagal studento varda\n";
@@ -174,7 +176,7 @@ void rezrikiavimas(vector<Vartotojas>& vart){
             
     }
 }
-void spausdinti_skaitomus_duomenis(vector<Vartotojas>& vart)// spausdina nuskaitytu duomenu rezultatus i faila
+void spausdinti_skaitomus_duomenis(Vektorius<Vartotojas>& vart)// spausdina nuskaitytu duomenu rezultatus i faila
 {
     
     
@@ -272,7 +274,7 @@ void FailuGeneravimas (int studSk){
      std::chrono::duration<double> laikas = end - start;
     cout << "Failo generavimas su " << studSk << " uztruko: " << laikas.count() << " sek." << endl;
 }
-void RusiavimasDviGrupes(vector<Vartotojas>& vart, vector<Vartotojas>& vargsai, vector<Vartotojas>& laimingi, int vm){
+void RusiavimasDviGrupes(Vektorius<Vartotojas>& vart, Vektorius<Vartotojas>& vargsai, Vektorius<Vartotojas>& laimingi, int vm){
     vargsai.clear();
     laimingi.clear();
     auto start1 = std::chrono::high_resolution_clock::now();
@@ -296,8 +298,8 @@ void RusiavimasDviGrupes(vector<Vartotojas>& vart, vector<Vartotojas>& vargsai, 
     std::chrono::duration<double> laikas2 = end2 - start2;
     cout << "Studentu rusiavimas i du konteinerius uztruko: " << laikas2.count() << " sek." << endl;
 }
-void spausdintiLaimingiVargsai (vector<Vartotojas>& vargsai, vector<Vartotojas>& laimingi, int vm){
-//    auto start = std::chrono::high_resolution_clock::now();
+void spausdintiLaimingiVargsai (Vektorius<Vartotojas>& vargsai, Vektorius<Vartotojas>& laimingi, int vm){
+    auto start = std::chrono::high_resolution_clock::now();
     ofstream fr("vargsiukai.txt");
     try {
      if (!fr)
@@ -317,10 +319,10 @@ void spausdintiLaimingiVargsai (vector<Vartotojas>& vargsai, vector<Vartotojas>&
     }
     
     fr.close();
-//    auto end = std::chrono::high_resolution_clock::now();
-//    std::chrono::duration<double> laikas = end - start;
-//    cout << "Vargsiuku irasymas i faila uztruko: " << laikas.count() << " sek." << endl;
-//    auto start2 = std::chrono::high_resolution_clock::now();
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> laikas = end - start;
+    cout << "Vargsiuku irasymas i faila uztruko: " << laikas.count() << " sek." << endl;
+    auto start2 = std::chrono::high_resolution_clock::now();
     
     ofstream fo("kietekai.txt");
     try {
@@ -341,16 +343,16 @@ void spausdintiLaimingiVargsai (vector<Vartotojas>& vargsai, vector<Vartotojas>&
     }
     
     fo.close();
-//    auto end2 = std::chrono::high_resolution_clock::now();
-//    std::chrono::duration<double> laikas2 = end2 - start2;
-//    cout << "Kieteku irasymas i faila uztruko: " << laikas2.count() << " sek." << endl;
-//
+    auto end2 = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> laikas2 = end2 - start2;
+    cout << "Kieteku irasymas i faila uztruko: " << laikas2.count() << " sek." << endl;
+
 }
 
 
 
 //2 STRATEGIJA
-void RusiavimasDviGrupes2(vector<Vartotojas>& vart, vector<Vartotojas>& vargsai, int vm){
+void RusiavimasDviGrupes2(Vektorius<Vartotojas>& vart, Vektorius<Vartotojas>& vargsai, int vm){
     vargsai.clear();
     auto start1 = std::chrono::high_resolution_clock::now();
     
@@ -379,7 +381,7 @@ void RusiavimasDviGrupes2(vector<Vartotojas>& vart, vector<Vartotojas>& vargsai,
 }
 
 // 3 STRATEGIJA
-void RusiavimasDviGrupes3(vector<Vartotojas>& vart, vector<Vartotojas>& vargsai, int vm){
+void RusiavimasDviGrupes3(Vektorius<Vartotojas>& vart, Vektorius<Vartotojas>& vargsai, int vm){
     vargsai.clear();
     auto start1 = std::chrono::high_resolution_clock::now();
     
@@ -398,9 +400,10 @@ void RusiavimasDviGrupes3(vector<Vartotojas>& vart, vector<Vartotojas>& vargsai,
             }
         }
         
-        vart.erase(std::remove_if(vart.begin(), vart.end(), [&vm](const Vartotojas& v) {
-            return (vm == 0) ? v.getGalvid() < 5.0 : v.getGalmed()< 5.0;
-        }), vart.end());
+    vart.erase(std::remove_if(vart.begin(), vart.end(), [&vm](const Vartotojas& v) {
+        return (vm == 0) ? v.getGalvid() < 5.0 : v.getGalmed() < 5.0;
+    }), vart.end());
+
     auto end2 = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> laikas2 = end2 - start2;
     cout << "Studentu rusiavimas i du konteinerius uztruko: " << laikas2.count() << " sek." << endl;
@@ -410,7 +413,7 @@ void RusiavimasDviGrupes3(vector<Vartotojas>& vart, vector<Vartotojas>& vargsai,
 void testas(){
      //konstruktoriaus testavimas
     string vardas = "Jonas", pavarde = "Jonaitis";
-    vector <int> pzm = {4, 6, 8, 10};
+    Vektorius <int> pzm = {4, 6, 8, 10};
     int egz = 8;
     double vid = 7.0;
     double med = 7.0;
