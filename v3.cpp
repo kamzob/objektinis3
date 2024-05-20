@@ -380,10 +380,6 @@ int main() {
                             if(strategy==3){
                                 cout << "vector" << endl;
                                 skaityti(vart, pavadinimas, vm);
-//                                for (size_t i = 0; i < 15; ++i) {
-//                                        std::cout << "Studento " << i + 1 << " pazymiai: ";
-//                                        vart[i].getPaz().print();
-//                                    }
                                 RusiavimasDviGrupes3(vart, vargsai, vm);
                                 
                             }
@@ -510,6 +506,68 @@ int main() {
                 break;
             }
             case 6:{
+                cout << "1. Operatoriu tikrinimas" << endl;
+                {
+                    Vektorius<int> pirmas (100);
+                    Vektorius<int> antras (200);
+
+                    if (pirmas==antras) cout << "pirmas ir antras yra lygus" << endl;
+                    if (pirmas!=antras) cout << "pirmas ir antras nera lygus" << endl;
+                    if (pirmas<antras) cout << "pirmas yra mazesnis uz antra" << endl;
+                    if (pirmas>antras) cout << "pirmas yra didesnis uz antra" << endl;
+                    if (pirmas<=antras) cout << "pirmas yra mazesnis arba lygus antram" << endl;
+                    if (pirmas>=antras) cout << "pirmas yra didesnis arba lygus antram" << endl;
+
+                }
+                cout << endl;
+                cout << "2. resize() tikrinimas:" << endl;
+                {
+                    Vektorius<int>c = {1, 2, 3};
+                    cout << "Vektorius is pradziu: ";
+                    c.print();
+                    c.resize(5);
+                    cout << "Vektorius po dydzio pakeitimo iki 5: ";
+                    c.print();
+                    c.resize(2);
+                    cout << "Vektorius po dydzio pakeitimo iki 2: ";
+                    c.print();
+                    
+                }
+                cout << endl;
+                cout << "3. size() testavimas: " << endl;
+                {
+                    Vektorius<int> nums {1, 3, 5, 7};
+                    cout << "Turimas vektorius: ";
+                    nums.print();
+                    cout << "Jis sudarytas is " << nums.size() << " elementu.\n";
+                }
+               
+                
+                cout << "4. clear() testavimas: " << endl;
+                {
+                    Vektorius<int> container{1, 2, 3};
+                    cout << "Before clear: ";
+                    container.print();
+                    cout << "Size=" << container.size() << ", Capacity=" << container.capacity() << '\n';
+                    container.clear();
+                    cout << "After clear: ";
+                    container.print();
+                    cout << "Size=" << container.size() << ", Capacity=" << container.capacity() << '\n';
+                }
+                cout << endl;
+                cout << "5. shrink_to_fit() testavimas" << endl;
+                {
+                    Vektorius<int> a;
+                    cout << "1. default Vektoriaus talpa: " << a.capacity() << endl;
+                    a.resize(100);
+                    cout << "2. Vektoriaus talpa po resize(100): " << a.capacity() << endl;
+                    a.resize(10);
+                    cout << "2. Vektoriaus talpa po resize(10): " << a.capacity() << endl;
+                    a.shrink_to_fit();
+                    cout << "3. Vektoriaus talpa po shrink_to_fit: " << a.capacity() << endl;
+                }
+                cout << endl;
+                
 //                std::vector<int> v1{1,5,6,8,9,7,4,5,6,2,1,3,5,8,9,5,6,8,7,4,5,5,5,8,7,8,9,6,5,8,74,5,6,8,7,4,5,56,4,45};
 //                 std::cout << "Vector v.size(): "<< v1.at(2)<<"\n";
 //                Vektorius<int> v2{1,5,6,8,9,7,4,5,6,2,1,3,5,8,9,5,6,8,7,4,5,5,5,8,7,8,9,6,5,8,74,5,6,8,7,4,5,56,4,45};
@@ -537,8 +595,9 @@ int main() {
 //                    }
 //                }
 //                cout << "Atmintis buvo perskirstyta " << vector_perskirstymas << " kartu su Vector" << endl;
-                cout << left << setw(20) << "El. kiekis" << setw(20) << "std::vector laikas (s)" << setw(20)<< "Vektorius laikas" << setw(25)<< "std::vector perskirstymai"<< setw(25) << "Vektorius perskirstymai" << endl;
-                cout << "--------------------------------------------------------------------------" << endl;
+                cout << left << setw(20) << "El. kiekis" << setw(30) << "std::vector laikas (s)" << setw(20)<< "Vektorius laikas" << setw(28)<< "std::vector perskirstymai"<< setw(28) << "Vektorius perskirstymai" << endl;
+                cout << "-------------------------------------------------------------------------------------------------------------------------"
+                         << endl;
                 // Pradėti v1 užpildymo laiko matavimą
                 for (unsigned int sz : {10000, 100000, 1000000, 10000000, 100000000})
                 {
@@ -575,11 +634,9 @@ int main() {
                     auto end2 = std::chrono::high_resolution_clock::now();
                     std::chrono::duration<double> laikas2 = end2 - start2;
                     // Baigti v2 užpildymo laiko matavimą
-                    cout << left << setw(20) << sz << setw(20) << laikas1.count() << setw(20)<< laikas2.count() << setw(25)<< perskirstymas1<< setw(25) << perskirstymas2 << endl;
+                    cout << left << setw(20) << sz << setw(30) << laikas1.count() << setw(20)<< laikas2.count() << setw(28)<< perskirstymas1<< setw(28) << perskirstymas2 << endl;
                 }
-                unsigned int sz = 10000;  // 100000, 1000000, 10000000, 100000000
-
-
+                
             }
                 
         }
