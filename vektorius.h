@@ -7,7 +7,7 @@
 
 #ifndef vektorius_h
 #define vektorius_h
-
+#include <iterator>
 
 template <typename T>
 class Vektorius
@@ -47,15 +47,15 @@ public:
 //            std::copy(first, last, mduom_);
 //        }
     // (3) Range constructor
-        template <typename InputIterator>
-        Vektorius(InputIterator first, InputIterator last)
-            : mduom_(nullptr), mdydis_(0), mtalpa_(0)
-        {
-            while (first != last) {
-                push_back(*first);
-                ++first;
-            }
-        }
+//        template <typename InputIterator>
+//        Vektorius(InputIterator first, InputIterator last)
+//            : mduom_(nullptr), mdydis_(0), mtalpa_(0)
+//        {
+//            while (first != last) {
+//                push_back(*first);
+//                first=std::next(first);
+//            }
+//        }
 
         // (4) Copy constructor
         Vektorius(const Vektorius& kitas)
@@ -268,6 +268,22 @@ public:
             --mdydis_;
             return begin() + index;
         }
+    iterator erase(const_iterator first, const_iterator last)
+    {
+        size_type first_index = first - begin();
+        size_type last_index = last - begin();
+        if (first_index > last_index || last_index > mdydis_) {
+            throw std::out_of_range("Invalid range");
+        }
+
+        size_type num_to_erase = last_index - first_index;
+        for (size_type i = first_index; i < mdydis_ - num_to_erase; ++i) {
+            mduom_[i] = std::move(mduom_[i + num_to_erase]);
+        }
+
+        mdydis_ -= num_to_erase;
+        return begin() + first_index;
+    }
         void push_back(const T& x)
             {
                 if (mdydis_ == mtalpa_)
@@ -303,6 +319,49 @@ public:
                 mdydis_ = new_size;
             }
         }
+        void swap(Vektorius& other) noexcept
+        {
+            //using std::swap; // Importuojame swap iš std
+
+            // Keičiame visus narius su kitu vektoriumi
+            swap(mduom_, other.mduom_);
+            swap(mdydis_, other.mdydis_);
+            swap(mtalpa_, other.mtalpa_);
+        }
+    // NON-MEMBER FUNCTIONS
+        bool operator== (const Vektorius<T>& other) const {
+                if (size() != other.size()) {
+                    return false;
+                }
+
+                return std::equal(begin(), end(), other.begin());
+            }
+            bool operator!= (const Vektorius<T>& other) const {
+                return !(*this == other);
+            }
+            bool operator < (const Vektorius<T> & other) const {
+                return std::lexicographical_compare(begin(), end(), other.begin(), other.end());
+            }
+            bool operator <= (const Vektorius<T> & other) const {
+                return !(other < *this);
+            }
+            bool operator > (const Vektorius<T> & other) const {
+                return std::lexicographical_compare(other.begin(), other.end(), begin(), end());
+            }
+            bool operator >= (const Vektorius<T> & other) const {
+                return !(other > *this);
+            }
+
+            void swap (Vektorius<T>& x, Vektorius<T>& y) {
+                std::swap(x,y);
+            }
+    void print() const {
+            for(size_type i = 0; i < mdydis_; ++i) {
+                std::cout << mduom_[i] << " ";
+            }
+            std::cout << std::endl;
+        }
+
 
 
 
