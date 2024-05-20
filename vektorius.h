@@ -298,18 +298,18 @@ public:
                 if (mdydis_ > 0)
                     --mdydis_;
             }
-        void resize(size_type new_size, const T& value = T())
-        {
-            if (new_size < mdydis_) {
-                mdydis_ = new_size;
-            } else if (new_size > mdydis_) {
-                reserve(new_size);
-                for (size_type i = mdydis_; i < new_size; ++i) {
-                    mduom_[i] = value;
-                }
-                mdydis_ = new_size;
-            }
-        }
+//        void resize(size_type new_size, const T& value = T())
+//        {
+//            if (new_size < mdydis_) {
+//                mdydis_ = new_size;
+//            } else if (new_size > mdydis_) {
+//                reserve(new_size);
+//                for (size_type i = mdydis_; i < new_size; ++i) {
+//                    mduom_[i] = value;
+//                }
+//                mdydis_ = new_size;
+//            }
+//        }
         void resize(size_type new_size)
         {
             if (new_size < mdydis_) {
@@ -356,10 +356,11 @@ public:
                 std::swap(x,y);
             }
     void print() const {
+        std::cout << "{";
             for(size_type i = 0; i < mdydis_; ++i) {
                 std::cout << mduom_[i] << " ";
             }
-            std::cout << std::endl;
+            std::cout << "}" << std::endl;
         }
 
 
