@@ -1,0 +1,393 @@
+\doxysection{Vartotojas Class Reference}
+\hypertarget{class_vartotojas}{}\label{class_vartotojas}\index{Vartotojas@{Vartotojas}}
+
+
+atstovauja vartotoja  
+
+
+
+
+{\ttfamily \#include $<$funkcijos.\+h$>$}
+
+Inheritance diagram for Vartotojas\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_vartotojas}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_vartotojas_a07125601a638d7f9aa6bc3067420aab8}{Vartotojas}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{class_vartotojas}{Vartotojas} klasės konstruktorius su nulinėmis reikšmėmis. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_vartotojas_a6908253f75875e122f7e099bdea38f07}{Vartotojas}} (const string vardas, const string pavarde, const \mbox{\hyperlink{class_vektorius}{Vektorius}}$<$ int $>$ \&nd, int egz, double vid, double gal, double med, double galmed, double galvid)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_vartotojas}{Vartotojas} klasės konstruktorius su parametrais. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_vartotojas_a82aa2225ccd72a2a9c619c733f53080e}{\texorpdfstring{$\sim$}{\string~}\+Vartotojas}} ()
+\begin{DoxyCompactList}\small\item\em \doxylink{class_vartotojas}{Vartotojas} klasės destruktorius. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_vartotojas_a187b3428b24128a24d7a2b6ec2eae784}{Vartotojas}} (const \mbox{\hyperlink{class_vartotojas}{Vartotojas}} \&other)
+\begin{DoxyCompactList}\small\item\em kopijavimo konstruktorius. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_vartotojas}{Vartotojas}} \& \mbox{\hyperlink{class_vartotojas_a74202b5868f0972c03ca3edd440d32ec}{operator=}} (const \mbox{\hyperlink{class_vartotojas}{Vartotojas}} \&other)
+\begin{DoxyCompactList}\small\item\em copy assignment operatorius. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_vartotojas_ae22e0746118cd74bde19d5826c79b162}{Vartotojas}} (\mbox{\hyperlink{class_vartotojas}{Vartotojas}} \&\&other) noexcept
+\begin{DoxyCompactList}\small\item\em move (perkėlimo) konstruktorius. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_vartotojas}{Vartotojas}} \& \mbox{\hyperlink{class_vartotojas_ae97e87d3b3d42454fb594dfde0bd69d8}{operator=}} (\mbox{\hyperlink{class_vartotojas}{Vartotojas}} \&\&other) noexcept
+\begin{DoxyCompactList}\small\item\em move assignment operatorius. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_vartotojas_a4385193ad47830ab297daf63477151d5}{set\+Paz}} (int paz)
+\begin{DoxyCompactList}\small\item\em Nustato namų darbų pažymius. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_vartotojas_a89460e95e900032fc4f1d215bf603a23}{set\+Vid}} (double vidurkis)
+\begin{DoxyCompactList}\small\item\em Nustato namų darbų pažymių vidurkį. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_vartotojas_a8341b1b50b87a2bbf265549fca91f115}{set\+Med}} (double med)
+\begin{DoxyCompactList}\small\item\em Nustato namų darbų pažymių medianą. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_vartotojas_aace20e5abfe511ac84414facf840fc09}{set\+Egz}} (int egz)
+\begin{DoxyCompactList}\small\item\em Nustato egzamino rezultatą. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_vartotojas_acbbed77b453f00cf81aa0f8f3655b04b}{set\+Gal}} (double gal)
+\begin{DoxyCompactList}\small\item\em Nustato galutinį pažymį. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_vartotojas_a135606795b328914e12e3a3c6eb3afb4}{set\+Galvid}} (double galv)
+\begin{DoxyCompactList}\small\item\em Nustato galutinį pažymį su namų darbų vidurkiu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_vartotojas_a9a07108e05167967f6bbafd8733eb7b6}{set\+Galmed}} (double galm)
+\begin{DoxyCompactList}\small\item\em Nustato galutinį pažymį su namų darbų mediana. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_vartotojas_a26fc5b93309cf28d5de61f5e9d29af45}{set\+Var}} (const std\+::string \&vard)
+\begin{DoxyCompactList}\small\item\em Nustato studento varda. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_vartotojas_ad11ce7bdfaead2a4c224d2fd069b34a1}{set\+Pav}} (const std\+::string \&pav)
+\begin{DoxyCompactList}\small\item\em Nustato studento varda. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_vektorius}{Vektorius}}$<$ int $>$ \& \mbox{\hyperlink{class_vartotojas_ab7d339eefb3731ada17f9573f0394233}{get\+Paz}} () const
+\begin{DoxyCompactList}\small\item\em Grąžina namų darbų pažymius. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_vartotojas_a51a4a95fa3ecea9f68acaba74cc7fe0f}{get\+Egz}} () const
+\begin{DoxyCompactList}\small\item\em Grąžina egzamino rezultatą. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_vartotojas_a467be2357957fae6bf2cd62c8e1b5655}{get\+Vid}} () const
+\begin{DoxyCompactList}\small\item\em Grąžina namų darbų pažymių vidurkį. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_vartotojas_a0462df625bd0e6488700f67805a56fe2}{get\+Gal}} () const
+\begin{DoxyCompactList}\small\item\em Grąžina galutinį pažymį. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_vartotojas_a79d815e46da1753b5bb0f40f49f73c50}{get\+Med}} () const
+\begin{DoxyCompactList}\small\item\em Grąžina namų darbų medianą. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_vartotojas_ac5911db3af3b022d0477546c6b3b84fd}{get\+Galmed}} () const
+\begin{DoxyCompactList}\small\item\em Grąžina galutinį pažymį su mediana. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_vartotojas_a7aeb8839ea5482fc19a9b233eeab2f41}{get\+Galvid}} () const
+\begin{DoxyCompactList}\small\item\em Grąžina galutinį pažymį su vidurkiu. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_vartotojas_ad2cc4ce08570975e064b59a01b72873b}{get\+Var}} () const override
+\begin{DoxyCompactList}\small\item\em Grąžina vardą. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_vartotojas_afe18e26069698a377178ae72b75ea6ed}{get\+Pav}} () const override
+\begin{DoxyCompactList}\small\item\em Grąžina pavardę. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_zmogus}{Zmogus}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_zmogus_a905fef3b8ad421a6d023c7ebc295f48e}{Zmogus}} ()=default
+\begin{DoxyCompactList}\small\item\em default \doxylink{class_zmogus}{Zmogus} klasės konstruktorius. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_zmogus_abcea2eb5f4c209f8623405a3d838f1c2}{Zmogus}} (string vardas, string pavarde)
+\begin{DoxyCompactList}\small\item\em \doxylink{class_zmogus}{Zmogus} klasės konstruktorius su parametrais. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_zmogus_ac5615bf607a8f2f1b303ffa04328d24d}{\texorpdfstring{$\sim$}{\string~}\+Zmogus}} ()
+\item 
+virtual void \mbox{\hyperlink{class_zmogus_a9a344261bb61bed1480fd1bf1229d9f4}{set\+Var}} (string vard)
+\item 
+virtual void \mbox{\hyperlink{class_zmogus_ada58ab6eac4492518155c4ca59a7cd6e}{set\+Pav}} (string pav)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \mbox{\hyperlink{class_vartotojas_a0068425bb08d9b92a70a63dcaa76c59c}{operator$<$$<$}} (ostream \&out, const \mbox{\hyperlink{class_vartotojas}{Vartotojas}} \&vart)
+\begin{DoxyCompactList}\small\item\em Išvesties perdengimo operatoriai. \end{DoxyCompactList}\item 
+istream \& \mbox{\hyperlink{class_vartotojas_a2c1cb6ba521ee7cde8490a69d3434257}{operator$>$$>$}} (istream \&in, \mbox{\hyperlink{class_vartotojas}{Vartotojas}} \&vart)
+\begin{DoxyCompactList}\small\item\em Įvesties perdengimo operatoriai. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_zmogus}{Zmogus}}}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_zmogus_a09b290c9be6039ce3a94e1557def9b3a}{vardas\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Studento vardas. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_zmogus_a95b83ef4d9bbe9b88d78c17563bafa5a}{pavarde\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Studento pavardė. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+atstovauja vartotoja 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_vartotojas_a07125601a638d7f9aa6bc3067420aab8}\label{class_vartotojas_a07125601a638d7f9aa6bc3067420aab8} 
+\index{Vartotojas@{Vartotojas}!Vartotojas@{Vartotojas}}
+\index{Vartotojas@{Vartotojas}!Vartotojas@{Vartotojas}}
+\doxysubsubsection{\texorpdfstring{Vartotojas()}{Vartotojas()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily Vartotojas\+::\+Vartotojas (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{class_vartotojas}{Vartotojas} klasės konstruktorius su nulinėmis reikšmėmis. 
+
+\Hypertarget{class_vartotojas_a6908253f75875e122f7e099bdea38f07}\label{class_vartotojas_a6908253f75875e122f7e099bdea38f07} 
+\index{Vartotojas@{Vartotojas}!Vartotojas@{Vartotojas}}
+\index{Vartotojas@{Vartotojas}!Vartotojas@{Vartotojas}}
+\doxysubsubsection{\texorpdfstring{Vartotojas()}{Vartotojas()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily Vartotojas\+::\+Vartotojas (\begin{DoxyParamCaption}\item[{const string}]{vardas,  }\item[{const string}]{pavarde,  }\item[{const \mbox{\hyperlink{class_vektorius}{Vektorius}}$<$ int $>$ \&}]{nd,  }\item[{int}]{egz,  }\item[{double}]{vid,  }\item[{double}]{gal,  }\item[{double}]{med,  }\item[{double}]{galmed,  }\item[{double}]{galvid }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{class_vartotojas}{Vartotojas} klasės konstruktorius su parametrais. 
+
+\Hypertarget{class_vartotojas_a82aa2225ccd72a2a9c619c733f53080e}\label{class_vartotojas_a82aa2225ccd72a2a9c619c733f53080e} 
+\index{Vartotojas@{Vartotojas}!````~Vartotojas@{\texorpdfstring{$\sim$}{\string~}Vartotojas}}
+\index{````~Vartotojas@{\texorpdfstring{$\sim$}{\string~}Vartotojas}!Vartotojas@{Vartotojas}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Vartotojas()}{\string~Vartotojas()}}
+{\footnotesize\ttfamily Vartotojas\+::\texorpdfstring{$\sim$}{\string~}\+Vartotojas (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxylink{class_vartotojas}{Vartotojas} klasės destruktorius. 
+
+\Hypertarget{class_vartotojas_a187b3428b24128a24d7a2b6ec2eae784}\label{class_vartotojas_a187b3428b24128a24d7a2b6ec2eae784} 
+\index{Vartotojas@{Vartotojas}!Vartotojas@{Vartotojas}}
+\index{Vartotojas@{Vartotojas}!Vartotojas@{Vartotojas}}
+\doxysubsubsection{\texorpdfstring{Vartotojas()}{Vartotojas()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily Vartotojas\+::\+Vartotojas (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vartotojas}{Vartotojas}} \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+kopijavimo konstruktorius. 
+
+\Hypertarget{class_vartotojas_ae22e0746118cd74bde19d5826c79b162}\label{class_vartotojas_ae22e0746118cd74bde19d5826c79b162} 
+\index{Vartotojas@{Vartotojas}!Vartotojas@{Vartotojas}}
+\index{Vartotojas@{Vartotojas}!Vartotojas@{Vartotojas}}
+\doxysubsubsection{\texorpdfstring{Vartotojas()}{Vartotojas()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily Vartotojas\+::\+Vartotojas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vartotojas}{Vartotojas}} \&\&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+move (perkėlimo) konstruktorius. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_vartotojas_a51a4a95fa3ecea9f68acaba74cc7fe0f}\label{class_vartotojas_a51a4a95fa3ecea9f68acaba74cc7fe0f} 
+\index{Vartotojas@{Vartotojas}!getEgz@{getEgz}}
+\index{getEgz@{getEgz}!Vartotojas@{Vartotojas}}
+\doxysubsubsection{\texorpdfstring{getEgz()}{getEgz()}}
+{\footnotesize\ttfamily int Vartotojas\+::get\+Egz (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Grąžina egzamino rezultatą. 
+
+\Hypertarget{class_vartotojas_a0462df625bd0e6488700f67805a56fe2}\label{class_vartotojas_a0462df625bd0e6488700f67805a56fe2} 
+\index{Vartotojas@{Vartotojas}!getGal@{getGal}}
+\index{getGal@{getGal}!Vartotojas@{Vartotojas}}
+\doxysubsubsection{\texorpdfstring{getGal()}{getGal()}}
+{\footnotesize\ttfamily double Vartotojas\+::get\+Gal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Grąžina galutinį pažymį. 
+
+\Hypertarget{class_vartotojas_ac5911db3af3b022d0477546c6b3b84fd}\label{class_vartotojas_ac5911db3af3b022d0477546c6b3b84fd} 
+\index{Vartotojas@{Vartotojas}!getGalmed@{getGalmed}}
+\index{getGalmed@{getGalmed}!Vartotojas@{Vartotojas}}
+\doxysubsubsection{\texorpdfstring{getGalmed()}{getGalmed()}}
+{\footnotesize\ttfamily double Vartotojas\+::get\+Galmed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Grąžina galutinį pažymį su mediana. 
+
+\Hypertarget{class_vartotojas_a7aeb8839ea5482fc19a9b233eeab2f41}\label{class_vartotojas_a7aeb8839ea5482fc19a9b233eeab2f41} 
+\index{Vartotojas@{Vartotojas}!getGalvid@{getGalvid}}
+\index{getGalvid@{getGalvid}!Vartotojas@{Vartotojas}}
+\doxysubsubsection{\texorpdfstring{getGalvid()}{getGalvid()}}
+{\footnotesize\ttfamily double Vartotojas\+::get\+Galvid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Grąžina galutinį pažymį su vidurkiu. 
+
+\Hypertarget{class_vartotojas_a79d815e46da1753b5bb0f40f49f73c50}\label{class_vartotojas_a79d815e46da1753b5bb0f40f49f73c50} 
+\index{Vartotojas@{Vartotojas}!getMed@{getMed}}
+\index{getMed@{getMed}!Vartotojas@{Vartotojas}}
+\doxysubsubsection{\texorpdfstring{getMed()}{getMed()}}
+{\footnotesize\ttfamily double Vartotojas\+::get\+Med (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Grąžina namų darbų medianą. 
+
+\Hypertarget{class_vartotojas_afe18e26069698a377178ae72b75ea6ed}\label{class_vartotojas_afe18e26069698a377178ae72b75ea6ed} 
+\index{Vartotojas@{Vartotojas}!getPav@{getPav}}
+\index{getPav@{getPav}!Vartotojas@{Vartotojas}}
+\doxysubsubsection{\texorpdfstring{getPav()}{getPav()}}
+{\footnotesize\ttfamily string Vartotojas\+::get\+Pav (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Grąžina pavardę. 
+
+
+
+Implements \mbox{\hyperlink{class_zmogus_a4e9511fb4e0854e8faf81dc5429094af}{Zmogus}}.
+
+\Hypertarget{class_vartotojas_ab7d339eefb3731ada17f9573f0394233}\label{class_vartotojas_ab7d339eefb3731ada17f9573f0394233} 
+\index{Vartotojas@{Vartotojas}!getPaz@{getPaz}}
+\index{getPaz@{getPaz}!Vartotojas@{Vartotojas}}
+\doxysubsubsection{\texorpdfstring{getPaz()}{getPaz()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_vektorius}{Vektorius}}$<$ int $>$ \& Vartotojas\+::get\+Paz (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Grąžina namų darbų pažymius. 
+
+\Hypertarget{class_vartotojas_ad2cc4ce08570975e064b59a01b72873b}\label{class_vartotojas_ad2cc4ce08570975e064b59a01b72873b} 
+\index{Vartotojas@{Vartotojas}!getVar@{getVar}}
+\index{getVar@{getVar}!Vartotojas@{Vartotojas}}
+\doxysubsubsection{\texorpdfstring{getVar()}{getVar()}}
+{\footnotesize\ttfamily string Vartotojas\+::get\+Var (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Grąžina vardą. 
+
+
+
+Implements \mbox{\hyperlink{class_zmogus_a01b808faac19355dd661d19fac17c027}{Zmogus}}.
+
+\Hypertarget{class_vartotojas_a467be2357957fae6bf2cd62c8e1b5655}\label{class_vartotojas_a467be2357957fae6bf2cd62c8e1b5655} 
+\index{Vartotojas@{Vartotojas}!getVid@{getVid}}
+\index{getVid@{getVid}!Vartotojas@{Vartotojas}}
+\doxysubsubsection{\texorpdfstring{getVid()}{getVid()}}
+{\footnotesize\ttfamily double Vartotojas\+::get\+Vid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Grąžina namų darbų pažymių vidurkį. 
+
+\Hypertarget{class_vartotojas_a74202b5868f0972c03ca3edd440d32ec}\label{class_vartotojas_a74202b5868f0972c03ca3edd440d32ec} 
+\index{Vartotojas@{Vartotojas}!operator=@{operator=}}
+\index{operator=@{operator=}!Vartotojas@{Vartotojas}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vartotojas}{Vartotojas}} \& Vartotojas\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vartotojas}{Vartotojas}} \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+copy assignment operatorius. 
+
+\Hypertarget{class_vartotojas_ae97e87d3b3d42454fb594dfde0bd69d8}\label{class_vartotojas_ae97e87d3b3d42454fb594dfde0bd69d8} 
+\index{Vartotojas@{Vartotojas}!operator=@{operator=}}
+\index{operator=@{operator=}!Vartotojas@{Vartotojas}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vartotojas}{Vartotojas}} \& Vartotojas\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vartotojas}{Vartotojas}} \&\&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+move assignment operatorius. 
+
+\Hypertarget{class_vartotojas_aace20e5abfe511ac84414facf840fc09}\label{class_vartotojas_aace20e5abfe511ac84414facf840fc09} 
+\index{Vartotojas@{Vartotojas}!setEgz@{setEgz}}
+\index{setEgz@{setEgz}!Vartotojas@{Vartotojas}}
+\doxysubsubsection{\texorpdfstring{setEgz()}{setEgz()}}
+{\footnotesize\ttfamily void Vartotojas\+::set\+Egz (\begin{DoxyParamCaption}\item[{int}]{egz }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Nustato egzamino rezultatą. 
+
+\Hypertarget{class_vartotojas_acbbed77b453f00cf81aa0f8f3655b04b}\label{class_vartotojas_acbbed77b453f00cf81aa0f8f3655b04b} 
+\index{Vartotojas@{Vartotojas}!setGal@{setGal}}
+\index{setGal@{setGal}!Vartotojas@{Vartotojas}}
+\doxysubsubsection{\texorpdfstring{setGal()}{setGal()}}
+{\footnotesize\ttfamily void Vartotojas\+::set\+Gal (\begin{DoxyParamCaption}\item[{double}]{gal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Nustato galutinį pažymį. 
+
+\Hypertarget{class_vartotojas_a9a07108e05167967f6bbafd8733eb7b6}\label{class_vartotojas_a9a07108e05167967f6bbafd8733eb7b6} 
+\index{Vartotojas@{Vartotojas}!setGalmed@{setGalmed}}
+\index{setGalmed@{setGalmed}!Vartotojas@{Vartotojas}}
+\doxysubsubsection{\texorpdfstring{setGalmed()}{setGalmed()}}
+{\footnotesize\ttfamily void Vartotojas\+::set\+Galmed (\begin{DoxyParamCaption}\item[{double}]{galm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Nustato galutinį pažymį su namų darbų mediana. 
+
+\Hypertarget{class_vartotojas_a135606795b328914e12e3a3c6eb3afb4}\label{class_vartotojas_a135606795b328914e12e3a3c6eb3afb4} 
+\index{Vartotojas@{Vartotojas}!setGalvid@{setGalvid}}
+\index{setGalvid@{setGalvid}!Vartotojas@{Vartotojas}}
+\doxysubsubsection{\texorpdfstring{setGalvid()}{setGalvid()}}
+{\footnotesize\ttfamily void Vartotojas\+::set\+Galvid (\begin{DoxyParamCaption}\item[{double}]{galv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Nustato galutinį pažymį su namų darbų vidurkiu. 
+
+\Hypertarget{class_vartotojas_a8341b1b50b87a2bbf265549fca91f115}\label{class_vartotojas_a8341b1b50b87a2bbf265549fca91f115} 
+\index{Vartotojas@{Vartotojas}!setMed@{setMed}}
+\index{setMed@{setMed}!Vartotojas@{Vartotojas}}
+\doxysubsubsection{\texorpdfstring{setMed()}{setMed()}}
+{\footnotesize\ttfamily void Vartotojas\+::set\+Med (\begin{DoxyParamCaption}\item[{double}]{med }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Nustato namų darbų pažymių medianą. 
+
+\Hypertarget{class_vartotojas_ad11ce7bdfaead2a4c224d2fd069b34a1}\label{class_vartotojas_ad11ce7bdfaead2a4c224d2fd069b34a1} 
+\index{Vartotojas@{Vartotojas}!setPav@{setPav}}
+\index{setPav@{setPav}!Vartotojas@{Vartotojas}}
+\doxysubsubsection{\texorpdfstring{setPav()}{setPav()}}
+{\footnotesize\ttfamily void Vartotojas\+::set\+Pav (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{pav }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Nustato studento varda. 
+
+\Hypertarget{class_vartotojas_a4385193ad47830ab297daf63477151d5}\label{class_vartotojas_a4385193ad47830ab297daf63477151d5} 
+\index{Vartotojas@{Vartotojas}!setPaz@{setPaz}}
+\index{setPaz@{setPaz}!Vartotojas@{Vartotojas}}
+\doxysubsubsection{\texorpdfstring{setPaz()}{setPaz()}}
+{\footnotesize\ttfamily void Vartotojas\+::set\+Paz (\begin{DoxyParamCaption}\item[{int}]{paz }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Nustato namų darbų pažymius. 
+
+\Hypertarget{class_vartotojas_a26fc5b93309cf28d5de61f5e9d29af45}\label{class_vartotojas_a26fc5b93309cf28d5de61f5e9d29af45} 
+\index{Vartotojas@{Vartotojas}!setVar@{setVar}}
+\index{setVar@{setVar}!Vartotojas@{Vartotojas}}
+\doxysubsubsection{\texorpdfstring{setVar()}{setVar()}}
+{\footnotesize\ttfamily void Vartotojas\+::set\+Var (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{vard }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Nustato studento varda. 
+
+\Hypertarget{class_vartotojas_a89460e95e900032fc4f1d215bf603a23}\label{class_vartotojas_a89460e95e900032fc4f1d215bf603a23} 
+\index{Vartotojas@{Vartotojas}!setVid@{setVid}}
+\index{setVid@{setVid}!Vartotojas@{Vartotojas}}
+\doxysubsubsection{\texorpdfstring{setVid()}{setVid()}}
+{\footnotesize\ttfamily void Vartotojas\+::set\+Vid (\begin{DoxyParamCaption}\item[{double}]{vidurkis }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Nustato namų darbų pažymių vidurkį. 
+
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{class_vartotojas_a0068425bb08d9b92a70a63dcaa76c59c}\label{class_vartotojas_a0068425bb08d9b92a70a63dcaa76c59c} 
+\index{Vartotojas@{Vartotojas}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Vartotojas@{Vartotojas}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{ostream \&}]{out,  }\item[{const \mbox{\hyperlink{class_vartotojas}{Vartotojas}} \&}]{vart }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Išvesties perdengimo operatoriai. 
+
+\Hypertarget{class_vartotojas_a2c1cb6ba521ee7cde8490a69d3434257}\label{class_vartotojas_a2c1cb6ba521ee7cde8490a69d3434257} 
+\index{Vartotojas@{Vartotojas}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!Vartotojas@{Vartotojas}}
+\doxysubsubsection{\texorpdfstring{operator$>$$>$}{operator>>}}
+{\footnotesize\ttfamily istream \& operator$>$$>$ (\begin{DoxyParamCaption}\item[{istream \&}]{in,  }\item[{\mbox{\hyperlink{class_vartotojas}{Vartotojas}} \&}]{vart }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Įvesties perdengimo operatoriai. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{funkcijos_8h}{funkcijos.\+h}}\end{DoxyCompactItemize}

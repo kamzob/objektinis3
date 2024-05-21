@@ -1,0 +1,197 @@
+\doxysection{funkcijos.\+h}
+\hypertarget{funkcijos_8h_source}{}\label{funkcijos_8h_source}\mbox{\hyperlink{funkcijos_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ funkcijos.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ V3.0}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ Created\ by\ Kamilė\ Zobėlaitė\ on\ 2024-\/05-\/15.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ \ funkcijos.h}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ \ v2.0}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ \ Created\ by\ Kamilė\ Zobėlaitė\ on\ 2024-\/04-\/29.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#ifndef\ funkcijos\_h}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ funkcijos\_h}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{biblioteka_8h}{biblioteka.h}}"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{vektorius_8h}{vektorius.h}}"{}}}
+\DoxyCodeLine{00028\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_zmogus}{Zmogus}}}
+\DoxyCodeLine{00029\ \{}
+\DoxyCodeLine{00030\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00031\ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_zmogus_a09b290c9be6039ce3a94e1557def9b3a}{vardas\_}};\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_zmogus_a95b83ef4d9bbe9b88d78c17563bafa5a}{pavarde\_}};\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{class_zmogus_a905fef3b8ad421a6d023c7ebc295f48e}{Zmogus}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{class_zmogus_abcea2eb5f4c209f8623405a3d838f1c2}{Zmogus}}(\textcolor{keywordtype}{string}\ vardas,\ \textcolor{keywordtype}{string}\ pavarde)}
+\DoxyCodeLine{00043\ \ \ \ \ :\ \mbox{\hyperlink{class_zmogus_a09b290c9be6039ce3a94e1557def9b3a}{vardas\_}}(vardas),\ \mbox{\hyperlink{class_zmogus_a95b83ef4d9bbe9b88d78c17563bafa5a}{pavarde\_}}(pavarde)\ \{\}}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_zmogus_ac5615bf607a8f2f1b303ffa04328d24d}{\string~Zmogus}}()\ \{\}}
+\DoxyCodeLine{00045\ \ \ \ \textcolor{comment}{//\ virtual\ void\ \ kazkas()\ const\ =\ 0;}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_zmogus_a9a344261bb61bed1480fd1bf1229d9f4}{setVar}}\ (\textcolor{keywordtype}{string}\ vard)\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_zmogus_a09b290c9be6039ce3a94e1557def9b3a}{vardas\_}}=vard;}
+\DoxyCodeLine{00048\ \ \ \ \ \}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_zmogus_ada58ab6eac4492518155c4ca59a7cd6e}{setPav}}\ (\textcolor{keywordtype}{string}\ pav)\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_zmogus_a95b83ef4d9bbe9b88d78c17563bafa5a}{pavarde\_}}=pav;}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_zmogus_a01b808faac19355dd661d19fac17c027}{getVar}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_zmogus_a4e9511fb4e0854e8faf81dc5429094af}{getPav}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00055\ \};}
+\DoxyCodeLine{00060\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_vartotojas}{Vartotojas}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_zmogus}{Zmogus}}}
+\DoxyCodeLine{00061\ \{}
+\DoxyCodeLine{00062\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{class_vektorius}{Vektorius<int>}}\ nd\_;\ \ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{int}\ egz\_;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{double}\ vid\_;\ \ \ \ \ \ \ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{double}\ gal\_;\ \ \ \ \ \ \ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{double}\ med\_;\ \ \ \ \ \ \ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{double}\ galmed\_;\ \ \ \ \ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{double}\ galvid\_;\ \ \ \ \ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{class_vartotojas_a07125601a638d7f9aa6bc3067420aab8}{Vartotojas}}()\ :\ vid\_(0.0),\ gal\_(0.0),\ med\_(0.0),\ galmed\_(0.0),\ galvid\_(0.0)\ \{\}}
+\DoxyCodeLine{00078\ \ \ \ \ \mbox{\hyperlink{class_vartotojas_a6908253f75875e122f7e099bdea38f07}{Vartotojas}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ vardas,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ pavarde,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_vektorius}{Vektorius<int>}}\&\ nd,\ \textcolor{keywordtype}{int}\ egz,\ \textcolor{keywordtype}{double}\ vid,\ \textcolor{keywordtype}{double}\ gal,\ \textcolor{keywordtype}{double}\ med,\ \textcolor{keywordtype}{double}\ galmed,\ \textcolor{keywordtype}{double}\ galvid)}
+\DoxyCodeLine{00079\ \ \ \ \ :\ \mbox{\hyperlink{class_zmogus}{Zmogus}}(vardas,\ pavarde),\ nd\_(nd),\ egz\_(egz),\ vid\_(vid),\ gal\_(gal),\ med\_(med),\ galmed\_(galmed),\ galvid\_(galvid)\ \{\}}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{//\ destruktorius}}
+\DoxyCodeLine{00084\ \ \ \ \ \mbox{\hyperlink{class_vartotojas_a82aa2225ccd72a2a9c619c733f53080e}{\string~Vartotojas}}()\ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{comment}{//cout\ <<\ "{}Objektas\ sunaikintas"{}\ <<\ endl;}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ nd\_.\mbox{\hyperlink{class_vektorius_a5dde6342d3922105c0adec715705178d}{clear}}();}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{comment}{//\ copy\ konstruktorius}}
+\DoxyCodeLine{00091\ \ \ \ \ \mbox{\hyperlink{class_vartotojas_a187b3428b24128a24d7a2b6ec2eae784}{Vartotojas}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vartotojas}{Vartotojas}}\&\ other)}
+\DoxyCodeLine{00092\ \ \ \ \ :\ \mbox{\hyperlink{class_zmogus}{Zmogus}}(other.\mbox{\hyperlink{class_vartotojas_ad2cc4ce08570975e064b59a01b72873b}{getVar}}(),\ other.\mbox{\hyperlink{class_vartotojas_afe18e26069698a377178ae72b75ea6ed}{getPav}}()),\ nd\_(other.nd\_),\ egz\_(other.egz\_),\ vid\_(other.vid\_),\ gal\_(other.gal\_),\ med\_(other.med\_),\ galmed\_(other.galmed\_),\ galvid\_(other.galvid\_)\ \{\}}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{comment}{//void\ kazkas\ ()\ const\ override\{\}}}
+\DoxyCodeLine{00094\ \ \ \ \ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{comment}{//\ Copy\ assignment\ operatorius}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vartotojas}{Vartotojas}}\&\ \mbox{\hyperlink{class_vartotojas_a74202b5868f0972c03ca3edd440d32ec}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vartotojas}{Vartotojas}}\&\ other)\ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ !=\ \&other)\ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_zmogus_a9a344261bb61bed1480fd1bf1229d9f4}{Zmogus::setVar}}(other.\mbox{\hyperlink{class_vartotojas_ad2cc4ce08570975e064b59a01b72873b}{getVar}}());}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_zmogus_ada58ab6eac4492518155c4ca59a7cd6e}{Zmogus::setPav}}(other.\mbox{\hyperlink{class_vartotojas_afe18e26069698a377178ae72b75ea6ed}{getPav}}());}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nd\_\ =\ other.nd\_;}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ egz\_\ =\ other.egz\_;}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vid\_\ =\ other.vid\_;}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gal\_\ =\ other.gal\_;}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ med\_\ =\ other.med\_;}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ galmed\_\ =\ other.galmed\_;}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ galvid\_\ =\ other.galvid\_;}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{comment}{//\ move\ konstruktorius}}
+\DoxyCodeLine{00115\ \ \ \ \ \mbox{\hyperlink{class_vartotojas_ae22e0746118cd74bde19d5826c79b162}{Vartotojas}}(\mbox{\hyperlink{class_vartotojas}{Vartotojas}}\&\&\ other)\ noexcept}
+\DoxyCodeLine{00116\ \ \ \ \ :\ \mbox{\hyperlink{class_zmogus_a905fef3b8ad421a6d023c7ebc295f48e}{Zmogus}}(std::move(other.vardas\_),\ std::move(other.pavarde\_)),\ nd\_(std::move(other.nd\_)),\ egz\_(other.egz\_),\ vid\_(other.vid\_),\ gal\_(other.gal\_),\ med\_(other.med\_),\ galmed\_(other.galmed\_),\ galvid\_(other.galvid\_)\ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ other.egz\_\ =\ 0;}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ other.vid\_\ =\ 0.0;}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ other.gal\_\ =\ 0.0;}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ other.med\_\ =\ 0.0;}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ other.galmed\_\ =\ 0.0;}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ other.galvid\_\ =\ 0.0;}
+\DoxyCodeLine{00123\ \ \ \ \ \}}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{comment}{//\ move\ assignment\ operatorius}}
+\DoxyCodeLine{00127\ \ \ \ \ \mbox{\hyperlink{class_vartotojas}{Vartotojas}}\&\ \mbox{\hyperlink{class_vartotojas_ae97e87d3b3d42454fb594dfde0bd69d8}{operator=}}(\mbox{\hyperlink{class_vartotojas}{Vartotojas}}\&\&\ other)\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ !=\ \&other)\ \{}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_zmogus_a9a344261bb61bed1480fd1bf1229d9f4}{Zmogus::setVar}}(std::move(other.vardas\_));}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_zmogus_ada58ab6eac4492518155c4ca59a7cd6e}{Zmogus::setPav}}(std::move(other.pavarde\_));}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nd\_\ =\ std::move(other.nd\_);}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ egz\_\ =\ other.egz\_;}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vid\_\ =\ other.vid\_;}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gal\_\ =\ other.gal\_;}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ med\_\ =\ other.med\_;}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ galmed\_\ =\ other.galmed\_;}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ galvid\_\ =\ other.galvid\_;}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ other.egz\_\ =\ 0;}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ other.vid\_\ =\ 0.0;}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ other.gal\_\ =\ 0.0;}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ other.med\_\ =\ 0.0;}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ other.galmed\_\ =\ 0.0;}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ other.galvid\_\ =\ 0.0;}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keyword}{friend}\ ostream\&\ \mbox{\hyperlink{class_vartotojas_a0068425bb08d9b92a70a63dcaa76c59c}{operator<<}}(ostream\&\ out,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_vartotojas}{Vartotojas}}\ \&vart)\{}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ out\ <<\ left\ <<\ setw(20)\ <<\ vart.\mbox{\hyperlink{class_zmogus_a09b290c9be6039ce3a94e1557def9b3a}{vardas\_}}\ <<\ setw(20)\ <<\ vart.\mbox{\hyperlink{class_zmogus_a95b83ef4d9bbe9b88d78c17563bafa5a}{pavarde\_}}\ <<\ setw(20)\ <<\ fixed\ <<\ setprecision(2)\ <<\ vart.gal\_\ <<\ endl;}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ out;}
+\DoxyCodeLine{00152\ \ \ \ \ \}}
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keyword}{friend}\ istream\&\ \mbox{\hyperlink{class_vartotojas_a2c1cb6ba521ee7cde8490a69d3434257}{operator>>}}(istream\&\ in,\ \mbox{\hyperlink{class_vartotojas}{Vartotojas}}\ \&vart)\{}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ in\ >>\ vart.\mbox{\hyperlink{class_zmogus_a09b290c9be6039ce3a94e1557def9b3a}{vardas\_}}\ >>\ vart.\mbox{\hyperlink{class_zmogus_a95b83ef4d9bbe9b88d78c17563bafa5a}{pavarde\_}};}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ paz;}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ Vektorius\ <int>\ pzm;}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(in\ >>\ paz)}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ vart.nd\_.\mbox{\hyperlink{class_vektorius_ac1140e791c4adf2b76aaa29ae157d5e4}{push\_back}}(paz);}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!vart.nd\_.\mbox{\hyperlink{class_vektorius_ab4548c5f7e68bfeef88fe34ca6f8aaeb}{empty}}())}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ vart.egz\_\ =\ vart.nd\_.\mbox{\hyperlink{class_vektorius_ad632254a45a9359179c66b3ebb78ef73}{back}}();}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ vart.nd\_.\mbox{\hyperlink{class_vektorius_a7104b7f80edddda1963a09e6a3a6090a}{pop\_back}}();}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ in;}
+\DoxyCodeLine{00170\ \ \ \ \ \}}
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_vartotojas_a4385193ad47830ab297daf63477151d5}{setPaz}}(\textcolor{keywordtype}{int}\ paz)\{}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ nd\_.\mbox{\hyperlink{class_vektorius_ac1140e791c4adf2b76aaa29ae157d5e4}{push\_back}}(paz);}
+\DoxyCodeLine{00175\ \ \ \ \ \}}
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_vartotojas_a89460e95e900032fc4f1d215bf603a23}{setVid}}(\textcolor{keywordtype}{double}\ vidurkis)\{}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ vid\_=vidurkis;}
+\DoxyCodeLine{00180\ \ \ \ \ \}}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_vartotojas_a8341b1b50b87a2bbf265549fca91f115}{setMed}}(\textcolor{keywordtype}{double}\ med)\{}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ med\_=med;}
+\DoxyCodeLine{00185\ \ \ \ \ \}}
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_vartotojas_aace20e5abfe511ac84414facf840fc09}{setEgz}}\ (\textcolor{keywordtype}{int}\ egz)\{}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ egz\_\ =\ egz;}
+\DoxyCodeLine{00190\ \ \ \ \ \}}
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_vartotojas_acbbed77b453f00cf81aa0f8f3655b04b}{setGal}}(\textcolor{keywordtype}{double}\ gal)\{}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ gal\_\ =\ gal;}
+\DoxyCodeLine{00195\ \ \ \ \ \}}
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_vartotojas_a135606795b328914e12e3a3c6eb3afb4}{setGalvid}}(\textcolor{keywordtype}{double}\ galv)\{}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ galvid\_=galv;}
+\DoxyCodeLine{00200\ \ \ \ \ \}}
+\DoxyCodeLine{00203\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_vartotojas_a9a07108e05167967f6bbafd8733eb7b6}{setGalmed}}(\textcolor{keywordtype}{double}\ galm)\{}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ galmed\_=galm;}
+\DoxyCodeLine{00205\ \ \ \ \ \}}
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_vartotojas_a26fc5b93309cf28d5de61f5e9d29af45}{setVar}}(\textcolor{keyword}{const}\ std::string\&\ vard)\ \{\ \mbox{\hyperlink{class_zmogus_a9a344261bb61bed1480fd1bf1229d9f4}{Zmogus::setVar}}(vard);\ \}}
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_vartotojas_ad11ce7bdfaead2a4c224d2fd069b34a1}{setPav}}(\textcolor{keyword}{const}\ std::string\&\ pav)\ \{\ \mbox{\hyperlink{class_zmogus_ada58ab6eac4492518155c4ca59a7cd6e}{Zmogus::setPav}}(pav);}
+\DoxyCodeLine{00213\ \ \ \ \ \}}
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_vektorius}{Vektorius<int>}}\&\ \mbox{\hyperlink{class_vartotojas_ab7d339eefb3731ada17f9573f0394233}{getPaz}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ nd\_;\ \}}
+\DoxyCodeLine{00219\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_vartotojas_a51a4a95fa3ecea9f68acaba74cc7fe0f}{getEgz}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ egz\_;\ \}}
+\DoxyCodeLine{00222\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_vartotojas_a467be2357957fae6bf2cd62c8e1b5655}{getVid}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ vid\_;\ \}}
+\DoxyCodeLine{00225\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_vartotojas_a0462df625bd0e6488700f67805a56fe2}{getGal}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ gal\_;\ \}}
+\DoxyCodeLine{00228\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_vartotojas_a79d815e46da1753b5bb0f40f49f73c50}{getMed}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ med\_;\ \}}
+\DoxyCodeLine{00231\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_vartotojas_ac5911db3af3b022d0477546c6b3b84fd}{getGalmed}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ galmed\_;\ \}}
+\DoxyCodeLine{00234\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_vartotojas_a7aeb8839ea5482fc19a9b233eeab2f41}{getGalvid}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ galvid\_;\ \}}
+\DoxyCodeLine{00237\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_vartotojas_ad2cc4ce08570975e064b59a01b72873b}{getVar}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_zmogus_a09b290c9be6039ce3a94e1557def9b3a}{vardas\_}};\ \}}
+\DoxyCodeLine{00240\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_vartotojas_afe18e26069698a377178ae72b75ea6ed}{getPav}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_zmogus_a95b83ef4d9bbe9b88d78c17563bafa5a}{pavarde\_}};\ \}}
+\DoxyCodeLine{00241\ \ \ \ \ }
+\DoxyCodeLine{00242\ \ \ \ \ }
+\DoxyCodeLine{00243\ \};}
+\DoxyCodeLine{00244\ }
+\DoxyCodeLine{00245\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{funkcijos_8h_a8beec0e5f4c5937e7aa42b0253e1988d}{Vidurkis}}(\textcolor{keywordtype}{double}\ suma,\ \textcolor{keywordtype}{int}\ nariai);}
+\DoxyCodeLine{00246\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{funkcijos_8h_a125e2479fb5b5f430856f39daebb1fa4}{Mediana}}(\mbox{\hyperlink{class_vektorius}{Vektorius<int>}}\ paz,\ \textcolor{keywordtype}{int}\ nariai);}
+\DoxyCodeLine{00247\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{funkcijos_8h_a5355f2928b41342e0a5b3b1c896ff312}{spausdinti}}(\textcolor{keywordtype}{int}\ rnkts,\ \mbox{\hyperlink{class_vektorius}{Vektorius<Vartotojas>}}\&\ vart,\ \textcolor{keywordtype}{int}\ n);}
+\DoxyCodeLine{00248\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{funkcijos_8h_a3a4308a1f22669f15351696f81c7216d}{generavimasPaz}}();}
+\DoxyCodeLine{00249\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{funkcijos_8h_a9bfb0f90d6ae779cfe1f01cbda395c07}{generavimasVard}}(\textcolor{keywordtype}{int}\ pas);}
+\DoxyCodeLine{00250\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{funkcijos_8h_aebe7b66a5cab249d21b8da0df7566f69}{generavimasPav}}(\textcolor{keywordtype}{int}\ pas);}
+\DoxyCodeLine{00251\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{funkcijos_8h_a2920c7b6b3be2e3c030f3497730089be}{skaityti}}(\mbox{\hyperlink{class_vektorius}{Vektorius<Vartotojas>}}\&\ vart,\ \textcolor{keywordtype}{string}\ pavadinimas,\ \textcolor{keywordtype}{int}\ vm);}
+\DoxyCodeLine{00252\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{funkcijos_8h_a28a74cf1f398e822012f8047aab3f8a3}{rezrikiavimas}}(\mbox{\hyperlink{class_vektorius}{Vektorius<Vartotojas>}}\&\ vart);}
+\DoxyCodeLine{00253\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{funkcijos_8h_aa63347abedabf2555aabc90858bb31f9}{spausdinti\_skaitomus\_duomenis}}(\mbox{\hyperlink{class_vektorius}{Vektorius<Vartotojas>}}\&\ vart);}
+\DoxyCodeLine{00254\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{funkcijos_8h_a6761b9284c91295ff6a852a9576c8b6f}{rikiuotiVarda}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vartotojas}{Vartotojas}}\ \&a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_vartotojas}{Vartotojas}}\ \&b);}
+\DoxyCodeLine{00255\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{funkcijos_8h_ac5c4260aa0aa0aaedcff2f88c4d794c9}{rikiuotiPavarde}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vartotojas}{Vartotojas}}\ \&a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_vartotojas}{Vartotojas}}\ \&b);}
+\DoxyCodeLine{00256\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{funkcijos_8h_a4cb5599d0811d00bb3898db1198af79f}{rikiuotiVid}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vartotojas}{Vartotojas}}\ \&a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_vartotojas}{Vartotojas}}\ \&b);}
+\DoxyCodeLine{00257\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{funkcijos_8h_ac0154c49d842c3981d69c0e9c4f76d6e}{rikiuotiMed}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_vartotojas}{Vartotojas}}\ \&a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_vartotojas}{Vartotojas}}\ \&b);}
+\DoxyCodeLine{00258\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{funkcijos_8h_ab74e7942286842be826406f4a1bc33a0}{arZodis}}(\textcolor{keywordtype}{string}\ tekstas);}
+\DoxyCodeLine{00259\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{funkcijos_8h_a1d08f22a8f70a6f26fa003131d210940}{arSveikasisSk}}(\textcolor{keywordtype}{string}\ tekstas);}
+\DoxyCodeLine{00260\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{funkcijos_8h_ad2a042bd35c84df5ac944f5edbb0dce9}{FailuGeneravimas}}\ (\textcolor{keywordtype}{int}\ studSk);}
+\DoxyCodeLine{00261\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{funkcijos_8h_a72cedac0b1254eee4b538f299c231c76}{RusiavimasDviGrupes}}(\mbox{\hyperlink{class_vektorius}{Vektorius<Vartotojas>}}\&\ vart,\ \mbox{\hyperlink{class_vektorius}{Vektorius<Vartotojas>}}\&\ vargsai,\ \mbox{\hyperlink{class_vektorius}{Vektorius<Vartotojas>}}\&\ laimingi,\ \textcolor{keywordtype}{int}\ vm);}
+\DoxyCodeLine{00262\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{funkcijos_8h_a57936eb5b4a62683765a00caa778da5c}{spausdintiLaimingiVargsai}}\ (\mbox{\hyperlink{class_vektorius}{Vektorius<Vartotojas>}}\&\ vargsai,\ \mbox{\hyperlink{class_vektorius}{Vektorius<Vartotojas>}}\&\ laimingi,\ \textcolor{keywordtype}{int}\ vm);}
+\DoxyCodeLine{00263\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{funkcijos_8h_a5816e4f73bbe4beea7fb5dc9d04514a7}{RusiavimasDviGrupes2}}(\mbox{\hyperlink{class_vektorius}{Vektorius<Vartotojas>}}\&\ vart,\ \mbox{\hyperlink{class_vektorius}{Vektorius<Vartotojas>}}\&\ vargsai,\ \textcolor{keywordtype}{int}\ vm);}
+\DoxyCodeLine{00264\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{funkcijos_8h_a7a1ae1a43b301f7844860c547c5804aa}{RusiavimasDviGrupes3}}(\mbox{\hyperlink{class_vektorius}{Vektorius<Vartotojas>}}\&\ vart,\ \mbox{\hyperlink{class_vektorius}{Vektorius<Vartotojas>}}\&\ vargsai,\ \textcolor{keywordtype}{int}\ vm);}
+\DoxyCodeLine{00265\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{funkcijos_8h_a3ec92fd06cd5803bf3f1ad974518a284}{testas}}();}
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00268\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ funkcijos\_h\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}
