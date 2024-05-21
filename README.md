@@ -214,3 +214,5 @@ Vektoriaus talpa po shrink_to_fit: 10
 | 100000 | 0.898518 | 0.03412 | 0.0194003 | 0.0871021 | 0.11902 | 1.1582 |
 | 1000000 | 8.46058 | 0.311572 | 0.163012 | 0.811127 | 1.13099 | 10.8774 |
 | 10000000 | 94.177 | 3.74071 | 2.50641 | 10.4105 | 14.6244 | 125.459 |
+## Atliktas Unit Native Testavimas per Visual Studio su custom Vektoriumi
+<img width="701" alt="Screenshot 2024-05-21 at 03 27 21" src="https://github.com/kamzob/objektinis3/assets/149818908/81fda17b-16ba-461c-9d9c-27118ad86eea">
