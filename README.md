@@ -217,3 +217,13 @@ Vektoriaus talpa po shrink_to_fit: 10
 ## Atliktas Unit Native Testavimas per Visual Studio su custom Vektoriumi
 
 <img width="910" alt="Screenshot 2024-05-21 at 18 18 00" src="https://github.com/kamzob/objektinis3/assets/149818908/a0ce92fa-f1e1-46d5-add0-c3b1f2a72c09">
+
+## Setup
+Parsisiuničau Inno Setup Compiler iš https://inno-setup-compiler.en.lo4d.com/windows 
+Tada viską instaliavau, gavau scripta
+<img width="1114" alt="Screenshot 2024-05-22 at 11 41 08" src="https://github.com/kamzob/objektinis3/assets/149818908/55fd851d-9284-421f-a48b-ea1de93bec47">
+<img width="1120" alt="Screenshot 2024-05-22 at 04 16 39" src="https://github.com/kamzob/objektinis3/assets/149818908/33570df3-b0dd-45c1-bb56-40b2abe16b26">
+
+<img width="611" alt="Screenshot 2024-05-22 at 12 09 16" src="https://github.com/kamzob/objektinis3/assets/149818908/de680f8e-014c-47dd-8762-b8bea458d15f">
+
+<img width="591" alt="Screenshot 2024-05-22 at 12 09 34" src="https://github.com/kamzob/objektinis3/assets/149818908/17765d1d-d5cc-4539-bd00-5d58495c3a80">
